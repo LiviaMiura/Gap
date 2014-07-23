@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!--
+    Projeto : GAP
+    Nome Arquivo : listar.xhtml (UNIDADE)
+    Autor : Marcos Castro
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Unidades Cadastradas no Sistema GAP</title>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/style.css"/>
+    </h:head>
+
+    <h:body>
+
+        <f:view>
+            <h:form>
+            <p:growl id="messages"/>
+                <h3>
+                    <p:dataTable id="tblUnid" value="#{unidadeAction.lista}" var="item"
+                                 paginator="true" rows="5"
+                                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                 rowsPerPageTemplate="5,10,15">
+                        <f:facet name="header">
+                            <h2 style="font-size: 14px">Unidades Cadastradas no Sistema GAP</h2>
+                        </f:facet>        
+
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Unidade"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nomeUnidade}"   />
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Localidade"/>
+                            </f:facet>
+                            <h:outputText value="#{item.localidade}"/>
+                        </p:column>
+
+                        <!--    Inserir codigo - Editar    -->
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Editar"/>
+                            </f:facet>
+                          
+                            <p:commandButton action="#{unidadeAction.alterar}" ajax="false" image="ui-icon ui-icon-pencil" title="Editar">
+                                <f:param name="idUnidade" value="#{item.idUnidade}"/>
+                            </p:commandButton>
+
+                        </p:column>
+
+
+                        <p:column style="text-align: center">
+                            <f:facet name="header">
+                                <h:outputText value="Excluir"/>
+                            </f:facet>
+
+                            <h:commandButton action="#{unidadeAction.excluir}"  image="/imagens/excluir1.png" title="Excluir">
+                                <f:param name="idUnidade" value="#{item.idUnidade}"/>
+                            </h:commandButton>
+                        </p:column>
+
+                    </p:dataTable>
+
+                    <br/><br/>
+                    <p:commandButton styleClass="h5" action="#{unidadeAction.inserir}" value="Cadastrar uma Nova Unidade" ajax="false"/>
+                </h3>       
+            </h:form>
+        </f:view>
+    </h:body>
+</html>

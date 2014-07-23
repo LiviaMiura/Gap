@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+    Projeto : GAP
+    Nome Arquivo : listarHistoricoNo.xhtml (HISTORICONO)
+    Autor : Marcos Castro
+    Descrição: Mostra em forma de tabela uma lista referente a tabela Historico do No: Nome do Usuario, estadoNo, dataOperacao
+    
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Historico do Nó</title>
+    </h:head>
+    <h:body>
+        <!-- Configurar o tamanho do botão  -->
+        <style type="text/css">  
+            .ui-widget {  
+                font-size: 11px !important;  
+            }  
+        </style> 
+        <h:form>
+            <f:view>
+                <h:form>
+                    <p:growl id="messages"/>
+                    <h6> 
+                        <p:dataTable id="tbl" value="#{historicoNoAction.lista}" var="item"
+                                     paginator="true" rows="10"
+                                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                     rowsPerPageTemplate="10,20">
+                            <f:facet name="header">
+                                <h2 style="font-size: 14px">Histórico da Árvore de Produto</h2>
+                            </f:facet>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="ÁRVORE DE PRODUTO"/>
+                                </f:facet>
+                                <h:outputText value="#{item.noFk.titulo}"/>
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="ESTADO"/>
+                                </f:facet>
+                                <h:outputText value="#{item.estadoNo}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="DATA"/>
+                                </f:facet>
+                                <h:outputText value="#{item.dataOperacao}">
+                                    <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" timeZone="America/Sao_Paulo"  />
+                                </h:outputText>
+                            </p:column>
+
+                              <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="OPERAÇÃO"/>
+                                </f:facet>
+                                  <h:outputText value="#{item.operacao}"/>
+                            </p:column>
+                            
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="RESPONSÁVEL"/>
+                                </f:facet>
+                                <h:outputText value="#{item.usuarioFk.nome}"/>
+                            </p:column>
+
+                        </p:dataTable>
+                    </h6>
+                </h:form>
+            </f:view>
+
+        </h:form>
+
+    </h:body>
+</html>

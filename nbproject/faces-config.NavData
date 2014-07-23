@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scene Scope="Project" version="2">
+    <Scope Scope="Faces Configuration Only"/>
+    <Scope Scope="Project">
+        <Node id="usuarioMenu/historico/listar.xhtml" x="-710" y="272" zoom="true"/>
+        <Node id="configurarSistema/estadoNo/listar.xhtml" x="-645" y="708" zoom="true"/>
+        <Node id="consultas/produto/consultarTipoDocumento.xhtml" x="-1200" y="8" zoom="true"/>
+        <Node id="menuPrincipal/apresentacao.xhtml" x="133" y="-224" zoom="true"/>
+        <Node id="teste.xhtml" x="447" y="-760" zoom="true"/>
+        <Node id="consultas/produto/consultarDominio.xhtml" x="-1161" y="-37" zoom="true"/>
+        <Node id="arvoreProduto/documentoVinculado/listaDocumentos.xhtml" x="1377" y="-812" zoom="true"/>
+        <Node id="consultas/documento/identificacao2.xhtml" x="-1204" y="-368" zoom="true"/>
+        <Node id="usuarioMenu/unidade/listar.xhtml" x="386" y="200" zoom="true"/>
+        <Node id="configurarSistema/tipoProduto/form.xhtml" x="-166" y="678" zoom="true"/>
+        <Node id="arvoreProduto/tree/formAlterarNivel21.xhtml" x="1483" y="-690" zoom="true"/>
+        <Node id="usuarioMenu/usuario/perfil.xhtml" x="-706" y="327" zoom="true"/>
+        <Node id="arvoreProduto/documentoVinculado/formAlterar.xhtml" x="1249" y="-150" zoom="true"/>
+        <Node id="arvoreProduto/documentoVinculado/formNovo.xhtml" x="942" y="78" zoom="true"/>
+        <Node id="arvoreProduto/tree/nivel21view.xhtml" x="604" y="-49" zoom="true"/>
+        <Node id="usuarioMenu/usuario/formAlterar.xhtml" x="251" y="1037" zoom="true"/>
+        <Node id="configurarSistema/tipoProduto/formAlterar.xhtml" x="-184" y="561" zoom="true"/>
+        <Node id="consultas/produto/consultarIdentificacao.xhtml" x="-1181" y="152" zoom="true"/>
+        <Node id="arvoreProduto/documentoVinculado/doctopdf.xhtml" x="1363" y="79" zoom="true"/>
+        <Node id="arvoreProduto/tree/nivel2.xhtml" x="1298" y="-1005" zoom="true"/>
+        <Node id="treeTableNo.xhtml" x="1033" y="-742" zoom="true"/>
+        <Node id="arvoreProduto/tree/nivel1.xhtml" x="1004" y="-1005" zoom="true"/>
+        <Node id="usuarioMenu/usuario/formEtapa2adm_1.xhtml" x="373" y="685" zoom="true"/>
+        <Node id="consultas/produto/consultarData.xhtml" x="-1137" y="245" zoom="true"/>
+        <Node id="consultas/produto/consultarProdutoDoc.xhtml" x="-1183" y="-76" zoom="true"/>
+        <Node id="arvoreProduto/tree/nivel2view.xhtml" x="597" y="-117" zoom="true"/>
+        <Node id="consultas/documento/identificacao.xhtml" x="-1197" y="-403" zoom="true"/>
+        <Node id="configurarSistema/tipoDocumento/listar.xhtml" x="707" y="528" zoom="true"/>
+        <Node id="arvoreProduto/documentoVinculado/form.xhtml" x="614" y="-484" zoom="true"/>
+        <Node id="usuarioMenu/usuario/formNovoUsuario.xhtml" x="-162" y="-550" zoom="true"/>
+        <Node id="email/listar.xhtml" x="40" y="-867" zoom="true"/>
+        <Node id="usuarioMenu/usuario/formEtapa2adm.xhtml" x="418" y="771" zoom="true"/>
+        <Node id="consultas/produto/consultarResponsavel.xhtml" x="-1183" y="97" zoom="true"/>
+        <Node id="usuarioMenu/usuario/listar.xhtml" x="256" y="934" zoom="true"/>
+        <Node id="usuarioMenu/usuario/msgGravar.xhtml" x="-4" y="-170" zoom="true"/>
+        <Node id="menuPrincipal/menu.xhtml" x="258" y="-512" zoom="true"/>
+        <Node id="consultas/documento/tipoDocumento.xhtml" x="-1205" y="-333" zoom="true"/>
+        <Node id="configurarSistema/estadoNo/form.xhtml" x="-644" y="764" zoom="true"/>
+        <Node id="consultas/produto/produtoFinalIdentificacao.xhtml" x="-1204" y="-199" zoom="true"/>
+        <Node id="consultas/consultarProduto.xhtml" x="-670" y="-197" zoom="true"/>
+        <Node id="arvoreProduto/tree/nivel0view.xhtml" x="582" y="-233" zoom="true"/>
+        <Node id="configurarSistema/tipoProduto/listar.xhtml" x="-162" y="622" zoom="true"/>
+        <Node id="configurarSistema/tipoDocumento/downloadTipoDocumentos.xhtml" x="-616" y="-514" zoom="true"/>
+        <Node id="configurarSistema/estadoNo/formAlterar.xhtml" x="-646" y="639" zoom="true"/>
+        <Node id="arvoreProduto/historicoNo/listarHistoricoNo.xhtml" x="-218" y="-745" zoom="true"/>
+        <Node id="usuarioMenu/usuario/telablank.xhtml" x="198" y="-100" zoom="true"/>
+        <Node id="arvoreProduto/documentoVinculado/listar.xhtml" x="1194" y="-39" zoom="true"/>
+        <Node id="email/form.xhtml" x="44" y="-937" zoom="true"/>
+        <Node id="arvoreProduto/tree/nivel1view.xhtml" x="586" y="-176" zoom="true"/>
+        <Node id="arvoreProduto/historicoDocumento/listar.xhtml" x="-784" y="224" zoom="true"/>
+        <Node id="usuarioMenu/unidade/form.xhtml" x="385" y="260" zoom="true"/>
+        <Node id="consultas/consultarDocumento.xhtml" x="-861" y="-474" zoom="true"/>
+        <Node id="arvoreProduto/tree/formAlterarNivel2.xhtml" x="1476" y="-586" zoom="true"/>
+        <Node id="usuarioMenu/usuario/formEtapa2.xhtml" x="55" y="773" zoom="true"/>
+        <Node id="consultas/produto/produtoFinalResponsavel.xhtml" x="-1207" y="-119" zoom="true"/>
+        <Node id="arvoreProduto/tree/formAlterarNivel1.xhtml" x="1413" y="-472" zoom="true"/>
+        <Node id="arvoreProduto/tree/nivel0.xhtml" x="711" y="-1006" zoom="true"/>
+        <Node id="consultas/produto/consultarporNoEspecifico.xhtml" x="-1212" y="-254" zoom="true"/>
+        <Node id="arvoreProduto/tree/formAlterarNivel0.xhtml" x="1006" y="-508" zoom="true"/>
+        <Node id="consultas/produto/produtoFinalTipoProduto.xhtml" x="-1197" y="329" zoom="true"/>
+        <Node id="index.xhtml" x="-88" y="-435" zoom="true"/>
+        <Node id="configurarSistema/tipoDocumento/formAlterar.xhtml" x="708" y="430" zoom="true"/>
+        <Node id="usuarioMenu/usuario/editarUsuario.xhtml" x="200" y="-1015" zoom="true"/>
+        <Node id="usuarioMenu/usuario/form.xhtml" x="276" y="874" zoom="true"/>
+        <Node id="consultas/produto/consultarTemplates.xhtml" x="-1170" y="51" zoom="true"/>
+        <Node id="consultas/documento/estadoNo.xhtml" x="-1180" y="-440" zoom="true"/>
+        <Node id="consultas/produto/consultarEstadoNo.xhtml" x="-1165" y="287" zoom="true"/>
+        <Node id="configurarSistema/tipoDocumento/form.xhtml" x="705" y="617" zoom="true"/>
+        <Node id="arvoreProduto/documentoVinculado/listarDoc.xhtml" x="975" y="-340" zoom="true"/>
+        <Node id="consultas/produto/consultarMudancaEstadoNo.xhtml" x="-1217" y="-161" zoom="true"/>
+        <Node id="consultas/produto/produtoFinalEstadoNo.xhtml" x="-1181" y="196" zoom="true"/>
+    </Scope>
+    <Scope Scope="All Faces Configurations"/>
+</Scene>

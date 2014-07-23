@@ -1,0 +1,166 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+    Projeto : GAP
+    Nome Arquivo : form.xhtml (ADMINISTRADOR)
+    Autor : Marcos Castro
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/style.css"/>
+        <meta http-equiv="Content-Type" content="text/html"/>
+        <title>Cadastro de Usuário</title>
+    </h:head>
+    <h:body>
+        <h6>
+            <h:form>
+                <p:growl id="growl"  sticky="false" /> 
+
+                <p:panel header="Perfil do Usuário " style="text-align: center;margin-bottom:60px;"> 
+                    <center> 
+                        <h:panelGrid columns="3" cellpadding="5" border="0"> 
+
+                            <h:inputHidden value="#{usuarioAction.usuarioDTO.idUsuario}" />
+                            <h:outputLabel value="" />
+                            <h:outputLabel value="" />
+
+
+                            <h:outputLabel value="Nome:" for="nome" />
+                            <p:inputText
+                                id="nome" value="#{usuarioAction.usuarioDTO.nome}" size="27"
+                                title=" Nome do Usuário:" disabled="true"
+                                required="true" requiredMessage="O nome é obrigatório"
+                                validatorMessage="Nome: mínimo 3, máximo 40 caracteres." >
+
+                                <f:validateLength minimum="3" maximum="40"></f:validateLength>
+                            </p:inputText>
+                            <h:outputLabel value="" />
+
+
+                            <h:outputLabel value="Perfil Atual" for="perfilFk" />
+                            <p:inputText
+                                id="perfil" value="#{usuarioAction.usuarioDTO.perfil}" size="27"
+                                disabled="true"
+                                required="true" requiredMessage="O nome é obrigatório"
+                                validatorMessage="Nome: mínimo 3, máximo 40 caracteres." >
+
+                                <f:validateLength minimum="3" maximum="40"></f:validateLength>
+                            </p:inputText>
+
+                        </h:panelGrid>
+                        <p:panelGrid style="margin-top:20px">  
+
+                            <f:facet name="header">  
+                                <p:row>  
+                                    <p:column colspan="4">Perfil do Usuário GAP </p:column>  
+                                </p:row>  
+                                <p:row>  
+                                    <p:column colspan="3">Descrição</p:column>  
+                                    <p:column colspan="1">O que cada usuário pode fazer</p:column>  
+
+                                </p:row>  
+                            </f:facet> 
+
+
+                            <p:row >  
+                                <p:column  style="font-weight: bold;text-align: center">Visitante</p:column>                             
+                                <p:column rowspan="2" colspan="2">É o usuario que não pertence a Divisão </p:column>
+                                <p:column rowspan="2" style="font-weight: bold;">Consultar informações da Árvore de Produto.  </p:column>  
+
+
+                            </p:row>  
+
+                            <p:row>  
+                                <p:column></p:column>  
+
+                            </p:row> 
+                            <p:row>  
+                                <p:column colspan="4" styleClass="ui-widget-header">  
+                                    <p:spacer height="0"/>  
+                                </p:column>  
+                            </p:row>  
+
+                            <p:row>  
+                                <p:column  style="font-weight: bold;text-align: center">Usuário Interno</p:column>  
+
+                                <p:column rowspan="2" colspan="2">É o usuário da própria Divisão </p:column>  
+                                <p:column rowspan="2" style="font-weight: bold;">Consultar informações da Árvore de Produto e fazer downloads de Templates de Documentos.</p:column>  
+                            </p:row>  
+
+
+
+                            <p:row>  
+                                <p:column colspan="4" styleClass="ui-widget-header">  
+                                    <p:spacer height="0"/>  
+                                </p:column>  
+                            </p:row> 
+                            <p:row>  
+                                <p:column  style="font-weight: bold;text-align: center">Gerente</p:column>  
+
+                                <p:column rowspan="2" colspan="2">É responsável por todos Projetos da Divisão </p:column>                             
+                                <p:column rowspan="2" style="font-weight: bold;">Responsável pela configuração do sistema, gestão da Árvore de Produto Básica.</p:column>  
+                            </p:row>  
+
+
+                            <p:row>  
+                                <p:column></p:column>  
+                            </p:row> 
+
+                            <p:row>  
+                                <p:column colspan="4" styleClass="ui-widget-header">  
+                                    <p:spacer height="0"/>  
+                                </p:column>  
+                            </p:row>  
+
+                            <p:row>  
+                                <p:column style="font-weight: bold;text-align: center">Gestor</p:column>  
+
+                                <p:column rowspan="2" colspan="2">É responsável por um Projeto Específico </p:column>  
+                                <p:column rowspan="2" style="font-weight: bold;">Responsável pela gestão de um ramo da Árvore de Produtos e geração de seus documentos.</p:column>  
+                            </p:row>  
+
+
+                            <p:row>  
+                                <p:column></p:column>  
+                            </p:row> 
+                            <f:facet name="footer">  
+                                <p:row>  
+                                    <p:column  colspan="4" style="text-align: center">  
+
+                                    </p:column>  
+
+                                </p:row>  
+
+
+                            </f:facet>  
+                        </p:panelGrid> 
+
+                        <h:panelGrid columns="4" cellpadding="10" border="0"> 
+                          
+                            
+                            <a href="mailto:livia.miura@inpe.br">
+                                <img  src="../imagens/carta1.jpg"  alt="Email" title="Email Personalizado" />
+                            </a> 
+
+                            <h:commandLink  action="#{usuarioAction.enviarEmailPerfil}">
+                                <f:param name="idUsuario" value="#{item.idUsuario}"/>
+                                <h:graphicImage id="Email" url="/imagens/carta2.jpg" alt="Email" title="Email Automático, Administrador irá escolhar em qual perfil você se encaixa"   /></h:commandLink>
+
+                            <h:outputLabel value="" />
+                            <h:outputLabel value="" />
+
+
+                        </h:panelGrid>
+
+
+                        <br/>
+                    </center>
+                </p:panel>
+
+            </h:form>
+        </h6>
+    </h:body>
+</html>

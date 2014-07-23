@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/style.css"/>
+        <title>Tipo de Documento</title>
+    </h:head>
+    <h:body>
+
+        <h:form  >
+            <p:growl id="messages"/>
+            <h6>  
+
+                <p:dataTable id="tbl" value="#{tipoDocumentoAction.lista}" var="item"
+                             paginator="true" rows="5"
+                             paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="5,10,15">
+                    <f:facet name="header">
+                        <h2 style="font-size: 14px">Tipo de Documento</h2>
+                    </f:facet>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Identificação"/>
+                        </f:facet>
+                        <h:outputText value="#{item.identificacao}"/>
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Tipo de Documento"/>
+                        </f:facet>
+                        <h:outputText value="#{item.tipoDocumento}"/>
+
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Descrição"/>
+                        </f:facet>
+                        <h:outputText value="#{item.descricao}"/>
+                    </p:column>
+                                     
+
+                    <p:column style="text-align:center" >
+                        <f:facet name="header">
+                            <h:outputText value=" Download"/>
+                        </f:facet>
+
+                        <h:commandButton image="/imagens/print.png" title="Download de Templates">
+                            <p:fileDownload value="#{tipoDocumentoAction.file}" />
+                            <f:param name="idTipoDocumento" value="#{item.idTipoDocumento}"  />
+                        </h:commandButton>
+                    </p:column>
+
+                    <p:column  style="width: 7px;text-align: center" >
+                        <f:facet name="header">
+                            <h:outputText value="Editar"/>
+                        </f:facet>
+                        <p:commandButton action="#{tipoDocumentoAction.alterar}" ajax="false" image="ui-icon ui-icon-pencil" title="Editar">
+                            <f:param name="idTipoDocumento" value="#{item.idTipoDocumento}"/>
+                        </p:commandButton>
+                    </p:column>
+
+                    <p:column style="text-align: center">
+                        <f:facet name="header">
+                            <h:outputText value="Excluir"/>
+                        </f:facet>
+                        <h:commandButton action="#{tipoDocumentoAction.excluir}" image="/imagens/excluir1.png" title="Excluir">
+                            <f:param name="idTipoDocumento" value="#{item.idTipoDocumento}"/>
+                        </h:commandButton>
+                    </p:column>
+
+                </p:dataTable>
+
+
+
+            </h6>
+
+            <br/><br/>
+            <p:commandButton styleClass="h5" action="#{tipoDocumentoAction.inserir}" value="Cadastrar Tipo de Documento" ajax="false"/>
+
+
+
+        </h:form>
+
+    </h:body>
+</html>
+

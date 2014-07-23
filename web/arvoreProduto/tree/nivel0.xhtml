@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/style.css"/>
+        <title>Adicionar Produto de Nível 0</title>
+    </h:head>
+    <h:body> 
+        <h6>
+            <f:view encoding="ISO-8859-1"> 
+            <h:form>
+
+       <p:growl id="messages"/> 
+                <br/>
+                <h4>
+                <p:panel header="Adicionar Novo Produto - GAP" style="text-align: center;margin-bottom:60px;">   
+                    <center>
+                        <h:panelGrid  columns="2" cellpadding="5" border="0" width="600">                            
+                            <h:inputHidden value="#{noAction.noDTO.idNo}"/>
+
+                            <h:inputHidden value="#{noAction.noDTO.nivel}"/>
+
+                            <h:outputLabel value="Identificação:" for="titulo" />
+                            <p:inputText id="identificacao" size ="52"
+                                         value="#{noAction.noDTO.titulo}"
+                                         onkeyup="this.value = this.value.toUpperCase();"     
+                                         title="Titulo"
+                                         required="true" requiredMessage="Preencha a Identificação."
+                                         validatorMessage="Identificação no mínimo 3 caracteres.">
+                                <f:validateLength minimum="3" maximum="300"></f:validateLength>
+                            </p:inputText>
+
+                            <h:outputLabel value="Descrição:" for="descricao" />
+                            <p:inputTextarea autoResize="200%"  cols="40"
+                                             id="descricao" value="#{noAction.noDTO.descricao}"
+                                             title="Descrição." 
+                                             required="true" 
+                                             requiredMessage="Descrição é obrigatório."
+
+                                             >
+
+                            </p:inputTextarea>
+
+                                                
+
+                     
+
+                            <h:outputLabel value="Responsável:" for="usuarioId" />
+                            <h:selectOneMenu id="usuarioId" 
+                                             value="#{noAction.noDTO.responsavel.idUsuario}"
+                                             title="Responsável:" required="true" 
+                                             requiredMessage="Selecione um Responsável" >
+                                <f:selectItem itemLabel="Selecione" itemValue="" noSelectionOption="true"/> 
+                                <f:selectItems value="#{usuarioAction.lista}" var="usuarioDTO" itemLabel="#{usuarioDTO.nome}" itemValue="#{usuarioDTO.idUsuario}"  />
+                            </h:selectOneMenu>
+                        </h:panelGrid>
+                    </center><br/>
+                    <h:panelGrid columns="3"  width="530"  cellpadding="5" border="0">  
+                        <p:commandButton action="#{noAction.gravarPai}" value="Gravar" ajax="false"/>
+                        <p:commandButton action="#{noAction.listar}" value="Cancelar" ajax="false" immediate="true"/>
+                        <p:commandButton id="btnL" value="Limpar" type="reset" ajax="false"/>
+                    </h:panelGrid>
+                </p:panel>
+                    </h4>
+            </h:form> 
+            </f:view>
+        </h6>
+    </h:body>
+</html>
+
+
+

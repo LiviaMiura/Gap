@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/style.css"/>
+
+        <title>Consultas</title>
+    </h:head>
+    <h:body>
+        <f:view>         
+            <h:form >
+                <h4>   
+
+                    <p:panel styleClass="tes2" id="xis" >
+                        <br/>
+                        <h2>Consultar por Estado do Produto</h2>
+                        <br/> <center>
+                            <h:panelGrid width="580" columns="3">
+                                <h:outputLabel value="Estado do Nó:" for="estado" />
+
+                                <h:selectOneMenu styleClass="tes" value="#{noAction.noDTO.estadoNofk.idEstadoNo}">
+                                    <f:selectItem itemLabel="Selecione" itemValue=""/>
+                                    <f:selectItems value="#{estadoNoAction.lista}" var="estadoDTO" itemLabel="#{estadoDTO.identificacao}" itemValue="#{estadoDTO.idEstadoNo}"  />
+                                </h:selectOneMenu>
+
+                                <p:commandButton value="Buscar" 
+                                                 update="xp"
+                                                 actionListener="#{noAction.buscarPorEstadoNoID}"
+                                                 ajax="false" />
+                            </h:panelGrid>
+                        </center>
+                        <br/> 
+                        <p:dataTable id="xp" value="#{noAction.listaConsultas}" 
+                                     var="item" 
+                                     filterEvent="itemdoNoAction.lista"
+                                     paginator="true" rows="7"
+                                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                     rowsPerPageTemplate="5,10,15">
+
+                            <p:column style="width: 20px;text-align: center" >  
+                                <f:facet name="header" >  
+                                    <h:outputText value="PRODUTO" />  
+                                </f:facet>                                                                        
+                                <h:outputText value="#{item.titulo}" />
+                            </p:column>
+
+                            <p:column style="width: 200px ;text-align: center" >  
+                                <f:facet name="header" >  
+                                    <h:outputText value="DESCRIÇÃO" />  
+                                </f:facet>
+                                <h:outputText value="#{item.descricao}"/>
+                            </p:column>
+
+                            <p:column style="width: 180px ;text-align: center" >  
+                                <f:facet name="header" >  
+                                    <h:outputText value="ESTADO" />  
+                                </f:facet>                     
+
+                                <h:outputText value="#{item.estadoNofk.identificacao}"/>
+                            </p:column>
+
+                            <p:column style="width: 30px ;text-align: center" >  
+                                <f:facet name="header" >  
+                                    <h:outputText value="RESPONSÁVEL" />  
+                                </f:facet>                     
+                                <h:outputText value="#{item.responsavel.nome}"/>
+                            </p:column>
+
+                        </p:dataTable>
+                        <br/> <br/>
+                        <center>
+                            <h:panelGrid width="690" columns="2" style="alignment-adjust: center;text-align: center" border="0">
+                                <p:commandLink action="#{noAction.geraRelatorioEstadodoProduto}" ajax="false" >
+                                    <p:graphicImage style="border: 0"  value="/imagens/pdf1.png"/>
+                                </p:commandLink>
+                            </h:panelGrid>
+                        </center>
+                    </p:panel>
+                </h4>
+            </h:form>
+        </f:view>
+    </h:body>
+</html>
+
+

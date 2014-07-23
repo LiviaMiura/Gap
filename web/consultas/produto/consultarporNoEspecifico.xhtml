@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/style.css"/>
+
+        <title>Consultar Produto por Ramo Específico</title>
+    </h:head>
+    <h:body>
+        <f:view>         
+            <h:form >
+                <h4>   
+             
+
+                    <p:panel styleClass="tes2" >
+                      
+                        <h2>Consultar por Produto Específico </h2>
+                        <br/> <br/><center>
+                            <h:panelGrid width="580" columns="3">
+                                <h:outputLabel value="Identificação do Produto:" for="fornecedor" />
+                                <h:selectOneMenu styleClass="tes"     value="#{noAction.noDTO.idNo}">
+                                    <f:selectItem itemLabel="Mostrar todos" itemValue=""/>
+                                    <f:selectItems value="#{noAction.lista1}" var="noDTO" itemLabel="#{noDTO.titulo}" itemValue="#{noDTO.idNo}"  />
+                                    <f:ajax event="valueChange"  execute="" render="x" listener="#{noAction.listarNoTitulo}"  />
+                                </h:selectOneMenu>
+                            </h:panelGrid>
+                        </center>
+                        <br/> 
+
+                        <br/> 
+                        <p:dataTable id="x" value="#{noAction.listaNo}" 
+                                     var="item" 
+                                     filterEvent="noAction.listaConsultas"
+                                     paginator="true" rows="5"
+                                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                     rowsPerPageTemplate="5,10,15">
+
+                            <f:facet name="header">
+                                <h2 style="font-size: 12px">EXIBIR FILHOS</h2>
+                            </f:facet>
+                            <p:column  headerText="IDENTIFICAÇÃO" style="width: 180px" >                                                 
+                                <h:outputText value="#{item.titulo}" />
+                            </p:column>
+
+                            <p:column  headerText="DESCRIÇÃO"  style="width: 350px">                                                 
+                                <h:outputText value="#{item.descricao}"/>
+                            </p:column>
+
+                            <p:column  headerText="RESPONSÁVEL" style="width: 100px" >                                                 
+                                <h:outputText value="#{item.responsavel.nome}"/>
+                            </p:column>
+
+
+                        </p:dataTable>
+                        
+                        
+                      
+                        <br/> <br/>
+                        <center>
+                            <h:panelGrid width="690" columns="2" style="alignment-adjust: center;text-align: center" border="0">
+                                <p:commandLink action="#{noAction.geraConsultaRamoEspecifico}" ajax="false" >
+                                    <p:graphicImage style="border: 0"  value="/imagens/pdf1.png"/>
+                                </p:commandLink>
+                            </h:panelGrid>
+                        </center>
+
+                    </p:panel>
+                </h4>
+            </h:form>
+        </f:view>
+    </h:body>
+</html>
+
+

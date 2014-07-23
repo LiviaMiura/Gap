@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+    Projeto : GAP
+    Nome Arquivo : listar.xhtml (USUARIO)
+    Autor : Marcos Castro
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/style.css"/>   
+        <title>Usuários Cadastrados no Sistema GAP</title>
+    </h:head>
+    <h:body>
+        <f:view>
+            <h:form>
+                <p:growl id="growl"  sticky="false" /> 
+
+                <p:dataTable id="usu" value="#{usuarioAction.lista}" var="item"
+                             paginator="true" rows="7"
+                             paginatorTemplate="{CurrentPageReport}  {FirstPageLink}
+                             {PreviousPageLink} {PageLinks} {NextPageLink}
+                             {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="5,10,15">
+                    <f:facet name="header">
+                        <h2 style="font-size: 14px">Usuários Cadastrados no Sistema GAP</h2>
+                    </f:facet>
+
+                    <p:column style="text-align: center">
+                        <f:facet name="header">
+                            <h:outputText value="Nome"/>
+                        </f:facet>
+                        <h:outputText value="#{item.nome}"/>
+                    </p:column>
+
+                    <p:column style="text-align: center">
+                        <f:facet name="header">
+                            <h:outputText value="Ramal"/>
+                        </f:facet>
+                        <h:outputText value="#{item.ramal}"/>
+                    </p:column>
+
+                    <p:column style="text-align: center">
+                        <f:facet name="header">
+                            <h:outputText value="Email"/>
+                        </f:facet>
+                        <h:outputText value="#{item.email}"/>
+                    </p:column>
+
+                    <p:column style="text-align: center">
+                        <f:facet name="header">
+                            <h:outputText value="Login"/>
+                        </f:facet>
+                        <h:outputText value="#{item.login}"/>
+                    </p:column>
+
+                    <p:column style="text-align: center">
+                        <f:facet name="header">
+                            <h:outputText value="Senha"/>
+                        </f:facet>
+                        <h:outputText value="#{item.senha}"/>
+                    </p:column>
+
+                    <p:column style="text-align: center">
+                        <f:facet name="header">
+                            <h:outputText value="Perfil"/>
+                        </f:facet>
+                        <h:outputText value="#{item.perfil}"/>
+                    </p:column>
+
+                    <p:column style="text-align: center">
+                        <f:facet name="header">
+                            <h:outputText value="Unidade"/>
+                        </f:facet>
+                        <h:outputText value="#{item.unidadeFk.nomeUnidade}"/>
+                    </p:column>
+
+                    <p:column style="text-align: center">
+                        <f:facet name="header">
+                            <h:outputText value="Status"   title="Ativo/Inativo"/>
+                        </f:facet>
+                        <h:graphicImage value="#{item.statusImagem}" title="Ativo / Inativo" />
+                    </p:column>
+
+                    <!--    Inserir codigo - Editar    -->
+                    <p:column >
+                        <f:facet name="header">
+                            <h:outputText value="Editar"/>
+                        </f:facet>
+                        <p:commandButton action="#{usuarioAction.alterar}" ajax="false" image="ui-icon ui-icon-pencil" title="Editar" > 
+                            <f:param name="idUsuario" value="#{item.idUsuario}"/>
+                        </p:commandButton>
+                    </p:column>
+
+                   
+
+                    <p:column  style="width: 7px;text-align: center" >
+                        <f:facet name="header">
+                            <h:outputText value="Excluir" />
+                        </f:facet>
+                        <h:commandButton action="#{usuarioAction.excluir}" image="/imagens/excluir1.png"  title="Excluir">
+                            <f:param name="idUsuario" value="#{item.idUsuario}"/>
+                        </h:commandButton>
+
+                    </p:column>
+
+                </p:dataTable>
+                <br/>
+                <br/>
+
+                <p:commandButton styleClass="h5" action="#{usuarioAction.inserir}" value="Cadastrar Novo Usuário" ajax="false"/>
+
+
+
+
+
+            </h:form>
+        </f:view>
+    </h:body>
+</html>
+

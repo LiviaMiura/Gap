@@ -1,0 +1,168 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/style.css"/>
+        <title>Cadastro de Usuário</title>
+    </h:head>
+    <h:body>
+        <h3>
+            <f:view encoding="ISO-8859-1"> 
+                <h:form>
+                    <p:growl id="growl"  sticky="false" /> 
+                    <p:panel header="Editar Cadastro de Usuário " style="text-align: center;margin-bottom:60px;"> 
+                        <center> 
+                            <h:panelGrid columns="4" cellpadding="5" border="0"> 
+                                <h:inputHidden value="#{usuarioAction.usuarioDTO.idUsuario}" />
+                                <h:outputLabel value="" />
+                                <h:outputLabel value="" />
+                                <h:outputLabel value="" />
+
+                                <h:outputLabel value="Nome:" for="nome" />
+                                <p:inputText
+                                    id="nome" value="#{usuarioAction.usuarioDTO.nome}" size=""
+                                    title=" Digite seu Nome:"
+                                    required="true" requiredMessage="O nome é obrigatório"
+                                    validatorMessage="Nome: mínimo 3, máximo 40 caracteres." >
+
+                                    <f:validateLength minimum="3" maximum="40"></f:validateLength>
+                                </p:inputText>
+                                <h:outputLabel value="" />
+                                <h:outputLabel value="" />
+
+                                <h:outputLabel value="Email:" for="email" />      
+                                <p:inputText
+                                    id="email" value="#{usuarioAction.usuarioDTO.email}" 
+                                    title="Digite seu Email"
+                                    required="true" requiredMessage="O Email é obrigatório"
+                                    validatorMessage="Email inválido ou excedeu o limite de caracteres!">
+                                    <f:validateLength minimum="3" maximum="40"></f:validateLength>
+                                    <f:validateRegex pattern="[a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9\-\_\.]+"/>
+                                </p:inputText>
+                                <h:outputLabel value="" />
+                                <h:outputLabel value="" />
+                                <h:outputLabel value="Predio:" for="predio" />
+                                <p:inputText
+                                    id="predio" value="#{usuarioAction.usuarioDTO.predio}" size=""
+                                    title=" Digite o Predio:"
+                                    required="true" requiredMessage="O Predio é obrigatório"
+                                    validatorMessage="Nome: mínimo 2, máximo 40 caracteres." >
+
+                                    <f:validateLength minimum="3" maximum="40"></f:validateLength>
+                                </p:inputText>
+                                <h:outputLabel value="" />
+                                <h:outputLabel value="" />
+                                <h:outputLabel value="Ramal:" for="ramal" />
+                                <p:inputMask id="ramal" value="#{usuarioAction.usuarioDTO.ramal}" mask="9999"
+                                             title=" Digite o Ramal"
+                                             required="true"
+                                             requiredMessage="Ramal é obrigatorio"
+                                             validatorMessage="Ramal deve conter no max 4 caracteres!"/>
+                                <h:outputLabel value="" />
+                                <h:outputLabel value="" />
+
+                                <h:outputLabel value="Login:" for="login" />
+                                <p:inputText id="login" value="#{usuarioAction.usuarioDTO.login}"
+                                             title="Login" required="true" size="20" disabled="true"
+                                             requiredMessage="Login é obrigatório." 
+                                             validatorMessage="Login mínimo 2, máximo 10 caracteres"
+                                             >
+                                    <f:validateLength minimum="2"  maximum="10"/>
+                                </p:inputText>
+                                <h:outputLabel value="" />
+                                <p:watermark for="login" value=" Registro Funcional"   />  
+
+
+
+
+
+                                <h:outputLabel value="Senha:" for="senha" />
+                                <p:inputText
+                                    id="senha" value="#{usuarioAction.usuarioDTO.senha}"
+                                    title="Digite uma Senha  "
+                                    required="true" requiredMessage="A Senha é obrigatória"
+
+                                    validatorMessage="Senha: mínimo 3, máximo 10 caracteres.">
+                                    <f:validateLength minimum="3" maximum="10"></f:validateLength>
+                                </p:inputText>
+                          
+                                <h:outputLabel value="" /> 
+                                <h:outputLabel value="" />
+                                <h:outputLabel value="Perfil" for="perfilFk" />
+
+                                <p:outputPanel id="customPanel" >  
+                                    <p:selectOneRadio id="customRadio" value="#{usuarioAction.usuarioDTO.perfil}" layout="custom">  
+                                        <f:selectItem itemLabel="Administrador" itemValue="Administrador" />  
+                                        <f:selectItem itemLabel="Usuário Interno - Gerente" itemValue="Usuário Interno - Gerente" />  
+                                        <f:selectItem itemLabel="Usuário Interno - Gestor" itemValue="Usuário Interno - Gestor" />  
+                                        <f:selectItem itemLabel="Usuário Interno" itemValue="Usuário Interno" />  
+                                        <f:selectItem itemLabel="Visistante" itemValue="Visitante" />  
+
+                                    </p:selectOneRadio>  
+                                    <h:outputLabel value="" />
+                                    <h:panelGrid columns="3" border="0">  
+                                        <p:radioButton id="opt1" for="customRadio" itemIndex="0"/>  
+                                        <h:outputLabel for="opt1" value=" Administrador" />  
+                                        <br/>
+                                        <p:radioButton id="opt2" for="customRadio" itemIndex="1"/>  
+                                        <h:outputLabel for="opt2" value=" Usuário Interno - Gerente" />  
+                                        <br/>
+                                        <p:radioButton id="opt3" for="customRadio" itemIndex="2"/>  
+                                        <h:outputLabel for="opt3" value=" Usuário Interno - Gestor" />  
+                                        <br/>
+
+                                        <p:radioButton id="opt4" for="customRadio" itemIndex="3"/>  
+                                        <h:outputLabel for="opt3" value="Usuário Interno" />  
+                                        <br/>
+
+                                        <p:radioButton id="opt5" for="customRadio" itemIndex="4"/>  
+                                        <h:outputLabel for="opt3" value=" Visitante" />  
+
+
+                                    </h:panelGrid>  
+                                </p:outputPanel>
+
+
+
+
+                                <h:outputLabel value="" />   
+                                <h:outputLabel value="" />
+
+                                <h:outputLabel value="Unidade:" for="unidadeFk" />
+                                <h:selectOneMenu id="unidadeFk" 
+                                                 value="#{usuarioAction.usuarioDTO.unidadeFk.idUnidade}"  
+                                                 required="true" 
+                                                 requiredMessage="Selecione Unidade" >
+                                    <f:selectItem itemLabel="Selecione " itemValue="" noSelectionOption="true"/> 
+                                    <f:selectItems value="#{unidadeAction.lista}" var="unidadeDTO" itemLabel="#{unidadeDTO.nomeUnidade}" itemValue="#{unidadeDTO.idUnidade}"  />
+                                </h:selectOneMenu>
+
+                                <h:outputLabel value="" />
+                                <h:outputLabel value="" />
+                                <h:outputLabel value="Status:" for="status"  />
+                                <h:selectOneRadio  value="#{usuarioAction.usuarioDTO.status}" disabled="false" ><!--STATUS(false)-habilita : Ativo=0 / Inativo=1   -->
+                                    <f:selectItem itemLabel="Ativo" itemValue="0" />
+                                    <f:selectItem itemLabel="Inativo" itemValue="1"/>
+                                </h:selectOneRadio>
+
+                            </h:panelGrid>
+                            <h:inputHidden value="#{usuarioAction.usuarioDTO.login}"/>
+                            <h:panelGrid columns="3"  width="515"  cellpadding="5" border="0">  
+                                <p:commandButton action="#{usuarioAction.gravarEditar}" value="Gravar" ajax="false"/>
+                                <p:commandButton action="#{usuarioAction.listar}" value="Cancelar" ajax="false" immediate="true"/>
+                                <p:commandButton id="btnL" value="Limpar" type="reset"/>
+                            </h:panelGrid>
+
+
+                        </center>
+                    </p:panel>
+
+                </h:form>
+            </f:view>
+        </h3>
+    </h:body>
+</html>

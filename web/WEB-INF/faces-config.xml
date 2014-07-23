@@ -1,0 +1,792 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!-- =========== FULL CONFIGURATION FILE ================================== -->
+
+<faces-config version="2.0"
+              xmlns="http://java.sun.com/xml/ns/javaee" 
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+              xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
+   
+    <!-- Inicio do managed-bean -->
+    
+    <managed-bean>
+        <managed-bean-name>usuarioLogin</managed-bean-name>
+        <managed-bean-class>br.inpe.backingbeans.UsuarioAction</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+
+        
+    
+     <!-- Declaração do administrador  root login e senha -->
+        <managed-property>
+            <property-name>loginx</property-name>
+            <value>admin</value>
+        </managed-property>
+        
+        <managed-property>
+            <property-name>senhax</property-name>
+            <value>admin</value>
+        </managed-property> 
+        
+        
+    </managed-bean>  
+     <!-- FIM  do managed-bean -->
+     <!-- fim-->
+      <!--Declarações das Action -->
+    <managed-bean>
+        <managed-bean-name>usuarioAction</managed-bean-name>
+        <managed-bean-class>br.inpe.backingbeans.UsuarioAction</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>menuAction</managed-bean-name>
+        <managed-bean-class>br.inpe.backingbeans.MenuAction</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>estadoNoAction</managed-bean-name>
+        <managed-bean-class>br.inpe.backingbeans.EstadoNoAction</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>tipoProdutoAction</managed-bean-name>
+        <managed-bean-class>br.inpe.backingbeans.TipoProdutoAction</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>noAction</managed-bean-name>
+        <managed-bean-class>br.inpe.backingbeans.NoAction</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>documentoVinculadoAction</managed-bean-name>
+        <managed-bean-class>br.inpe.backingbeans.DocumentoVinculadoAction</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>   
+    <managed-bean>
+        <managed-bean-name>arvoreAction</managed-bean-name>
+        <managed-bean-class>br.inpe.backingbeans.ArvoreAction</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean> 
+    <managed-bean>
+        <managed-bean-name>treeAction</managed-bean-name>
+        <managed-bean-class>br.inpe.backingbeans.TreeAction</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>templateAction</managed-bean-name>
+        <managed-bean-class>br.inpe.backingbeans.TemplateAction</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>unidadeAction</managed-bean-name>
+        <managed-bean-class>br.inpe.backingbeans.UnidadeAction</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>historicoAction</managed-bean-name>
+        <managed-bean-class>br.inpe.backingbeans.HistoricoAction</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>logout</managed-bean-name>
+        <managed-bean-class>br.inpe.backingbeans.Logout</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>perfilAction</managed-bean-name>
+        <managed-bean-class>br.inpe.backingbeans.PerfilAction</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>historicoDocVinculadoAction</managed-bean-name>
+        <managed-bean-class>br.inpe.backingbeans.HistoricoDocVinculadoAction</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>configurarEmailAction</managed-bean-name>
+        <managed-bean-class>br.inpe.backingbeans.ConfigurarEmailAction</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>sendMailLocalhostAction</managed-bean-name>
+        <managed-bean-class>br.inpe.backingbeans.SendMailLocalhostAction</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>itemdoNoAction</managed-bean-name>
+        <managed-bean-class>br.inpe.backingbeans.ItemdoNoAction</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    
+      <!--Fim das Declarações das Action -->
+    
+      <!-- Regras de Navegação do index para menu -->
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>inserirUsuario</from-outcome>
+            <to-view-id>/usuarioMenu/usuario/formNovoUsuario.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>menu</from-outcome>
+            <to-view-id>/menuPrincipal/menu.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+         <!-- Regras de Navegação do menu para o tipoDocumento -->
+    <navigation-rule>
+        <from-view-id>/menuPrincipal/menu.xhtml</from-view-id>       
+        <navigation-case>
+            <from-outcome>tipoDocumentoListar</from-outcome>
+            <to-view-id>/configurarSistema/tipoDocumento/listar.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>tipoProdutoListar</from-outcome>
+            <to-view-id>/configurarSistema/tipoProduto/listar.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>documentoVinculadoListar</from-outcome>
+            <to-view-id>/arvoreProduto/documentoVinculado/listar.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>tree4</from-outcome>
+            <to-view-id>/treeTableNo.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>inserirNivel</from-outcome>
+            <to-view-id>/arvoreProduto/tree/nivel0.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>unidadeListar</from-outcome>
+            <to-view-id>/usuarioMenu/unidade/listar.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>historicoListar</from-outcome>
+            <to-view-id>/usuarioMenu/historico/listar.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>usuarioListar</from-outcome>
+            <to-view-id>/usuarioMenu/usuario/listar.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>estadoNoListar</from-outcome>
+            <to-view-id>/configurarSistema/estadoNo/listar.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>download</from-outcome>
+            <to-view-id>/configurarSistema/tipoDocumento/downloadTipoDocumentos.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>usuarioForm</from-outcome>
+            <to-view-id>/usuarioMenu/usuario/editarUsuario.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>listarperfil</from-outcome>
+            <to-view-id>/usuarioMenu/usuario/perfil.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>historicoDocVinculadoListar</from-outcome>
+            <to-view-id>/arvoreProduto/historicoDocumento/listar.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>consultarProduto</from-outcome>
+            <to-view-id>/consultas/consultarProduto.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>consultarDocumento</from-outcome>
+            <to-view-id>/consultas/consultarDocumento.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>historicoNoListar</from-outcome>
+            <to-view-id>/arvoreProduto/historicoNo/listarHistoricoNo.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>apresentacao</from-outcome>
+            <to-view-id>/menuPrincipal/apresentacao.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>emailListar</from-outcome>
+            <to-view-id>/email/listar.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>teste</from-outcome>
+            <to-view-id>/teste.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+      <!-- Regras de Navegação do tipoDocumento  listar e form-->
+    <navigation-rule>
+        <from-view-id>/configurarSistema/tipoDocumento/listar.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>inserir</from-outcome>
+            <to-view-id>/configurarSistema/tipoDocumento/form.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>alterar</from-outcome>
+            <to-view-id>/configurarSistema/tipoDocumento/formAlterar.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+      <!-- Fim -->
+    <!-- Regras de Navegação do tipoProduto listar e form-->
+    <navigation-rule>
+        <from-view-id>/configurarSistema/tipoProduto/listar.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>listar</from-outcome>
+            <to-view-id>/configurarSistema/tipoProduto/listar.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>inserir</from-outcome>
+            <to-view-id>/configurarSistema/tipoProduto/form.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>alterar</from-outcome>
+            <to-view-id>/configurarSistema/tipoProduto/formAlterar.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+     <!-- Fim -->
+    
+           <!-- Regras de Navegação do   treeTableNo  (arvore+documentoVinculado+nó) -->
+    
+    <navigation-rule>
+        <from-view-id>/treeTableNo.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>listar</from-outcome>
+            <to-view-id>/treeTableNo.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>inserirNivel0</from-outcome>
+            <to-view-id>/arvoreProduto/tree/nivel0.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>inserirDocumento</from-outcome>
+            <to-view-id>/arvoreProduto/documentoVinculado/form.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>nivel1</from-outcome>
+            <to-view-id>/arvoreProduto/tree/nivel1.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>nivel2</from-outcome>
+            <to-view-id>/arvoreProduto/tree/nivel2.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>alterarNivel0</from-outcome>
+            <to-view-id>/arvoreProduto/tree/formAlterarNivel0.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>alterarNivel2</from-outcome>
+            <to-view-id>/arvoreProduto/tree/formAlterarNivel2.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>alterarNivel1</from-outcome>
+            <to-view-id>/arvoreProduto/tree/formAlterarNivel1.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>alterarDoc</from-outcome>
+            <to-view-id>/arvoreProduto/documentoVinculado/formAlterar.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>viewDoc</from-outcome>
+            <to-view-id>/arvoreProduto/documentoVinculado/listarDoc.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>docllistar</from-outcome>
+            <to-view-id>/arvoreProduto/documentoVinculado/listarDoc.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>listar</from-outcome>
+            <to-view-id>/treeTableNo.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>viewNivel0</from-outcome>
+            <to-view-id>/arvoreProduto/tree/nivel0view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>viewNivel1</from-outcome>
+            <to-view-id>/arvoreProduto/tree/nivel1view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>viewNivel2</from-outcome>
+            <to-view-id>/arvoreProduto/tree/nivel2view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>listarDocumentos</from-outcome>
+            <to-view-id>/arvoreProduto/documentoVinculado/listaDocumentos.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>viewNivel21</from-outcome>
+            <to-view-id>/arvoreProduto/tree/nivel21view.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>lista</from-outcome>
+            <to-view-id>/treeTableNo.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>alterarNivel21</from-outcome>
+            <to-view-id>/arvoreProduto/tree/formAlterarNivel21.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+               <!--fim-->
+         
+         <!-- Regras de Navegação do tree  form-->
+       <!-- fim-->
+       
+          <!-- Regras de Navegação do tree  form  alterar nó-->
+       <!-- FIM-->
+    
+       <!-- Regras de Navegação do tree  inserir documento contextMenu-->
+       <!-- FIM-->
+    
+ 
+    
+       <!-- Regras de Navegação do tipoDocumento  form  alterar nó-->
+     <!-- Regras de Navegação do tipoDocumento  template  alterar nó-->
+     <!-- Regras de Navegação do documentoVinculado template alterar nó-->
+    
+     <!-- Regras de Navegação do documentoVinculado  form  alterar nó-->
+    
+    <navigation-rule>
+        <from-view-id>/arvoreProduto/documentoVinculado/form.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>listar</from-outcome>
+            <to-view-id>/treeTableNo.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>backtree</from-outcome>
+            <to-view-id>/treeTableNo.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+     <!-- Regras de Navegação do documentoVinculado  listar alterar nó-->
+    
+    <navigation-rule>
+        <from-view-id>/arvoreProduto/documentoVinculado/listar.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>inserir</from-outcome>
+            <to-view-id>/arvoreProduto/documentoVinculado/formNovo.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>alterar</from-outcome>
+            <to-view-id>/arvoreProduto/documentoVinculado/formAlterar.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>listaItem</from-outcome>
+            <to-view-id>/arvoreProduto/documentoVinculado/doctopdf.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>backtree</from-outcome>
+            <to-view-id>/arvoreProduto/documentoVinculado/listar.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+      <!-- Regras de Navegação do documentoVinculado  listar alterar nó-->
+    
+    
+      <!-- Regras de Navegação do documentoVinculado  novoTemplate alterar nó-->
+    
+      <!-- Regras de Navegação do download/template  listar, form template-->
+      <!-- FIM-->
+   
+        <!-- Regras de Navegação do no nivel 0 do menu-->
+   
+   
+    <navigation-rule>
+        <from-view-id>/arvoreProduto/tree/nivel0.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>listar</from-outcome>
+            <to-view-id>/treeTableNo.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+      
+  
+    
+    <managed-bean>
+        <managed-bean-name>file</managed-bean-name>
+        <managed-bean-class>br.inpe.backingbeans.DiretorioArquivo</managed-bean-class>
+    
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>data</managed-bean-name>
+        <managed-bean-class>br.inpe.backingbeans.Data</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>math</managed-bean-name>
+        <managed-bean-class>Math</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>document</managed-bean-name>
+        <managed-bean-class>br.inpe.backingbeans.Document</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>treeDocVinculado</managed-bean-name>
+        <managed-bean-class>br.inpe.backingbeans.TreeDocVinculado</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>treeNoDTO</managed-bean-name>
+        <managed-bean-class>br.inpe.backingbeans.TreeNoDTO</managed-bean-class>
+    
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+   
+     <!-- Fim  da bagunça-->
+    
+    
+    
+    <navigation-rule>
+        <from-view-id>/usuarioMenu/unidade/listar.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>listar</from-outcome>
+            <to-view-id>/usuarioMenu/unidade/listar.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>inserir</from-outcome>
+            <to-view-id>/usuarioMenu/unidade/form.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>alterar</from-outcome>
+            <to-view-id>/usuarioMenu/unidade/form.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    
+    <navigation-rule>
+        <from-view-id>/usuarioMenu/usuario/listar.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>inserir</from-outcome>
+            <to-view-id>/usuarioMenu/usuario/form.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>listar</from-outcome>
+            <to-view-id>/usuarioMenu/usuario/listar.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>alterar</from-outcome>
+            <to-view-id>/usuarioMenu/usuario/formAlterar.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    
+    
+    <navigation-rule>
+        <from-view-id>/usuarioMenu/usuario/formNovoUsuario.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>cancelCad</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>listar</from-outcome>
+            <to-view-id>/usuarioMenu/usuario/formNovoUsuario.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    
+    <navigation-rule>
+        <from-view-id>/configurarSistema/estadoNo/listar.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>inserir</from-outcome>
+            <to-view-id>/configurarSistema/estadoNo/form.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>alterar</from-outcome>
+            <to-view-id>/configurarSistema/estadoNo/formAlterar.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    
+ 
+    <navigation-rule>
+        <from-view-id>/arvoreProduto/tree/nivel2.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>backtree</from-outcome>
+            <to-view-id>/treeTableNo.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    
+    <navigation-rule>
+        
+        <from-view-id>/arvoreProduto/tree/nivel1.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>backtree</from-outcome>
+            <to-view-id>/treeTableNo.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+  
+ 
+    <navigation-rule>
+        <from-view-id>/configurarSistema/estadoNo/form.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>listar</from-outcome>
+            <to-view-id>/configurarSistema/estadoNo/listar.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/consultas/consultarProduto.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>consultarTipo</from-outcome>
+            <to-view-id>/consultas/produto/consultarTipoDocumento.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>consultar2</from-outcome>
+            <to-view-id>/consultas/produto/consultarIdentificacao.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>consultar5</from-outcome>
+            <to-view-id>/consultas/produto/consultarResponsavel.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>consultar6</from-outcome>
+            <to-view-id>/consultas/produto/consultarEstadoNo.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>consultarPorData</from-outcome>
+            <to-view-id>/consultas/produto/consultarData.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>consultar8</from-outcome>
+            <to-view-id>/consultas/produto/produtoFinalEstadoNo.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>consultar7</from-outcome>
+            <to-view-id>/consultas/produto/produtoFinalTipoProduto.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>consultar9</from-outcome>
+            <to-view-id>/consultas/produto/consultarTemplates.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>consultar10</from-outcome>
+            <to-view-id>/consultas/produto/consultarMudancaEstadoNo.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>consultar20</from-outcome>
+            <to-view-id>/consultas/produto/consultarDominio.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>consultar21</from-outcome>
+            <to-view-id>/consultas/produto/consultarProdutoDoc.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>consultar22</from-outcome>
+            <to-view-id>/consultas/produto/produtoFinalResponsavel.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>consultar23</from-outcome>
+            <to-view-id>/consultas/produto/produtoFinalIdentificacao.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>consultar24</from-outcome>
+            <to-view-id>/consultas/produto/consultarporNoEspecifico.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>consultartipoDocumentoListar</from-outcome>
+            <to-view-id>/consultas/documento/tipoDocumento.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>consultar1</from-outcome>
+            <to-view-id>/consultas/documento/identificacao2.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>consultar4</from-outcome>
+            <to-view-id>/consultas/documento/estadoNo.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>consultar3</from-outcome>
+            <to-view-id>/consultas/documento/identificacao.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/consultas/consultarDocumento.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>consultartipoDocumentoListar</from-outcome>
+            <to-view-id>/consultas/documento/tipoDocumento.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>consultar1</from-outcome>
+            <to-view-id>/consultas/documento/identificacao2.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>consultar4</from-outcome>
+            <to-view-id>/consultas/documento/estadoNo.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>consultar3</from-outcome>
+            <to-view-id>/consultas/documento/identificacao.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/arvoreProduto/tree/formAlterarNivel0.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>listar</from-outcome>
+            <to-view-id>/treeTableNo.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>backtree</from-outcome>
+            <to-view-id>/treeTableNo.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/arvoreProduto/tree/formAlterarNivel2.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>listar</from-outcome>
+            <to-view-id>/treeTableNo.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>backtree</from-outcome>
+            <to-view-id>/treeTableNo.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/arvoreProduto/tree/formAlterarNivel1.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>listar</from-outcome>
+            <to-view-id>/treeTableNo.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>backtree</from-outcome>
+            <to-view-id>/treeTableNo.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/arvoreProduto/documentoVinculado/formAlterar.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>retorno</from-outcome>
+            <to-view-id>/arvoreProduto/documentoVinculado/listar.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/arvoreProduto/documentoVinculado/listarDoc.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>inserir2</from-outcome>
+            <to-view-id>/arvoreProduto/documentoVinculado/formAlterar.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <managed-bean>
+        <managed-bean-name>historicoNoAction</managed-bean-name>
+        <managed-bean-class>br.inpe.backingbeans.HistoricoNoAction</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <navigation-rule>
+        <from-view-id>/arvoreProduto/tree/nivel0view.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>menu</from-outcome>
+            <to-view-id>/treeTableNo.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/arvoreProduto/tree/nivel1view.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>menu</from-outcome>
+            <to-view-id>/treeTableNo.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/arvoreProduto/tree/nivel2view.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>menu</from-outcome>
+            <to-view-id>/treeTableNo.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <managed-bean>
+        <managed-bean-name>geraDocProdutos</managed-bean-name>
+        <managed-bean-class>br.inpe.iReport.GeraDocProdutos</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <navigation-rule>
+        <from-view-id>/usuarioMenu/usuario/editarUsuario.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>msg</from-outcome>
+            <to-view-id>/usuarioMenu/usuario/msgGravar.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>cancelar</from-outcome>
+            <to-view-id>/usuarioMenu/usuario/telablank.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/usuarioMenu/usuario/form.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>msg</from-outcome>
+            <to-view-id>/usuarioMenu/usuario/listar.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>novo2</from-outcome>
+            <to-view-id>/usuarioMenu/usuario/formEtapa2.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>novo1</from-outcome>
+            <to-view-id>/usuarioMenu/usuario/formEtapa2adm.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/usuarioMenu/usuario/formAlterar.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>msg</from-outcome>
+            <to-view-id>/usuarioMenu/usuario/listar.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/arvoreProduto/documentoVinculado/listaDocumentos.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>listaComponentes</from-outcome>
+            <to-view-id>/arvoreProduto/documentoVinculado/form.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/arvoreProduto/documentoVinculado/doctopdf.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>listar1</from-outcome>
+            <to-view-id>/arvoreProduto/documentoVinculado/listar.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/arvoreProduto/tree/nivel21view.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>menu</from-outcome>
+            <to-view-id>/treeTableNo.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/email/listar.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>alterar</from-outcome>
+            <to-view-id>/email/form.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/email/form.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>listar</from-outcome>
+            <to-view-id>/email/listar.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/arvoreProduto/tree/formAlterarNivel21.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>listar</from-outcome>
+            <to-view-id>/treeTableNo.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>backtree</from-outcome>
+            <to-view-id>/treeTableNo.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/usuarioMenu/usuario/formEtapa2adm.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>newlistar</from-outcome>
+            <to-view-id>/usuarioMenu/usuario/formEtapa2adm_1.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/usuarioMenu/usuario/formEtapa2.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>msg</from-outcome>
+            <to-view-id>/usuarioMenu/usuario/listar.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+</faces-config>

@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/style.css"/>
+        <title>Adicionar Produto de Nível 2</title>
+    </h:head>
+    <h:body> 
+        <h6>
+            <f:view encoding="ISO-8859-1"> 
+                <h:form>
+
+                    <p:growl id="messages"/> 
+                    <br/>
+                    <p:panel header="Visualizar Dados do Produto - GAP" style="text-align: center;margin-bottom:60px;">   
+                        <center>
+                            <p:outputPanel id="addFolderPanel1"  >  
+
+                                <h:panelGrid columns="2" cellpadding="5" border="0" width="890">                            
+
+                                    <h:outputLabel value="Nó Pai" for="papi" />
+                                    <p:inputText  value="#{itemdoNoAction.itemdoNoDTO.noFk.noFk.titulo}" disabled="true"/>
+
+
+
+
+                                    <h:outputText value="Identificação:" />
+                                    <p:inputText id="txAddFolder" value="#{itemdoNoAction.itemdoNoDTO.noFk.titulo}" 
+                                                 size ="52" disabled="true"
+                                                 title="Titulo"   required="true" requiredMessage="Titulo é obrigatório."
+                                                 validatorMessage="Descrição: mínimo 3, máximo 300 caracteres."
+                                                 />
+                                    <h:outputLabel value="Descrição:" for="descricao" />
+                                    <p:inputTextarea autoResize="200%"  cols="40" disabled="true"
+                                                     id="descricao" value="#{itemdoNoAction.itemdoNoDTO.noFk.descricao}"
+                                                     title="Descrição: mínimo 3, máximo 300 caracteres." 
+                                                     required="true" requiredMessage="Descrição é obrigatório."
+                                                     validatorMessage="Descrição: mínimo 3, máximo 300 caracteres."
+                                                     >
+                                        <f:validateLength minimum="3" maximum="40"></f:validateLength>
+                                    </p:inputTextarea>
+
+                                    <h:outputLabel value="Nível" for="nivel" />
+                                    <p:inputText id="nivel" size ="22" disabled="true"
+                                                 value="#{itemdoNoAction.itemdoNoDTO.noFk.nivel}"
+                                                 title="Nível"
+                                                 />
+                                   
+                                    <h:outputLabel value="Estado Nó:" for="estadoNo" />
+                                    <h:selectOneMenu id="estadoNo" disabled="true"
+                                                     value="#{itemdoNoAction.itemdoNoDTO.noFk.estadoNofk.idEstadoNo}"
+                                                     title="Estado Nó:" required="true" 
+                                                     requiredMessage="Selecione um Estado Nó." >
+                                        <f:selectItem itemLabel="Selecione" itemValue="" noSelectionOption="true"/> 
+                                        <f:selectItems value="#{estadoNoAction.lista}" var="estadoNoDTO" itemLabel="#{estadoNoDTO.identificacao}" itemValue="#{estadoNoDTO.idEstadoNo}"  />
+                                    </h:selectOneMenu>
+
+                                    <h:outputLabel value="Tipo de Domínio:" />
+                                    <h:selectOneRadio id="tipoDominio" disabled="true"
+                                                      value="#{itemdoNoAction.itemdoNoDTO.noFk.tipoDominio}"
+                                                      title="Tipo de Domínio"
+                                                      required="true"
+                                                      requiredMessage="Selecione um Tipo de Domínio">
+                                        <f:selectItem itemLabel="Interno"
+                                                      itemValue="Interno"/>
+                                        <f:selectItem itemLabel="Externo"
+                                                      itemValue="Externo"/>
+                                        <f:selectItem itemLabel="Privado"
+                                                      itemValue="Privado"/>
+                                    </h:selectOneRadio>
+
+                                    <h:outputLabel value="Responsável:" for="usuarioId" />
+                                    <h:selectOneMenu id="usuarioId" disabled="true"
+                                                     value="#{itemdoNoAction.itemdoNoDTO.noFk.responsavel.idUsuario}"
+                                                     title="Responsável:" required="true" 
+                                                     requiredMessage="Selecione um Responsável." >
+                                        <f:selectItem itemLabel="Selecione" itemValue="" noSelectionOption="true"/> 
+                                        <f:selectItems value="#{usuarioAction.lista}" var="usuarioDTO" itemLabel="#{usuarioDTO.nome}" itemValue="#{usuarioDTO.idUsuario}"  />
+                                    </h:selectOneMenu>
+
+                                   
+                                </h:panelGrid>
+                            </p:outputPanel>
+
+                        </center><br/>
+                        <h:panelGrid columns="1"  width="890"  cellpadding="5" border="0">                          
+                            <p:commandButton action="#{itemdoNoAction.menu}" value="Voltar" ajax="false" immediate="true"/>                    
+                        </h:panelGrid>
+                    </p:panel>
+                </h:form>
+            </f:view>
+        </h6>
+    </h:body>
+</html>
+
+
+

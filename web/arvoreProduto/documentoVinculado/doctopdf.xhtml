@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/style.css"/>
+        <title>Cadastro de Documento Vinculado</title>
+    </h:head>
+    <h:body> 
+        <h4>
+
+            <h:form>
+                <p:growl id="messages"/>
+                <br/>
+                <center>
+                    <p:dataTable id="lic"    value="#{documentoVinculadoAction.listaNoEspecifico}" var="doc">
+
+                        <f:facet  name="header" >  
+                            <h:outputText style="font-size: 14px; " value="  Documento da Árvore de Produto - DSS"/>  
+                        </f:facet>  
+
+                        <p:columnGroup type="header">  
+                            <p:row>  
+                                <p:column rowspan="3" style="font-style: italic; alignment-adjust: left;text-align: left" headerText="IDENTIFICAÇÃO"  />  
+                            </p:row>  
+                        </p:columnGroup> 
+
+                        <p:column   colspan="1">  
+                            #{doc.titulo}  
+                        </p:column>
+
+                    </p:dataTable> 
+                    <p:dataTable id="lic0"    value="#{documentoVinculadoAction.listaNoEspecifico}" var="doc">
+                        <p:columnGroup type="header">  
+                            <p:row>  
+                                <p:column rowspan="3" style="font-style: italic; alignment-adjust: left;text-align: left" headerText="DESCRIÇÃO"  />                               
+                            </p:row>  
+                        </p:columnGroup> 
+                        <p:column  colspan="1">  
+                            #{doc.descricao}  
+                        </p:column>
+                    </p:dataTable> 
+
+                    <p:dataTable id="lic1"    value="#{documentoVinculadoAction.listaNoEspecifico}" var="doc">
+                        <p:columnGroup type="header">  
+                            <p:row>  
+                                <p:column rowspan="3" style="font-style: italic; alignment-adjust: left;text-align: left" headerText="PERTENCE  A "  />                               
+                            </p:row>  
+                        </p:columnGroup> 
+                        <p:column  colspan="1">  
+                            #{doc.noFk.titulo} - 
+                            #{doc.noFk.descricao}  
+                        </p:column>
+                    </p:dataTable> 
+                    <p:dataTable id="lic2"    value="#{documentoVinculadoAction.listaNoEspecifico}" var="doc">
+                        <p:columnGroup type="header">  
+                            <p:row>  
+                                <p:column rowspan="3" style="font-style: italic; alignment-adjust: left;text-align: left" headerText="CÓDIGO" /> 
+                            </p:row>  
+                        </p:columnGroup> 
+
+                        <p:column colspan="1">  
+                            #{doc.codigoDocumento}  
+                        </p:column>
+                    </p:dataTable>
+
+                    <p:dataTable id="lic3"    value="#{documentoVinculadoAction.listaNoEspecifico}" var="doc">
+                        <p:columnGroup type="header">  
+                            <p:row>  
+                                <p:column rowspan="3" style="font-style: italic; alignment-adjust: left;text-align: left" headerText="TIPO DE DOCUMENTO " /> 
+                            </p:row>  
+                        </p:columnGroup> 
+                        <p:column colspan="1">         
+                            #{doc.tipoDocumentofk.identificacao}  -
+                            #{doc.tipoDocumentofk.tipoDocumento}  
+                        </p:column>
+                    </p:dataTable> 
+
+                    <p:dataTable id="lic4"    value="#{documentoVinculadoAction.listaNoEspecifico}" var="doc">
+                        <p:columnGroup type="header">  
+                            <p:row>  
+                                <p:column rowspan="3" style="font-style: italic; alignment-adjust: left;text-align: left" headerText="ESTADO DO DOCUMENTO" /> 
+                            </p:row>  
+                        </p:columnGroup> 
+                        <p:column colspan="1">         
+                            #{doc.estadoDocumento}   
+                        </p:column>
+                    </p:dataTable> 
+
+                    <p:dataTable id="lic5"    value="#{documentoVinculadoAction.listaNoEspecifico}" var="doc">
+                        <p:columnGroup type="header">  
+                            <p:row>  
+                                <p:column rowspan="3" style="font-style: italic; alignment-adjust: left;text-align: left" headerText="MODELO DE TEMPLATE" /> 
+                            </p:row>  
+                        </p:columnGroup> 
+                        <p:column colspan="1">         
+                            #{doc.template}   
+                        </p:column>
+
+
+                    </p:dataTable> 
+
+                    <p:dataTable id="lic6"    value="#{documentoVinculadoAction.listaNoEspecifico}" var="doc">
+                        <p:columnGroup type="header">  
+                            <p:row>  
+                                <p:column rowspan="3" style="font-style: italic; alignment-adjust: left;text-align: left" headerText="DATA" /> 
+                            </p:row>  
+                        </p:columnGroup> 
+                        <p:column>
+                            <h:outputText value="#{doc.dataAlteracao}">
+                                <f:convertDateTime pattern="dd/MM/yyyy"  timeZone="GMT-3" />
+                            </h:outputText>
+                        </p:column>
+                    </p:dataTable> 
+
+                    <p:dataTable id="lic7"    value="#{documentoVinculadoAction.listaNoEspecifico}" var="doc">
+                        <p:columnGroup type="header">  
+                            <p:row>  
+                                <p:column rowspan="3" style="font-style: italic; alignment-adjust: left;text-align: left" headerText="AUTORES DO DOCUMENTO " /> 
+                            </p:row>  
+                        </p:columnGroup> 
+                        <p:column colspan="1">         
+                            #{doc.autores}   
+                        </p:column>
+                    </p:dataTable> 
+
+
+                      
+
+
+
+                </center><br/>
+
+            </h:form>
+
+        </h4>
+    </h:body>
+</html>
+
+
+

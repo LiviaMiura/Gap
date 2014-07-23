@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="documents" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<parameter name="noPai" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[new Integer(10248)]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     documentovinculado.`id_DocumentoVinculado` AS documentovinculado_id_DocumentoVinculado,
+     documentovinculado.`titulo` AS documentovinculado_titulo,
+     documentovinculado.`noPai` AS documentovinculado_noPai,
+     documentovinculado.`status` AS documentovinculado_status,
+     documentovinculado.`descricao` AS documentovinculado_descricao,
+     documentovinculado.`estadoDocumento` AS documentovinculado_estadoDocumento,
+     documentovinculado.`data_alteracao` AS documentovinculado_data_alteracao,
+     documentovinculado.`template` AS documentovinculado_template,
+     documentovinculado.`codigoDocumento` AS documentovinculado_codigoDocumento,
+     documentovinculado.`autores` AS documentovinculado_autores,
+     no.`titulo` AS no_titulo,
+     tipodocumento.`tipoDocumento` AS tipodocumento_tipoDocumento,
+     no.`descricao` AS no_descricao
+FROM
+     `no` no INNER JOIN `documentovinculado` documentovinculado ON no.`id_No` = documentovinculado.`no_fk`
+     INNER JOIN `tipodocumento` tipodocumento ON documentovinculado.`tipoDocumento_fk` = tipodocumento.`id_TipoDocumento`
+WHERE
+     documentovinculado.`status` = 1
+ AND documentovinculado.`noPai` = $P{noPai}]]>
+	</queryString>
+	<field name="documentovinculado_id_DocumentoVinculado" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="documentovinculado_titulo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="documentovinculado_noPai" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="documentovinculado_status" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="documentovinculado_descricao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="documentovinculado_estadoDocumento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="documentovinculado_data_alteracao" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="documentovinculado_template" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="documentovinculado_codigoDocumento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="documentovinculado_autores" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no_titulo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipodocumento_tipoDocumento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no_descricao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="21"/>
+	</title>
+	<pageHeader>
+		<band height="92">
+			<staticText>
+				<reportElement x="32" y="66" width="555" height="26"/>
+				<textElement textAlignment="Center">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Documento da Árvore de Produto DSS]]></text>
+			</staticText>
+			<image>
+				<reportElement x="8" y="-447" width="555" height="69"/>
+				<imageExpression class="java.lang.String"><![CDATA["C:\\Users\\livia.miura\\Pictures\\cabeca - Cópia.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="32" y="0" width="554" height="50"/>
+				<imageExpression class="java.lang.String"><![CDATA["C:\\Users\\livia.miura\\Documents\\NetBeansProjects\\Gap\\web\\imagens\\2.png"]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61">
+			<image vAlign="Top">
+				<reportElement x="319" y="45" width="230" height="12"/>
+				<imageExpression class="java.lang.String"><![CDATA["C:\\Users\\livia.miura\\Pictures\\inpe\\Lazulemdeitado12.png"]]></imageExpression>
+			</image>
+			<image vAlign="Top">
+				<reportElement x="1" y="45" width="230" height="12"/>
+				<imageExpression class="java.lang.String"><![CDATA["C:\\Users\\livia.miura\\Pictures\\inpe\\Lazulemdeitado12.png"]]></imageExpression>
+			</image>
+			<image vAlign="Top">
+				<reportElement x="231" y="45" width="230" height="12"/>
+				<imageExpression class="java.lang.String"><![CDATA["C:\\Users\\livia.miura\\Pictures\\inpe\\Lazulemdeitado12.png"]]></imageExpression>
+			</image>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="204">
+			<textField>
+				<reportElement x="114" y="80" width="433" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{documentovinculado_estadoDocumento}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="156" width="109" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="114" y="43" width="434" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{documentovinculado_descricao}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="118" width="109" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Autores]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="112" y="99" width="25" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{no_titulo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="81" width="108" height="19"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estado Documento]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="112" y="62" width="434" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tipodocumento_tipoDocumento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="112" y="137" width="434" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{documentovinculado_template}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="43" width="108" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descrição]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="99" width="108" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Vinculado ao Projeto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="137" width="108" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Template]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="112" y="156" width="432" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{documentovinculado_data_alteracao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="112" y="118" width="432" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{documentovinculado_autores}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="8" y="-447" width="555" height="69"/>
+				<imageExpression class="java.lang.String"><![CDATA["C:\\Users\\livia.miura\\Pictures\\cabeca - Cópia.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="1" y="62" width="108" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo de Documento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="24" width="108" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Identificação]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="114" y="24" width="434" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{documentovinculado_titulo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="5" width="108" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Código]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="114" y="5" width="434" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{documentovinculado_codigoDocumento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="141" y="99" width="414" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{no_descricao}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="136" y="100" width="10" height="20"/>
+				<textElement/>
+				<text><![CDATA[-]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="50"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="1" y="18" width="151" height="13"/>
+				<textElement/>
+				<textFieldExpression class="java.util.Date"><![CDATA[new Date()]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="469" y="15" width="87" height="15"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA["de  " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="417" y="15" width="49" height="16"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA["Página:" + "  "+ $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<image vAlign="Top">
+				<reportElement x="329" y="2" width="230" height="12"/>
+				<imageExpression class="java.lang.String"><![CDATA["C:\\Users\\livia.miura\\Pictures\\inpe\\Lazulemdeitado12.png"]]></imageExpression>
+			</image>
+			<image vAlign="Top">
+				<reportElement x="109" y="2" width="230" height="12"/>
+				<imageExpression class="java.lang.String"><![CDATA["C:\\Users\\livia.miura\\Pictures\\inpe\\Lazulemdeitado12.png"]]></imageExpression>
+			</image>
+			<image vAlign="Top">
+				<reportElement x="0" y="2" width="230" height="12"/>
+				<imageExpression class="java.lang.String"><![CDATA["C:\\Users\\livia.miura\\Pictures\\inpe\\Lazulemdeitado12.png"]]></imageExpression>
+			</image>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42"/>
+	</summary>
+</jasperReport>

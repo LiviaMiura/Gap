@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!--
+    Projeto : GAP
+    Nome Arquivo : listar.xhtml (HISTORICO)
+    Autor : Marcos Castro
+    Descrição: Mostra em forma de tabela uma lista referente a tabela Historico: Nome do Usuario, Data de Entrada, Data de Saída
+    
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:head>
+        <title>Histórico Usuário Gap</title>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/style.css"/>
+    </h:head>
+    <h:body>
+        <!-- Configurar o tamanho do botão  -->
+        <style type="text/css">  
+            .ui-widget {  
+                font-size: 11px !important;  
+            }  
+        </style> 
+        <h:form>
+            <p:growl id="messages"/>
+            <h6>  
+
+
+                <p:dataTable id="tbl" value="#{historicoAction.lista}" var="item"
+                             paginator="true" rows="10"
+                             paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="10,20">
+                    <f:facet name="header">
+                        <h2 style="font-size: 14px">HISTÓRICO DE ACESSO DO USUÁRIO GAP</h2>
+                    </f:facet>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="LOGIN"/>
+                        </f:facet>
+                        <h:outputText value="#{item.usuarioFk.login}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="NOME DO USUÁRIO"/>
+                        </f:facet>
+                        <h:outputText value="#{item.usuarioFk.nome}"/>
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="DATA DE ENTRADA"/>
+                        </f:facet>
+                        <h:outputText value="#{item.dataEntrada}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss"  timeZone="America/Sao_Paulo" />
+
+                        </h:outputText>
+
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="DATA DE SAÍDA"/>
+                        </f:facet>
+                        <h:outputText value="#{item.dataSaida}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" timeZone="America/Sao_Paulo"  />
+                        </h:outputText>
+
+                    </p:column>
+
+                </p:dataTable>
+
+            </h6>
+        </h:form>
+    </h:body>
+</html>
+
+

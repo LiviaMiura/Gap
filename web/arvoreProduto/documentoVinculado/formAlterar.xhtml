@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/style.css"/>
+        <title>Cadastro de Documento Vinculado</title>
+    </h:head>
+    <h:body> 
+       
+            <f:view encoding="ISO-8859-1"> 
+                <h:form>
+                     <center>
+                    <p:growl id="messages"/>
+                    <br/>
+                    <p:panel header="Alterar Documento Vinculado ao Produto "  style="width: 740px"  >   
+                        <center>
+                            <h:panelGrid columns="3" cellpadding="3" border="0" width="720">                            
+
+                         
+                          
+                             
+
+
+
+
+                                <h:outputLabel value="Titulo:" for="titulo" />
+                                <p:inputText id="identificacao" size ="50"
+                                             value="#{documentoVinculadoAction.documentoVinculadoDTO.titulo}"
+                                             required="true" requiredMessage="Título é obrigatório."
+                                             validatorMessage="Título: mínimo 3, máximo 300 caracteres."                                              
+                                             title="Titulo" />
+                                   <h:inputHidden  value="#{documentoVinculadoAction.documentoVinculadoDTO.idDocumentoVinculado}"/>
+
+                                <h:outputLabel value="Descrição:" for="descricao" />
+                                <p:inputTextarea autoResize="200%"  cols="38"
+                                                 id="descricao" value="#{documentoVinculadoAction.documentoVinculadoDTO.descricao}"
+                                                 title="Descrição do doumento." 
+                                                 required="true" requiredMessage="Descrição é obrigatório."
+                                                 validatorMessage="Descrição: mínimo 3, máximo 500 caracteres."
+                                                 >
+                                    <f:validateLength minimum="3" maximum="500"></f:validateLength>
+                                </p:inputTextarea>
+                                <h:outputLabel value=""/>
+                                <h:outputLabel value="Produto"  for="produto" />
+                                <h:selectOneMenu id="produto" 
+                                                 value="#{documentoVinculadoAction.documentoVinculadoDTO.noFk.idNo}"
+                                                 title="Tipo de Documento" required="true" disabled="true"
+                                                 requiredMessage="Selecione um tipo de Documento" >
+                                    <f:selectItem itemLabel="Selecione:" itemValue="" noSelectionOption="true"/> 
+                                    <f:selectItems value="#{noAction.lista1}" var="noDTO" itemLabel="#{noDTO.titulo}" itemValue="#{noDTO.idNo}"  />
+                                </h:selectOneMenu>
+                                <h:outputLabel value=""/>
+                                <h:outputLabel value="Tipo de Documento"  for="tipoDocumentofk" />
+                                <h:selectOneMenu id="tipoDocumento" 
+                                                 value="#{documentoVinculadoAction.documentoVinculadoDTO.tipoDocumentofk.idTipoDocumento}"
+                                                 title="Tipo de Documento" required="true" disabled="true"
+                                                 requiredMessage="Selecione um tipo de Documento" >
+                                    <f:selectItem itemLabel="Selecione:" itemValue="" noSelectionOption="true"/> 
+                                    <f:selectItems value="#{tipoDocumentoAction.lista}" var="tipoDocumentoDTO" itemLabel="#{tipoDocumentoDTO.identificacao}" itemValue="#{tipoDocumentoDTO.idTipoDocumento}"  />
+                                </h:selectOneMenu>
+                                <h:outputLabel value=""/>
+                                <h:outputLabel value="Estado do Documento:" />
+                                <h:selectOneRadio id="estadoDocumento" 
+                                                  value="#{documentoVinculadoAction.documentoVinculadoDTO.estadoDocumento}"
+                                                  title="Estado do Documento"
+                                                  required="true"
+                                                  requiredMessage="Selecione um Estado de Documento.">
+                                    <f:selectItem itemLabel="Definido"
+                                                  itemValue="Definido"/>
+                                    <f:selectItem itemLabel="Desenvolvimento"
+                                                  itemValue="Desenvolvimento"/>
+                                    <f:selectItem itemLabel="Pronto"
+                                                  itemValue="Pronto"/>
+                                </h:selectOneRadio>
+
+                                <h:outputLabel value=""/>
+                                <h:outputLabel value="Autores:" for="autores" />
+                                <p:inputTextarea autoResize="200%"  cols="38" rows="2"
+                                                 id="autores" value="#{documentoVinculadoAction.documentoVinculadoDTO.autores}"
+                                                 required="false" requiredMessage="Campo Descrição é obrigatório."
+                                                 validatorMessage="Descrição: mínimo 3, máximo 300 caracteres" >
+                                </p:inputTextarea>
+
+                              <h:outputLabel value=""/>
+                         
+                                <h:outputLabel value="Modelo:" for="template" />
+
+                                <p:fileUpload style="width: 380px" value="#{documentoVinculadoAction.fileUp}"  mode="advanced"  auto="true"
+                                              fileUploadListener="#{documentoVinculadoAction.up}"
+                                              />
+
+                                <p:commandButton action="#{documentoVinculadoAction.gravarDocumentoNoDiretorio}"
+                                                 value="Anexar"
+                                                 ajax="false"
+                                                 >
+                             
+
+                                </p:commandButton>
+                                   <h:outputLabel value=""/>  
+                                <h:outputLabel value=" Alterar o Modelo - Choose para escolher o Template e depois clicar no botão Anexar" style="font-size:10px;text-align: center;color: brown;alignment-adjust: center" />
+                <h:outputLabel value=""/>  
+                                <h:outputLabel value="Modelo:" for="template" />
+                                <p:inputText  size="50"
+                                             value="#{documentoVinculadoAction.documentoVinculadoDTO.template}"
+
+                                             title="Anexar o Template" disabled="false"
+                                             validatorMessage="Template."
+                                             required="false" 
+                                             requiredMessage="Template é obrigatório.">
+                                    <f:validateLength minimum="2" maximum="100" ></f:validateLength>
+
+                                 </p:inputText>
+                               
+   <h:inputHidden value="#{documentoVinculadoAction.documentoVinculadoDTO.noFk.idNo}"/>
+   <h:inputHidden value="#{documentoVinculadoAction.documentoVinculadoDTO.noPai}"/>
+   <h:inputHidden value="#{documentoVinculadoAction.documentoVinculadoDTO.codigoDocumento}"/>
+   <h:inputHidden value="#{documentoVinculadoAction.documentoVinculadoDTO.codigoProduto}"/>
+      <h:inputHidden value="#{documentoVinculadoAction.documentoVinculadoDTO.tipoDocumentofk.idTipoDocumento}"/>
+                            </h:panelGrid>
+                        </center><br/>
+                        <center>
+                            <h:panelGrid columns="2"  width="520" style="text-align: center"  cellpadding="3" border="0">  
+                            <p:commandButton action="#{documentoVinculadoAction.alterarDocumentoVinculado}" value="Gravar" ajax="false"/>
+                            <p:commandButton action="#{documentoVinculadoAction.listar}" value="Cancelar" ajax="false" immediate="true"/>                      
+                        </h:panelGrid>
+                        </center>
+                    </p:panel>
+                     </center>
+                </h:form>
+            </f:view>
+      
+    </h:body>
+</html>
+
+
+

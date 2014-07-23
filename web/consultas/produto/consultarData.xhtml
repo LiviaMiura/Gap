@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/style.css"/>
+        <title>Consultas</title>
+    </h:head>
+    <h:body>
+        <f:view>         
+            <h:form>
+                <h4>   
+
+                    <p:panel styleClass="tes2"  >
+                        <br/>
+                        <h2>Consultar por Data de Criação</h2>
+                        <br/> <br/>
+                        <h:panelGrid width="630" columns="6"   border="0"  >
+                            <p:panel header="Data Inicial:" style="height: 27px; width: 130px"> 
+                            </p:panel>
+                            <p:calendar id="dataInicial" value="#{noAction.noDTO.dataInicial}" pattern="dd/MM/yyyy" validator="#{noAction.validaDataCadastro}" >
+                                <f:convertDateTime pattern="dd/MM/yyyy" type="date"  timeZone="America/Sao_Paulo"/>
+                            </p:calendar>
+                            <p:panel header="Data Final:" style="height: 27px; width: 120px"  > 
+                            </p:panel>
+                            <p:calendar id="dataFinal" value="#{noAction.noDTO.dataFinal}" pattern="dd/MM/yyyy" validator="#{noAction.validateDataConclusao}" >
+                                <f:convertDateTime pattern="dd/MM/yyyy" type="date"  timeZone="America/Sao_Paulo"/>
+                            </p:calendar>
+                            <p:commandButton value="Buscar"  update="conx" actionListener="#{noAction.dataConsulta}" ajax="false" />
+                        </h:panelGrid>
+                        <br/><br/>
+                        <p:dataTable 
+                            id="conx"
+                            value="#{noAction.listaConsultas}"
+                            var="noDTO"
+                           >
+                            <p:columnGroup type="header">
+                                <p:row>
+                                    <p:column headerText="Identificação" />
+                                    <p:column headerText="Descrição" />
+                                    <p:column headerText="Responsável" />
+                                    <p:column headerText="Data Criação" />
+                                </p:row>
+                            </p:columnGroup>
+                            <p:column style="text-align:center"><h:outputText value="#{noDTO.titulo}"/></p:column>
+                            <p:column style="text-align:left"><h:outputText value="#{noDTO.descricao}"/></p:column>
+                            <p:column style="text-align:center"><h:outputText value="#{noDTO.responsavel.nome}"/></p:column>
+                            <p:column style="text-align:center"><h:outputText value="#{noDTO.dataCriacao}">
+                                    <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" type="date" timeZone="America/Sao_Paulo" /> 
+                                </h:outputText></p:column>                
+                        </p:dataTable>
+                        <br/> <br/>
+                        <center>
+                            <h:panelGrid width="690" columns="2" style="alignment-adjust: center;text-align: center" border="0">
+
+
+                                <p:commandLink action="#{noAction.relatorioPorData}" ajax="false" >
+                                    <p:graphicImage style="border: 0"  value="/imagens/pdf1.png"/>
+                                </p:commandLink>
+                            </h:panelGrid>
+                        </center>
+
+                    </p:panel>
+                </h4>
+            </h:form>
+        </f:view>
+    </h:body>
+</html>
+
+

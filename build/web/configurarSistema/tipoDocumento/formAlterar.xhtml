@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+
+
+    <h:head>
+        <link rel="stylesheet" type="text/css"   href="#{request.contextPath}/css/style.css"/>
+
+        <title>Cadastro de Tipo de Documento</title>
+    </h:head>
+    <h:body>
+        <h1  align="center">
+            <f:view encoding="ISO-8859-1"> 
+                <h:form>
+                    <p:growl id="messages" />
+
+
+                    <br/>
+
+                </h:form>
+
+                <h:form enctype="multipart/form-data">  
+                    <p:panel header=" Alterar Tipo de Documento" style="width: 800px">   
+
+                        <h:panelGrid columns="2" cellpadding="5" border="0" style="text-align: left; width: 600px">                            
+                            <h:inputHidden value="#{tipoDocumentoAction.tipoDocumentoDTO.idTipoDocumento}"/>
+                            <h:outputLabel value=""/> 
+
+
+                            <h:outputLabel value="Identificacao:" for="identificacao" />
+                            <p:inputText id="identificacao" size="2" 
+                                         onkeyup="this.value = this.value.toUpperCase();"
+                                         value="#{tipoDocumentoAction.tipoDocumentoDTO.identificacao}"
+                                         title="Identificacao - Ex: RT" 
+                                         validatorMessage="Identicação deve conter apenas 2 letras."
+                                         required="true" requiredMessage="Identificação é obrigatório.">
+                                <f:validateLength minimum="2" maximum="2" ></f:validateLength>
+                            </p:inputText>
+
+
+
+                            <h:outputLabel value="TipoDocumento:" for="tipoDocumento" />
+                            <p:inputText id="tipoDocumento" size="52"  disabled="true"                      
+                                         value="#{tipoDocumentoAction.tipoDocumentoDTO.tipoDocumento}"
+                                         onkeyup="this.value = this.value.toUpperCase();"
+                                         title="Título do Tipo de Documento - Ex: Relatório de Teste"
+                                         validatorMessage="Preencha Título do Tipo de Documento."
+                                         required="true" 
+                                         requiredMessage="Tipo de Documento é obrigatório.">
+                                <f:validateLength minimum="2" maximum="300" ></f:validateLength>
+                            </p:inputText>
+
+
+                            <h:outputLabel value="Descrição:" for="descricao1" />
+                            <p:inputTextarea autoResize="200%"  cols="40"
+                                             id="descricao1" value="#{tipoDocumentoAction.tipoDocumentoDTO.descricao}"
+                                             title="Descrição - Ex: Registro da excecução dos testes e os resultados obtidos." 
+                                             required="true" requiredMessage="Descrição é obrigatório."
+                                             validatorMessage="Descrição: mínimo 3, máximo 300 caracteres."
+                                             >
+                                <f:validateLength minimum="3" maximum="300"></f:validateLength>
+                            </p:inputTextarea>
+
+
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="3"   style="width: 600px;text-align: left;height: 1px" cellpadding="1" border="0">  
+
+                            <h:outputLabel value="Modelo:" for="template" />
+
+                            <p:fileUpload style="width: 600px" value="#{tipoDocumentoAction.fileUp}"  mode="advanced"  auto="true"
+                                           fileUploadListener="#{tipoDocumentoAction.up}"
+                                           />
+
+                            <p:commandButton action="#{tipoDocumentoAction.gravarDocumentoNoDiretorio}"
+                                             value="Anexar"
+                                             ajax="false"
+                                             >
+                                <f:setPropertyActionListener target="#{tipoDocumentoAction.tipoDocumentoDTO.descricao}" value="#{tipoDocumentoAction.tipoDocumentoDTO.descricao}" />
+                                <f:setPropertyActionListener target="#{tipoDocumentoAction.tipoDocumentoDTO.identificacao}" value="#{tipoDocumentoAction.tipoDocumentoDTO.identificacao}"/>
+                                <f:setPropertyActionListener target="#{tipoDocumentoAction.tipoDocumentoDTO.tipoDocumento}" value="#{tipoDocumentoAction.tipoDocumentoDTO.tipoDocumento}"/>
+
+
+
+                            </p:commandButton>
+
+                        </h:panelGrid>
+                                 <h:panelGrid columns="1"   style="width: 600px;text-align: center;height: 1px" cellpadding="1" border="0">  
+                          
+                         
+                            <h:outputLabel value=" Adicionar Modelo - Choose para escolher o Template e depois clicar no botão Anexar" style="font-size:10px;text-align: center;color: brown;alignment-adjust: center" />
+                          
+                        </h:panelGrid>
+                         <h:panelGrid columns="2" cellpadding="5" border="0" style="text-align: left; width: 600px">                            
+                       
+                        <h:outputLabel value="Modelo Anexado:" for="template" />
+
+                        <p:inputText id="template" size="52"                        
+                                     value="#{tipoDocumentoAction.tipoDocumentoDTO.template}"                                       
+                                     title="Anexar o Modelo" disabled="false"
+                                     validatorMessage="template."
+                                     required="false" 
+                                     requiredMessage="Modelo é obrigatório.">
+                            <f:validateLength minimum="2" maximum="100" ></f:validateLength>
+                        </p:inputText>
+
+
+
+
+    </h:panelGrid>
+                        
+                        <h:inputHidden  value="#{tipoDocumentoAction.tipoDocumentoDTO.tipoDocumento}" />
+                        
+  <h:panelGrid columns="3"   style="width: 790px;text-align: center;height: 1px" cellpadding="5" border="0">  
+  <p:commandButton action="#{tipoDocumentoAction.gravar}"
+                                         value="Gravar "
+                                         ajax="false"
+                                         />
+                        <p:commandButton action="#{tipoDocumentoAction.listar}" value="Cancelar" ajax="false" immediate="true"/>
+                        <p:commandButton id="btnL" value="Limpar" type="reset"/>
+                      
+  </h:panelGrid>
+                    </p:panel>
+                </h:form>  
+
+
+
+            </f:view>
+        </h1>
+    </h:body>
+</html>
+
+
+

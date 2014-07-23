@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/style.css"/>
+        <title>Adicionar Produto de Nível 2</title>
+    </h:head>
+    <h:body> 
+        <h6>
+            <f:view encoding="ISO-8859-1"> 
+                <h:form>
+
+                    <p:growl id="messages"/> 
+                    <br/>
+                    <p:panel header="Adicionar Novo Produto - GAP" style="text-align: center;margin-bottom:60px;">   
+                        <center>
+                            <p:ajax event="close" update="addFolderPanel1" listener="#{itemdoNoAction.initDialog}"/>
+                            <p:outputPanel id="addFolderPanel1"  >  
+                                <p:message id="msgAddFolder1" for="txAddFolder"/> 
+                                <h:panelGrid columns="2" cellpadding="5" border="0" width="890">                            
+                                    <h:outputLabel value="Id do item:" for="item" />
+                                    <h:inputText  value="#{itemdoNoAction.itemdoNoDTO.idItemdoNo}"/>
+                                    <h:outputLabel value="id do pai:" for="papi" />
+                                    <h:inputText  value="#{itemdoNoAction.itemdoNoDTO.noFk.noFk.idNo}"/>
+                                    <h:outputLabel value="Nivel anterior:" for="nivel" />
+                                    <h:inputText  value="#{itemdoNoAction.itemdoNoDTO.noFk.nivel}"/>
+                                    <h:outputLabel value="Como novo tem que ser 0 nó:" for="idnonovo" />
+                                    <h:inputText  value="#{itemdoNoAction.itemdoNoDTO.noFk.idNo}"/>
+
+                                    <h:outputLabel value="valor do selectNode:"/>
+                                    <h:outputText  value="#{itemdoNoAction.selectedNode}"/>
+
+
+                                    <h:outputText value="Novo Nível:" />
+                                    <p:inputText id="txAddFolder" value="#{itemdoNoAction.newFolderName}" 
+                                                 size ="52"
+
+                                                 onkeyup="this.value = this.value.toUpperCase();"
+                                                 title="Titulo"   required="true" requiredMessage="Titulo é obrigatório."
+                                                 validatorMessage="Descrição: mínimo 3, máximo 300 caracteres."
+                                                 />
+                                    <h:outputLabel value="Descrição:" for="descricao" />
+                                    <p:inputTextarea autoResize="200%"  cols="40"
+                                                     id="descricao" value="#{itemdoNoAction.itemdoNoDTO.noFk.descricao}"
+                                                     title="Descrição: mínimo 3, máximo 300 caracteres." 
+                                                     required="true" requiredMessage="Descrição é obrigatório."
+                                                     validatorMessage="Descrição: mínimo 3, máximo 300 caracteres."
+                                                     >
+                                        <f:validateLength minimum="3" maximum="40"></f:validateLength>
+                                    </p:inputTextarea>
+                                    <h:outputLabel value="Tipo de Produto" for="tipoProduto" />
+                                    <h:selectOneMenu id="tipoProduto" 
+                                                     value="#{itemdoNoAction.itemdoNoDTO.noFk.tipoProdutofk.idTipoProduto}"
+                                                     title="Tipo de Produto:" required="true" 
+                                                     requiredMessage="Selecione um Tipo de Produto." >
+                                        <f:selectItem itemLabel="Selecione" itemValue="" noSelectionOption="true"/> 
+                                        <f:selectItems value="#{tipoProdutoAction.lista}" var="tipoProdutoDTO" itemLabel="#{tipoProdutoDTO.descricao}" itemValue="#{tipoProdutoDTO.idTipoProduto}"  />
+                                    </h:selectOneMenu>
+
+                                    <h:outputLabel value="Estado Nó:" for="estadoNo" />
+                                    <h:selectOneMenu id="estadoNo" 
+                                                     value="#{itemdoNoAction.itemdoNoDTO.noFk.estadoNofk.idEstadoNo}"
+                                                     title="Estado Nó:" required="true" 
+                                                     requiredMessage="Selecione um Estado Nó." >
+                                        <f:selectItem itemLabel="Selecione" itemValue="" noSelectionOption="true"/> 
+                                        <f:selectItems value="#{estadoNoAction.lista}" var="estadoNoDTO" itemLabel="#{estadoNoDTO.identificacao}" itemValue="#{estadoNoDTO.idEstadoNo}"  />
+                                    </h:selectOneMenu>
+
+                                    <h:outputLabel value="Tipo de Domínio:" />
+                                    <h:selectOneRadio id="tipoDominio" 
+                                                      value="#{itemdoNoAction.itemdoNoDTO.noFk.tipoDominio}"
+                                                      title="Tipo de Domínio"
+                                                      required="true"
+                                                      requiredMessage="Selecione um Tipo de Domínio">
+                                        <f:selectItem itemLabel="Interno"
+                                                      itemValue="Interno"/>
+                                        <f:selectItem itemLabel="Externo"
+                                                      itemValue="Externo"/>
+                                        <f:selectItem itemLabel="Privado"
+                                                      itemValue="Privado"/>
+                                    </h:selectOneRadio>
+
+                                    <h:outputLabel value="Responsável:" for="usuarioId" />
+                                    <h:selectOneMenu id="usuarioId" 
+                                                     value="#{itemdoNoAction.itemdoNoDTO.noFk.responsavel.idUsuario}"
+                                                     title="Responsável:" required="true" 
+                                                     requiredMessage="Selecione um Responsável." >
+                                        <f:selectItem itemLabel="Selecione" itemValue="" noSelectionOption="true"/> 
+                                        <f:selectItems value="#{usuarioAction.lista}" var="usuarioDTO" itemLabel="#{usuarioDTO.nome}" itemValue="#{usuarioDTO.idUsuario}"  />
+                                    </h:selectOneMenu>
+
+                                    <h:outputLabel value="Produto Final:" />
+                                    <h:selectBooleanCheckbox value="#{itemdoNoAction.itemdoNoDTO.noFk.produtoFinal}"  />
+
+
+                                </h:panelGrid>
+                            </p:outputPanel>
+
+                        </center><br/>
+                        <h:panelGrid columns="3"  width="890"  cellpadding="5" border="0">  
+                            <p:commandButton action="#{itemdoNoAction.gravarNovoNo}"  update="docs" value="Gravar" ajax="false"/>
+
+                            <p:commandButton action="#{itemdoNoAction.listar}" value="Cancelar" ajax="false" immediate="true"/>
+
+                            <p:commandButton id="btnL" value="Limpar" type="reset"/>
+                        </h:panelGrid>
+                    </p:panel>
+                </h:form>
+            </f:view>
+        </h6>
+    </h:body>
+</html>
+
+
+

@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/style.css"/>
+
+        <title>Consultas</title>
+    </h:head>
+    <h:body>
+        <f:view encoding="ISO-8859-1">         
+            <h:form >
+        
+                <h4> 
+                    <p:panel header="Consultar Documentos por Identificação" style="text-align: center;margin-bottom:60px;width: 660px">   
+                        <br/> <br/>
+                        <h:panelGrid columns="3"  cellpadding="2" style="text-align: center;alignment-adjust: center;width: 630px" border="0" >
+
+                            <h:outputLabel  for="titulo" value="Identificação" style="font-size:12px;width: 200px" />
+                            <p:inputText id="titulo"
+                                         size="49"
+                                         value="#{documentoVinculadoAction.documentoVinculadoDTO.titulo}"   >
+
+                            </p:inputText>
+                            <p:commandButton value="Buscar" 
+                                             update="x"
+                                             actionListener="#{documentoVinculadoAction.consultar}"
+                                             ajax="false" />
+
+                        </h:panelGrid>
+                        <br/> <br/><br/>
+                        <p:dataTable id="x" value="#{documentoVinculadoAction.listaDoc}" 
+                                     var="item" 
+                                     filterEvent="documentoVinculadoAction.lista"
+                                    paginator="true" rows="5"
+                                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                     rowsPerPageTemplate="5,10,15">
+
+
+                            <p:column  headerText="IDENTIFICACAO" style="width: 180px" >                                                 
+                                <h:outputText value="#{item.titulo}" />
+                            </p:column>
+
+                            <p:column  headerText="DESCRIÇÃO"  style="width: 350px">                                                 
+                                <h:outputText value="#{item.descricao}"/>
+                            </p:column>
+
+                            <p:column  headerText="CÓDIGO DOC" style="width: 180px" >                                                 
+                                <h:outputText value="#{item.codigoDocumento}"/>
+                            </p:column>
+
+                       
+                        </p:dataTable>
+                        
+                       <br/><br/>
+ <h:commandLink style="text-align:center"><p:graphicImage 
+                                value="/imagens/pdf.png" title="PDF"/><p:dataExporter 
+                                type="pdf" target="x" fileName="Consultas"/>
+                        </h:commandLink>
+<p:commandButton value="Imprimir Lista" type="button" icon="ui-icon-print" >  
+                            <p:printer target="x" />  
+                        </p:commandButton> 
+
+                  
+                    </p:panel>
+           
+                    </h4>
+            </h:form>
+        </f:view>
+    </h:body>
+</html>
+
+

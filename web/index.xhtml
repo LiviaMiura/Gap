@@ -1,0 +1,135 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:head>    
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/style.css"/>
+        <title>GAP</title>
+    </h:head>
+
+    <h:body>
+        <p:layout fullPage="true" >
+            <p:layoutUnit id="top" position="center">  
+                <div class="main11">
+                    <div class="header11">
+                        <div class="header_resize11" > 
+
+
+                            <div class="logo1" align="right">
+
+
+                                  <div class ="cabeçalho_brasil">
+                                 
+                                    <a href="http://www.acessoainformacao.gov.br"  title="Acesso a informação" rel="externo">
+                                        <img src="imagens/acessoInfo.png"  alt="Acesso a informação"  /></a>
+
+                                    <a  href="http://www.brasil.gov.br" title="Portal de Estado do Brasil" rel="externo">
+                                        <img src="imagens/botaoBrasil.png"   alt="Portal de Estado do Brasil" /></a>
+                                            
+                                  </div>
+                                <div class ="cabeçalho_logo">
+                                           
+                                                <a href="mailto:livia.miura@inpe.br">
+                                        <img src="imagens/carta.gif" alt="" />
+                                        
+                                    </a><strong><a href="mailto:livia.miura@inpe.br"  >Fale Conosco</a></strong> 
+
+                                    
+                                    <script language="javascript">
+                                        function busca(frm){
+                                            if (frm.q.value == "")
+                                            {
+                                                alert("Preencha o campo de busca.");
+                                                frm.q.focus();
+                                                return;
+                                            }
+                                            frm.submit();
+                                        }
+                                    </script>
+
+                                </div>
+                            </div> 
+                            
+
+                            <div class="cabeçalho">
+
+                                <span style="padding:0 15px 0 890px;  ">
+
+                                    <a href="http://www.youtube.com/user/inpemct" style="position: left;" rel="externo" title="You Tube">
+                                        <img src="imagens/youtube.png"  alt="You Tube"  /></a>
+
+                                    <a href="/rss.php" rel="externo" title="RSS">
+                                        <img src="imagens/reader.png"   alt="RSS" /></a>
+
+                                    <a href="http://www.facebook.com/pages/Instituto-Nacional-de-Pesquisas-Espaciais/124907444261208" rel="externo" title="Facebook">
+                                        <img src="imagens/facebook.png"    alt="Facebook" /></a>
+
+                                    <a href="http://twitter.com/#!/inpe_mct"  title="Twitter">
+                                        <img src="imagens/twitter.png" alt="Twitter" title="Twitter"/></a>
+
+                                </span>
+                            </div> 
+                            <div class="logo2" align="right"  > 
+                                <div class="">
+                                    <h:form>    
+                                        <p:growl id="growl"  sticky="false" />
+                                        <h5>     
+                                            <br/>  <br/> <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                                            <h:panelGrid columns="2" width="200" cellpadding="5" border="0"  style="text-align:center">    
+
+                                                <h:outputLabel value="Usuário: " style="text-align:right; color: white"  />
+                                                <h:inputText
+                                                    id="loginID" value="#{usuarioLogin.usuarioDTO.login}"
+                                                    required="true" 
+                                                    requiredMessage="Por favor, informe o Usuario!"
+                                                    validatorMessage="Usuário no mínimo 3, máximo 25 caracteres.">
+                                                    <f:validateLength minimum="3" maximum="25"/> 
+                                                </h:inputText>
+
+                                                <h:outputLabel value="Senha: " style="text-align:right; color: white" />
+                                                <h:inputSecret
+                                                    id="senhaID" value="#{usuarioLogin.usuarioDTO.senha}"
+
+                                                    required="true" requiredMessage="Por favor, informe a senha!"
+                                                    validatorMessage="Senha no mínimo 3, máximo 10 caracteres.">
+                                                    <f:validateLength minimum="3" maximum="10"/> 
+                                                </h:inputSecret>
+                                            </h:panelGrid>
+                                            <h:panelGrid columns="5" width="250" cellpadding="5" border="0"  style="text-align:center">    
+                                                <h:outputLabel value=""  /> <h:outputLabel value=""  /> <h:outputLabel value=""  />
+                                                <h:outputLabel value=""  />
+                                                <p:commandButton value="Entrar"  action="#{usuarioLogin.validarLogin}" ajax="false" style="alignment-adjust: right" />  
+                                            </h:panelGrid>
+                                            <br/><br/><br/>  <br/><br/><br/>
+
+                                            <h:panelGrid columns="2" width="400" cellpadding="5" border="0"  style="text-align:center">    
+                                                <h:outputLabel value="Novo Usuário no GAP ?"  style="color: white; size: 12px" />
+                                                <p:commandButton value="Cadastre-se"  action="#{usuarioLogin.inserirUsuario}" ajax="false" immediate="true"  />  
+                                            </h:panelGrid>
+                                        </h5>  
+                                    </h:form> 
+                                </div>
+                                <iframe name="principal" id="principal" width="100%" scrolling="auto" align="center"  frameborder="0" height="160" />
+                            </div> 
+
+                            <div class="footer">
+                                <div class="header_resize">
+                                    <div class="footer_resize"  >
+
+                                        <p  class="lf"  ><center>Copyright 2014 &copy; INPE - Instituto Nacional de Pesquisas Espaciais. Todos os direitos reservados.</center></p>
+                                        <div class="clr"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  
+                    </div>
+                </div>
+
+            </p:layoutUnit>
+        </p:layout>
+    </h:body>
+</html>

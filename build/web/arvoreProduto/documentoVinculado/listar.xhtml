@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/style.css"/>
+        <title>Lista de Documento Vinculado</title>
+    </h:head>
+    <h:body>
+        <f:view>
+            <h:form>
+                <p:growl id="messages"/>
+                <h6>  
+
+                    <p:dataTable id="dvin" value="#{documentoVinculadoAction.lista2}" var="item"
+                                 paginator="true" rows="5"
+                                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                 rowsPerPageTemplate="5,10,15">
+                        <f:facet name="header">
+                            <h2 style="font-size: 14px">Documento Vinculado ao Produto-GAP</h2>
+                        </f:facet>
+
+
+                        <p:column filterBy="#{item.codigoDocumento}"  style="text-align:center;" >
+                            <f:facet name="header">
+                                <h:outputText value="Código"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoDocumento}"/>
+                        </p:column>
+
+                        <p:column filterBy="#{item.titulo}"  style="text-align:center" >
+                            <f:facet name="header">
+                                <h:outputText value="Identificação"/>
+                            </f:facet>
+                            <h:outputText value="#{item.titulo}"/>
+                        </p:column>
+
+
+
+
+                        <p:column  filterBy="#{item.tipoDocumentofk.identificacao}"   
+                                   headerText="Tipo Documento"   
+                                   filterOptions="#{documentoVinculadoAction.noDTOs}"  
+                                   filterMatchMode="exact">  
+                            <h:outputText value="#{item.tipoDocumentofk.identificacao}" />  
+                        </p:column>
+
+
+                        <p:column  filterBy="#{item.noFk.titulo}"   
+                                   headerText="Vincula ao Nó"   
+                                   filterOptions="#{documentoVinculadoAction.noDTOXs}"  
+                                   filterMatchMode="exact">  
+                            <h:outputText value="#{item.noFk.titulo}" />  
+                        </p:column>
+
+
+                        <p:column >
+                            <f:facet name="header">
+                                <h:outputText value="Detalhes" />
+                            </f:facet>
+
+                            <p:commandButton  action="#{documentoVinculadoAction.visualizarItem}"  image="ui-icon ui-icon-search" title="Detalhes do Documento Vinculado ao Produto"  >
+                                <f:setPropertyActionListener  target="#{documentoVinculadoAction.documentoVinculadoDTO.idDocumentoVinculado}" value="#{item.idDocumentoVinculado}"/>
+                            </p:commandButton>
+                        </p:column>
+
+                        <p:column style="text-align:center" >
+                            <f:facet name="header">
+                                <h:outputText value="PDF"/>
+                            </f:facet>
+
+                            <h:commandButton image="/imagens/print.png" title="Download Documento Vinculado ao Produto">
+                                <p:fileDownload value="#{documentoVinculadoAction.file}" />
+                                <f:param name="idDocumentoVinculado" value="#{item.idDocumentoVinculado}"  />
+                            </h:commandButton>
+                        </p:column>
+
+                        <p:column  style="width: 7px;text-align: center" >
+                            <f:facet name="header">
+                                <h:outputText value="Editar"/>
+                            </f:facet>
+                            <p:commandButton action="#{documentoVinculadoAction.alterarDocumento}" ajax="false" image="ui-icon ui-icon-pencil" title="Editar">
+                                <f:param name="idDocumentoVinculado" value="#{item.idDocumentoVinculado}"/>
+                            </p:commandButton>
+                        </p:column>
+
+                        <p:column style="text-align: center">
+                            <f:facet name="header">
+                                <h:outputText value="Excluir"/>
+                            </f:facet>
+                            <p:commandButton action="#{documentoVinculadoAction.excluir}" oncomplete="confirmation.show()" image="ui-icon-trash" title="Excluir">
+                                <f:param name="idDocumentoVinculado" value="#{item.idDocumentoVinculado}"/>
+                            </p:commandButton>
+                        </p:column>
+
+                    </p:dataTable>
+
+
+                    <p:confirmDialog message="Deseja excluir o Documento do Sistema GAP?"
+                                     width="300"
+                                     style="text-align: center"
+                                     header="ALERTA" 
+                                     severity="alert" 
+                                     widgetVar="confirmation">
+                        <h:panelGrid columns="2" cellpadding="1" style="text-align: right" width="250" border="0">                            
+
+                            <p:commandButton value="SIM"  update="dvin" actionListener="#{documentoVinculadoAction.excluir}" style="border:1;text-align: center;"   oncomplete="confirmation.hide()"/>
+                            <p:commandButton value="NÃO" onclick="confirmation.hide()" style="border:1;text-align: center;"   type="button" />
+                        </h:panelGrid>
+                    </p:confirmDialog>
+
+
+                    <br/><br/><br/>
+
+                    <h:panelGrid columns="2" cellpadding="1" style="text-align: right;" width="650" border="0">                            
+
+
+                        <p:commandButton styleClass="h5" action="#{documentoVinculadoAction.inserir}" value="Cadastrar Novo Documento" ajax="false"/>
+
+
+
+
+                        <p:commandLink action="#{documentoVinculadoAction.geraRelatorioFeitas}" title="Gera todos os Documentos da Árvore de Produto " ajax="false" >
+                            <p:graphicImage style="border: 0"  value="/imagens/pdf1.png"/>
+                        </p:commandLink>
+                    </h:panelGrid>
+
+
+
+                </h6>
+            </h:form>
+        </f:view>
+    </h:body>
+</html>
+

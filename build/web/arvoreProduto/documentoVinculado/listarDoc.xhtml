@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html   xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/style.css"/>
+        <title>Lista de Documento Vinculado</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <!---  <p:growl id="messages"/>-->
+            <h3>  
+                <p:dataTable 
+                    id="dvin" value="#{itemdoNoAction.lista}" var="item"
+                    paginator="true" rows="5"
+                    paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                    rowsPerPageTemplate="5,10,15">
+                    <f:facet name="header">
+                        <h2 style="font-size: 14px">Documento Vinculado ao Produto-GAP</h2>
+                    </f:facet>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Tipo"/>
+                        </f:facet>
+                        <h:outputText value="#{item.documentoVinculadofk.tipoDocumentofk.identificacao}"/>
+                    </p:column>
+
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Identificação"/>
+                        </f:facet>
+                        <h:outputText value="#{item.documentoVinculadofk.titulo}"/>
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Descrição"/>
+                        </f:facet>
+                        <h:outputText value="#{item.documentoVinculadofk.descricao}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Responsável"/>
+                        </f:facet>
+                        <h:outputText value="#{item.noFk.responsavel.nome}"/>
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Template"/>
+                        </f:facet>
+                        <h:outputText value="#{item.documentoVinculadofk.template}"/>
+                    </p:column>
+
+                    <p:column  style="width: 7px;text-align: center" >
+                        <f:facet name="header">
+                            <h:outputText value="Editar"/>
+                        </f:facet>
+                        <p:commandButton action="#{itemdoNoAction.alterarDocumento}" ajax="false" image="ui-icon ui-icon-pencil" title="Editar">
+                            <f:param name="idItemdoNo" value="#{item.idItemdoNo}"/>
+                        </p:commandButton>
+                    </p:column>
+
+                    <p:column style="text-align: center">
+                        <f:facet name="header">
+                            <h:outputText value="Excluir"/>
+                        </f:facet>
+                        <p:commandButton action="#{itemdoNoAction.excluir}" oncomplete="confirmation.show()" image="ui-icon-trash" title="Excluir">
+                            <f:param name="idItemdoNo" value="#{item.idItemdoNo}"/>
+                        </p:commandButton>
+                    </p:column>
+                </p:dataTable>
+                <p:confirmDialog message=" Deseja Remover um Documento?" width="300"
+
+                                 header="Confirmar" severity="alert" widgetVar="confirmation">
+                    <p:commandButton value="sim" update="dvin" actionListener="#{itemdoNoAction.excluir}" style="border:0"   oncomplete="confirmation.hide()"/>
+                    <p:commandButton value="não" onclick="confirmation.hide()" type="button" />
+                </p:confirmDialog>
+
+                <p:confirmDialog message=" Deseja alterar mesmo o Documento?" width="300"
+
+                                 header="Confirmar" severity="alert" widgetVar="confirmation1">
+                    <p:commandButton value="sim" update="dvin" actionListener="#{itemdoNoAction.alterarDocumento}" style="border:0"   oncomplete="confirmation.hide()"/>
+                    <p:commandButton value="não" onclick="confirmation.hide()" type="button" />
+                </p:confirmDialog>
+            </h3>
+
+            <p:commandButton styleClass="h5" action="#{documentoVinculadoAction.inserir}" value="Novo" ajax="false"/>
+
+        </h:form>
+
+    </h:body>
+</html>
+

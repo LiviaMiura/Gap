@@ -1,0 +1,257 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:head>    
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/style.css"/>
+        <title>Menu Principal</title>
+    </h:head>
+
+    <h:body>
+        <p:layout fullPage="true" >
+
+            <p:layoutUnit id="top" position="center">  
+                <div class="main11">
+                    <div class="header11">
+                        <div class="header_resize11" >
+                            <div class="logo1" align="right">
+
+
+                                <div class ="cabeçalho_brasil">
+
+                                    <a href="http://www.acessoainformacao.gov.br"  title="Acesso a informação" rel="externo">
+                                        <img src="imagens/acessoInfo.png"  alt="Acesso a informação"  /></a>
+
+                                    <a  href="http://www.brasil.gov.br" title="Portal de Estado do Brasil" rel="externo">
+                                        <img src="imagens/botaoBrasil.png"   alt="Portal de Estado do Brasil" /></a>
+
+                                </div>
+                                <div class ="cabeçalho_user">
+                                    <b style="color:#5f5f5f;font-size: 12px;"> 
+                                        :: Usúario:  <h:outputText value="#{usuarioLogin.usuarioDTO.nome}"/>
+
+                                        -   <h:outputText value="#{usuarioLogin.usuarioDTO.perfil}" />
+                                    </b>
+
+                                </div>
+
+                            </div> 
+                            <div class="cabeçalho"><script language="JavaScript">
+                               
+                                mydate = new Date();
+                                myday = mydate.getDay();
+                                mymonth = mydate.getMonth();
+                                myweekday= mydate.getDate();
+
+                                weekday= myweekday;
+                                myyear = mydate.getYear();
+                                year = myyear;
+
+                                if(myday == 0)
+                                    day = " Domingo"
+                                else if(myday == 1)
+                                    day = " Segunda-feira"
+
+                                else if(myday == 2)
+                                    day = " Terça-feira"
+                                else if(myday == 3)
+                                    day = " Quarta-feira"
+                                else if(myday == 4)
+                                    day = " Quinta-feira"
+                                else if(myday == 5)
+                                    day = " Sexta-feira"
+                                else if(myday == 6)
+                                    day = " Sábado"
+                                if(mymonth == 0)
+                                    month = "Janeiro "
+                                else if(mymonth ==1)
+                                    month = "Fevereiro "
+                                else if(mymonth ==2)
+                                    month = "Março "
+                                else if(mymonth ==3)
+                                    month = "Abril "
+                                else if(mymonth ==4)
+                                    month = "Maio "
+                                else if(mymonth ==5)
+                                    month = "Junho "
+                                else if(mymonth ==6)
+                                    month = "Julho "
+                                else if(mymonth ==7)
+                                    month = "Agosto "
+                                else if(mymonth ==8)
+                                    month = "Setembro "
+                                else if(mymonth ==9)
+                                    month = "Outubro "
+                                else if(mymonth ==10)
+                                    month = "Novembro "
+                                else if(mymonth ==11)
+                                    month = "Dezembro "
+                                if(myyear == 113)
+                                    year = "2013"
+                                else if(myyear == 114)
+                                    year = " 2014"
+                                else if(myyear == 115)
+                                    year = "2015"
+                                if(myyear == 116)
+                                    year = "2016"
+                                else if(myyear == 117)
+                                    year = " 2017"
+                                else if(myyear == 118)
+                                    year = "2018"
+
+                                document.write("  :: "+day+", "+myweekday+" de "+month+" de "+year);
+                             
+                                </script>
+                            </div>
+                            <div class="">
+                                <h:form>    
+                                    <p:growl id="growl" showDetail="true" sticky="false" />
+                                    <h6>
+                                        <p:menubar>
+                                            <br/><br/><br/><br/>
+
+
+                                            <p:submenu   label="Home"   icon="ui-icon ui-icon-home">
+                                                <p:menuitem icon="ui-icon ui-icon-home" ><h:commandLink   action="#{menuAction.apresentacao}"  target="principal" value="GAP"   ></h:commandLink></p:menuitem>
+                                            </p:submenu>
+                                            <p:submenu   label="Usuário"    rendered="#{usuarioLogin.usuarioDTO.perfil=='Administrador'}"   icon="ui-icon ui-icon-person">
+                                                <p:menuitem icon="ui-icon ui-icon-person" ><h:commandLink   action="#{menuAction.usuarioListar}"  target="principal" value="Lista de Usuários"  ></h:commandLink></p:menuitem>
+                                                <p:menuitem icon="ui-icon ui-icon-heart" ><h:commandLink action="#{menuAction.unidadeListar}" target="principal" value="Unidades no INPE" ></h:commandLink></p:menuitem>
+
+                                            </p:submenu>
+
+                                            <p:submenu   label="Usuário" rendered="#{usuarioLogin.usuarioDTO.perfil=='Usuário Interno - Gerente'}"   icon="ui-icon ui-icon-person">
+                                                <p:menuitem icon="ui-icon ui-icon-person" ><h:commandLink   action="#{usuarioAction.alterarUsuario}"  target="principal" ><h:outputText value=" Editar Dados"   /></h:commandLink></p:menuitem>
+
+                                            </p:submenu>
+
+                                            <p:submenu   label="Usuário" rendered="#{usuarioLogin.usuarioDTO.perfil=='Usuário Interno - Gestor'}"   icon="ui-icon ui-icon-person">
+                                                <p:menuitem icon="ui-icon ui-icon-person" ><h:commandLink   action="#{usuarioAction.alterarUsuario}"  target="principal" ><h:outputText value=" Editar Dados"   /></h:commandLink></p:menuitem>
+
+                                            </p:submenu>
+
+                                            <p:submenu   label="Usuário" rendered="#{usuarioLogin.usuarioDTO.perfil=='Usuário Interno'}"   icon="ui-icon ui-icon-person">
+                                                <p:menuitem icon="ui-icon ui-icon-person" ><h:commandLink   action="#{usuarioAction.alterarUsuario}"  target="principal" ><h:outputText value=" Editar Dados"   /></h:commandLink></p:menuitem>
+                                                <p:menuitem icon="ui-icon ui-icon-person" ><h:commandLink   action="#{usuarioAction.paginaperfil}"  target="principal" ><h:outputText value="Alteração de Perfil"   /></h:commandLink></p:menuitem>
+
+                                            </p:submenu>
+
+                                            <p:submenu   label="Usuário"   rendered="#{usuarioLogin.usuarioDTO.perfil=='Visitante'}"   icon="ui-icon ui-icon-person">
+                                                <p:menuitem icon="ui-icon ui-icon-person" ><h:commandLink   action="#{usuarioAction.alterarUsuario}"  target="principal" ><h:outputText value=" Editar Dados"   /></h:commandLink></p:menuitem>
+                                                <p:menuitem icon="ui-icon ui-icon-person" ><h:commandLink   action="#{usuarioAction.paginaperfil}"  target="principal" ><h:outputText value="Alteração de Perfil"   /></h:commandLink></p:menuitem>
+
+                                            </p:submenu>
+
+
+
+                                            <p:submenu   label="Históricos" rendered="#{usuarioLogin.usuarioDTO.perfil=='Usuário Interno - Gerente'}"  icon="ui-icon ui-icon-suitcase">
+                                                <p:menuitem icon="ui-icon ui-icon-heart" ><h:commandLink action="#{menuAction.historicoListar}" target="principal" value="Usuários" ></h:commandLink></p:menuitem>
+                                                <p:menuitem icon="ui-icon ui-icon-person" ><h:commandLink action="#{menuAction.historicoDocVinculadoListar}" target="principal" value="Documentos" ></h:commandLink></p:menuitem>
+                                                <p:menuitem icon="ui-icon ui-icon-person" ><h:commandLink action="#{menuAction.historicoNoListar}" target="principal" value="Árovre de Produto" ></h:commandLink></p:menuitem>
+
+                                            </p:submenu>
+                                            <p:submenu   label="Históricos" rendered="#{usuarioLogin.usuarioDTO.perfil=='Administrador'}"  icon="ui-icon ui-icon-suitcase">
+                                                <p:menuitem icon="ui-icon ui-icon-heart" ><h:commandLink action="#{menuAction.historicoListar}" target="principal" value="Usuários" ></h:commandLink></p:menuitem>
+                                                <p:menuitem icon="ui-icon ui-icon-person" ><h:commandLink action="#{menuAction.historicoDocVinculadoListar}" target="principal" value="Documentos" ></h:commandLink></p:menuitem>
+                                                <p:menuitem icon="ui-icon ui-icon-person" ><h:commandLink action="#{menuAction.historicoNoListar}" target="principal" value="Árovre de Produto" ></h:commandLink></p:menuitem>
+
+                                            </p:submenu>
+
+                                            <p:submenu   label="Definições" rendered="#{usuarioLogin.usuarioDTO.perfil=='Usuário Interno - Gerente'}"   icon="ui-icon-arrowthick-1-e">
+                                                <p:menuitem ><h:commandLink   action="#{menuAction.tipoDocumentoListar}"  target="principal" value="Tipo de Documento"  ></h:commandLink></p:menuitem>                               
+                                                <p:menuitem><h:commandLink   action="#{menuAction.tipoProdutoListar}" target="principal"  ><h:outputText value="Tipo de Produto"   /></h:commandLink></p:menuitem>
+                                                <p:menuitem><h:commandLink   action="#{menuAction.estadoNoListar}" target="principal" value=" Estado do Produto"  ></h:commandLink></p:menuitem>    
+
+                                            </p:submenu>
+
+
+                                            <p:submenu  label="Downloads" rendered="#{usuarioLogin.usuarioDTO.perfil=='Usuário Interno - Gestor'}" icon="ui-icon ui-icon-home">
+                                                <p:menuitem><h:commandLink   action="#{menuAction.download}" target="principal" value=" Templates de Documentos"  ></h:commandLink></p:menuitem>    
+                                            </p:submenu>
+
+                                            <p:submenu  label="Downloads" rendered="#{usuarioLogin.usuarioDTO.perfil=='Usuário Interno' }" icon="ui-icon ui-icon-home">
+                                                <p:menuitem><h:commandLink   action="#{menuAction.download}" target="principal" value=" Templates de Documentos"  ></h:commandLink></p:menuitem>    
+                                            </p:submenu>
+
+
+                                            <p:submenu  label="Documentação" rendered="#{usuarioLogin.usuarioDTO.perfil=='Usuário Interno - Gestor' }"  icon="ui-icon ui-icon-flag">
+                                                <p:menuitem><h:commandLink   action="#{menuAction.documentoVinculadoListar}" target="principal" value="Documento Vinculado"  >
+                                                    </h:commandLink></p:menuitem>                               
+                                            </p:submenu>
+
+                                            <p:submenu  label="Documentação" rendered="#{usuarioLogin.usuarioDTO.perfil=='Usuário Interno - Gerente' }"  icon="ui-icon ui-icon-flag">
+                                                <p:menuitem><h:commandLink   action="#{menuAction.documentoVinculadoListar}" target="principal" value="Documento Vinculado"  >
+                                                    </h:commandLink></p:menuitem>                               
+                                            </p:submenu>
+
+                                            <p:submenu  label="Árvore De Produto" rendered="#{usuarioLogin.usuarioDTO.perfil=='Usuário Interno - Gerente' }" icon="ui-icon ui-icon-gear">
+                                                <p:menuitem><h:commandLink   action="#{noAction.inserirNivel}" target="principal" value=" Gerar o Nível 0 da Árvore "  ></h:commandLink></p:menuitem>                               
+                                                <p:menuitem ><h:commandLink   action="#{menuAction.tree4}" target="principal" value="Exibir Árvore"  ></h:commandLink></p:menuitem>    
+                                            </p:submenu>
+
+                                            <p:submenu  label="Árvore De Produto"  rendered="#{usuarioLogin.usuarioDTO.perfil=='Usuário Interno - Gestor'}" icon="ui-icon ui-icon-gear">
+                                                <p:menuitem ><h:commandLink   action="#{menuAction.tree4}" target="principal" value="Exibir Árvore"  ></h:commandLink></p:menuitem>    
+                                            </p:submenu>
+
+
+
+                                            <p:submenu  label="Consultas" rendered="#{usuarioLogin.usuarioDTO.perfil=='Usuário Interno' }" icon="ui-icon ui-icon-search"   >
+                                                <p:menuitem><h:commandLink   action="#{menuAction.consultarProduto}" target="principal" value="Produtos e Documentos"  ></h:commandLink></p:menuitem>    
+                                            </p:submenu>
+                                            <p:submenu  label="Consultas" rendered="#{usuarioLogin.usuarioDTO.perfil=='Visitante'}"  icon="ui-icon ui-icon-search"   >
+                                                <p:menuitem><h:commandLink   action="#{menuAction.consultarProduto}" target="principal" value="Produtos e Documentos"  ></h:commandLink></p:menuitem>    
+                                            </p:submenu>
+
+                                            <p:submenu  label="Consultas" rendered="#{usuarioLogin.usuarioDTO.perfil=='Usuário Interno - Gerente' }"  icon="ui-icon ui-icon-search"   >
+                                                <p:menuitem><h:commandLink   action="#{menuAction.consultarProduto}" target="principal" value="Produtos e Documentos"  ></h:commandLink></p:menuitem>    
+                                            </p:submenu>
+
+                                            <p:submenu  label="Consultas" rendered="#{usuarioLogin.usuarioDTO.perfil=='Usuário Interno - Gestor'}" icon="ui-icon ui-icon-search"   >
+                                                <p:menuitem><h:commandLink   action="#{menuAction.consultarProduto}" target="principal" value="Produtos e Documentos"  ></h:commandLink></p:menuitem>    
+                                            </p:submenu>
+
+
+                                            <p:submenu  label="Testes"  icon="ui-icon ui-icon-search"   >
+                                                <p:menuitem><h:commandLink   action="#{menuAction.teste}" target="principal" value="Teste"  ></h:commandLink></p:menuitem>    
+                                            </p:submenu>
+                                            
+                                            
+                                            <p:submenu   label="Help"   icon="ui-icon ui-icon-info" >
+                                                <p:menuitem icon="ui-icon ui-icon-person" ><h:commandLink    action="#{usuarioAction.exibir}"><h:outputText value="Manual do Usuário"   /></h:commandLink></p:menuitem>
+                                            </p:submenu>
+
+                                            <p:menuitem value="Sair  " update="messages"
+                                                        action="#{logout.Logout}"
+                                                        icon="ui-icon ui-icon-close"                                         
+                                                        ajax="false"
+                                                        immediate="true">
+                                            </p:menuitem>
+
+                                        </p:menubar> 
+                                    </h6>
+                                </h:form> 
+                            </div>
+
+                            <iframe name="principal" id="principal" width="100%" scrolling="auto" align="center"  frameborder="0" height="560" />
+                        </div>
+                        <br></br><br></br><br></br>
+
+                        <div class="clr"></div>
+                        <div class="footer">
+                            <div class="header_resize">
+                                <div class="footer_resize"  >
+                                    <p  class="lf"  ><center>  Copyright 2014 &copy; INPE - Instituto Nacional de Pesquisas Espaciais. Todos os direitos reservados.        </center></p>
+                                    <div class="clr"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>  </div>
+            </p:layoutUnit>
+
+        </p:layout>
+    </h:body>
+</html>

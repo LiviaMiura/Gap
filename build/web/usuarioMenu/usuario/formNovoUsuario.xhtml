@@ -1,0 +1,160 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+    Projeto : GAP
+    Nome Arquivo : form.xhtml (USUARIO)
+    Autor : Marcos Castro
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/style.css"/>
+        <title>Cadastro de Usuário</title>
+    </h:head>
+    <h:body>
+        <p:layout fullPage="true" >
+
+            <p:layoutUnit id="top" position="center">  
+                <div class="main1">
+                    <div class="header1">
+                        <div class="header_resize1" >
+                            <div class="logo1" align="right">
+                                <form id="form" method="get" action="http://www.google.com/u/INPE" >
+                                </form>   <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                                <b style="color:gray;font-size: 15px;"> Usúario: </b>  <h:outputText value="#{usuarioLogin.usuarioDTO.nome}" style="color:gray;font-size: 15px;"/>
+                            </div> 
+
+                            <div class="">
+                                <f:view encoding="ISO-8859-1"> 
+                                    <br/>   <br/>   <br/>   <br/>
+                                    <h:form>
+                                        <p:growl id="growl"  sticky="false" /> 
+                                        <h4>
+                                            <p:panel header="Cadastro de um Novo Usuário  " style="text-align: center;margin-bottom:60px;"> 
+                                                <center> 
+
+
+                                                    <h:panelGrid columns="4" cellpadding="5" border="0"> 
+
+                                                        <h:inputHidden value="#{usuarioAction.usuarioDTO.idUsuario}" />
+                                                        <h:outputLabel value="" />
+                                                        <h:outputLabel value=""  />
+                                                        <h:outputLabel value=""  />
+                                                        <h:outputLabel value="Nome:" for="nome" />
+                                                        <p:inputText
+                                                            id="nome" value="#{usuarioAction.usuarioDTO.nome}" size=""
+                                                            title=" Digite seu Nome:"
+                                                            required="true" requiredMessage="O nome é obrigatório."
+                                                            validatorMessage="Nome: mínimo 3, máximo 40 caracteres." >
+
+                                                            <f:validateLength minimum="3" maximum="40"></f:validateLength>
+                                                        </p:inputText>
+                                                        <p:message for="nome"/>
+
+                                                        <h:outputLabel value=""  />
+                                                        <h:outputLabel value="Email:" for="email" />      
+
+                                                        <p:inputText
+                                                            id="email" value="#{usuarioAction.usuarioDTO.email}" 
+                                                            title="Digite seu Email"
+                                                            required="true" requiredMessage="O Email é obrigatório."
+                                                            validatorMessage="Email inválido ou excedeu o limite de caracteres!">
+                                                            <f:validateLength minimum="3" maximum="70"></f:validateLength>
+                                                            <f:validateRegex pattern="[a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9\-\_\.]+"/>
+                                                        </p:inputText>
+                                                        <p:message for="email"/>
+
+                                                        <h:outputLabel value=""  />
+                                                        <h:outputLabel value="Predio:" for="predio" />
+                                                        <p:inputText
+                                                            id="predio" value="#{usuarioAction.usuarioDTO.predio}" size=""
+                                                            title=" Digite o Predio:"
+                                                            required="false" requiredMessage="O Predio é obrigatório."
+                                                            validatorMessage="Nome: mínimo 2, máximo 40 caracteres." >
+
+                                                            <f:validateLength minimum="3" maximum="40"></f:validateLength>
+                                                        </p:inputText>
+                                                        <p:message for="predio"/>
+                                                        <h:outputLabel value=""  />
+
+                                                        <h:outputLabel value="Ramal:" for="ramal" />
+                                                        <p:inputMask id="ramal" value="#{usuarioAction.usuarioDTO.ramal}" mask="9999"
+                                                                     title="Digite seu Ramal"
+                                                                     required="false"
+                                                                     requiredMessage="Ramal é um campo obrigatorio!!"
+                                                                     validatorMessage="Ramal deve conter no max 4 caracteres!"/>
+                                                        <p:message for="ramal"/>
+                                                        <h:outputLabel value=""  />
+
+                                                        <h:outputLabel value="Login:" for="login" />
+                                                        <p:inputText id="login" value="#{usuarioAction.usuarioDTO.login}"
+                                                                     title="Login" required="true" size="20"
+                                                                     requiredMessage="Login é obrigatório."
+                                                                     validatorMessage="Login mínimo 2, máximo 10 caracteres"
+                                                                     >
+                                                            <f:validateLength minimum="2"  maximum="10"/>
+                                                        </p:inputText>
+                                                        <p:message for="login"/>
+                                                        <p:watermark for="login" value=" Registro Funcional"   />  
+
+
+
+                                                        <h:outputLabel value="Senha:" for="senha" />
+                                                        <p:password
+                                                            id="senha" value="#{usuarioAction.usuarioDTO.senha}"
+                                                            title="Digite uma Senha  "
+                                                            required="true" requiredMessage="A Senha é obrigatória."
+                                                            validatorMessage="Senha: mínimo 3, máximo 10 caracteres.">
+                                                            <f:validateLength minimum="3" maximum="10"></f:validateLength>
+                                                        </p:password>
+                                                        <p:message for="senha"/>
+                                                        <h:outputLabel value=""  />
+
+                                                        <h:outputLabel value="Unidade:" for="unidadeFk" />
+                                                        <h:selectOneMenu id="unidadeFk" 
+                                                                         value="#{usuarioAction.usuarioDTO.unidadeFk.idUnidade}"  
+                                                                         title="UnidadeFk" required="true" 
+                                                                         requiredMessage="Selecione Unidade" >
+                                                            <f:selectItem itemLabel="Selecione Unidade" itemValue="" noSelectionOption="true"/> 
+                                                            <f:selectItems value="#{unidadeAction.lista}" var="unidadeDTO" itemLabel="#{unidadeDTO.nomeUnidade}" itemValue="#{unidadeDTO.idUnidade}"  />
+                                                        </h:selectOneMenu>
+
+                                                    </h:panelGrid>
+                                                    <center> 
+                                                        <br/><br/>
+                                                        
+                                                        <h:panelGrid columns="3"  width="515"  cellpadding="5" border="0" style="text-align: center" >  
+                                                            <p:commandButton action="#{usuarioAction.gravarUsuario}" value="Gravar" ajax="false"/>
+                                                            <p:commandButton action="#{usuarioAction.cancelarCadastro}" value="Cancelar" ajax="false" immediate="true"/>
+                                                            <p:commandButton id="btnL" value="Limpar" type="reset"/>
+                                                        </h:panelGrid>
+                                                    </center>
+                                                </center><br/>
+                                            </p:panel>
+                                            </h4>
+                                    </h:form>
+                                </f:view>
+                            </div>
+
+                            <iframe name="principal" id="principal" width="100%" scrolling="auto" align="center"  frameborder="0" height="525" />
+                        </div>
+                        <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+                        <div class="clr"></div>
+                        <div class="footer">
+
+                            <div class="footer_resize"  >
+                                <p  class="lf"  ><center>Copyright 2012 &copy; INPE - Instituto Nacional de Pesquisas Espaciais. Todos os direitos reservados.</center></p>
+                                <div class="clr"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>                     
+
+
+            </p:layoutUnit>
+        </p:layout>
+    </h:body>
+</html>

@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+    Projeto : GAP
+    Nome Arquivo : form.xhtml (ADMINISTRADOR)
+    Autor : Marcos Castro
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/style.css"/>
+        <title>Cadastro de Usuário</title>
+    </h:head>
+    <h:body>
+   
+            <f:view encoding="ISO-8859-1"> 
+                <h:form>
+                    <p:growl id="growl"  sticky="false" /> 
+  <h4>
+                        
+      <br/> <br/> <br/>
+                  
+                                <p:panel style="text-align: center" header="Configurar Email  - Administrador">
+<center> 
+                                 <br/> <br/>
+                                
+                                        <h:panelGrid columns="2" cellspacing="6" border="0" >
+
+                                            <h:outputLabel value="Email " />
+                                            <p:inputText size="35"
+                                                         id="usuario"
+                                                         value="#{configurarEmailAction.configurarEmailDTO.usuario}"
+                                                         title="Usuário"
+
+                                                         required="true"
+                                                         requiredMessage="E-mail campo obrigatório!"
+                                                         validatorMessage="Este campo deve conter no mín 3 e max 40 caracteres!">
+                                                <f:validateLength minimum="3" maximum="40"/>
+                                            </p:inputText>
+                                        </h:panelGrid>
+                                        <h:panelGrid columns="1" cellspacing="6" border="0" >
+                                            <h:outputLabel value="*Email do Administrador que receberá as mensagens dos usuarios GAP" style="font-size:10px;text-align: center;color: brown;alignment-adjust: center" />
+                                        </h:panelGrid>   
+                                        <h:panelGrid columns="3" cellspacing="6" border="0" >
+                                            <h:outputLabel value="Senha"/>
+                                            <p:inputText size="35"
+                                                         id="senha1"
+                                                         value="#{configurarEmailAction.configurarEmailDTO.senha}"
+                                                         title="Senha"
+                                                         required="true"
+
+                                                         requiredMessage="Senha campo obrigatório!"
+                                                         validatorMessage="Este campo deve conter no mín 3 e max 15 caracteres!">
+                                                <f:validateLength minimum="3" maximum="15"/>
+                                            </p:inputText>
+                                       
+                                       
+ </h:panelGrid>
+                                        <h:panelGrid columns="1" cellspacing="6" border="0" >
+                                            <h:outputLabel value="*Senha do Email do Administrador" style="font-size:10px;text-align: center;color: brown;alignment-adjust: center" />
+                                                                                
+                                        </h:panelGrid>
+                                    <h:inputHidden  value="#{configurarEmailAction.configurarEmailDTO.autenticacao}"/>
+                                    <h:inputHidden  value="#{configurarEmailAction.configurarEmailDTO.porta}"/>
+                                    <h:inputHidden  value="#{configurarEmailAction.configurarEmailDTO.id}"/>
+                                    <h:inputHidden  value="#{configurarEmailAction.configurarEmailDTO.servidor}"/>
+                         
+                         
+                         
+                              <br/> <br/>
+                        
+                              <h:panelGrid columns="3"  width="515" style="text-align: center"  cellpadding="2" border="0">  
+                                <p:commandButton action="#{configurarEmailAction.gravar}" value="Gravar" ajax="false"/>
+                                <p:commandButton action="#{configurarEmailAction.listar}" value="Cancelar" ajax="false" immediate="true"/>
+                                <p:commandButton id="btnL" value="Limpar" type="reset"/>
+                            </h:panelGrid>
+
+
+             </center>
+                    </p:panel>
+           
+  </h4>
+                </h:form>
+            </f:view>
+       
+    </h:body>
+</html>

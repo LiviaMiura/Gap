@@ -1,0 +1,501 @@
+
+/**para o index **  inicio*******/
+body {
+    margin:0;
+    padding:0;
+    font-size: 12px;
+
+    text-align:center; /* hack para o IE */   
+   
+}
+
+/****************cabeçalho*/
+.main {
+    margin:0 auto;
+    padding:0;
+    text-align:left; /* "remédio" para o hack do IE */ 
+        background-color:red;
+}
+
+.header {
+    margin:0;
+    padding:0;
+    height: 0.1px;  /*largura da consulta de produto e documento tela com menu*/ 
+
+
+}
+/***** meio da tela onde aparecerá a list e os form*/
+.header_resize {
+    margin:0 auto;
+    padding:0;
+ 
+    width:990px; /***da tela em todo**/
+    height: 500%; /** é o**/
+    
+
+
+
+}
+
+.logo {
+    margin:0;
+    /*  background:url(../imagens/topo_inpe1.jpg) top no-repeat;*/
+    background-position: center;
+    font-size: 15px;
+     
+}
+/**fim index****/
+/**para o menu **  inicio*****/
+
+body11 {
+    margin:0;
+    padding:0;
+    font-size: 12px;
+  background-color:pink;
+    text-align:center; /* hack para o IE */   
+  background-color:red;
+  
+}
+
+/****************cabeçalho*/
+.main11 {
+    margin:0 auto;
+    padding:10px;
+    background-color:white;
+    width:990px; 
+
+    text-align:left; /* "remédio" para o hack do IE */ 
+}
+
+/* Fundo do logotipo da tela está branco*/
+.header11 {
+    margin:0;
+    padding:0;
+    background-color:violet;
+    background:#f9f9f9 url(../imagens/rodape6.png) top repeat-x;
+    width:990px; 
+    height: 159px;
+
+
+}
+/* tela do meio para verificar
+*/
+.header_resize11 {
+    margin:0 auto;
+    padding: 0;
+    background: url(../imagens/rodape6.png) top  repeat-x;
+    width:990px;
+    height :500%; /* verificar no menu*/
+   line-height:15px;
+    
+
+}
+body1 {
+    margin:0;
+    padding:0;
+    font-size: 12px;
+
+    text-align:center; /* hack para o IE */   
+
+}
+
+/****************cabeçalho*/
+.main1 {
+    margin:0 auto;
+    padding:5px;
+
+    width:990px; 
+
+    text-align:left; /* "remédio" para o hack do IE */ 
+}
+
+/* Fundo do logotipo da tela está branco*/
+.header1 {
+    margin:0;
+    padding:0;
+ 
+    background:#f9f9f9 url(../imagens/rodape6.png) top repeat-x;
+    width:990px; 
+    height: 145px;
+
+
+}
+
+
+.header_resize1 {
+    margin:0 auto;
+    padding: 0;
+    background: url(../imagens/rodape6.png) top  repeat-x;
+    width:990px;
+    height :500%; /* verificar no menu*/
+   line-height:15px;
+   
+
+}
+/***imagem do inpe */
+.logo1 {
+    margin:0;
+  
+    background:url(../imagens/topo_inpe1.jpg) top no-repeat;
+    background-position: center;
+    height:19%;
+    font-size: 15px;
+     line-height:295px;
+
+
+}
+.logo2 {
+
+    background:url(../imagens/ci2_1.jpg) top no-repeat;
+    background-position: center;
+    height:80%;
+    width:100%; /***da tela em todo**/
+
+
+}
+.hero-unit {
+    
+/* background:url(../imagens/apresentacao.png) top no-repeat;*/
+  padding: 60px;
+  margin-bottom: 30px;
+  font-size: 18px;
+  font-weight: 200;
+  line-height: 30px;
+
+  color: inherit;
+  background-color: #FFC125; /* fundo da aprsetação do GAP*/
+  -webkit-border-radius: 6px;  /*  arredondar as laterias*/ 
+   /*  -moz-border-radius: 6px;  /*  arredondar as laterias*/ 
+          border-radius: 6px;  /*  arredondar as laterias*/ 
+}
+
+.btn-large {
+  padding: 11px 19px;
+  font-size: 17.5px;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+}
+
+.btn {
+  border-color: #c5c5c5;
+  border-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.25);
+}
+
+
+.btn-primary {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #006dcc;
+  background-color: #0044cc;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0044cc));
+  background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
+  background-image: -o-linear-gradient(top, #0088cc, #0044cc);
+  background-image: linear-gradient(to bottom, #0088cc, #0044cc);
+  background-image: -moz-linear-gradient(top, #0088cc, #0044cc);
+  background-repeat: repeat-x;
+  border-color: #0044cc #0044cc #002a80;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+}
+.gravar { 
+    width: 16px;   
+    height: 16px;
+    /*   background-image: url("../imagens/del2.png");  */
+} 
+
+
+
+h1 {
+    font:normal 12px/1.2em Arial, Helvetica, sans-serif;
+    margin-left: 100px;
+    margin-right:100px;
+
+}
+
+
+h3 {
+    font:normal 12px/1.2em Arial, Helvetica, sans-serif;
+    margin-left: 150px;
+    margin-right:140px;
+
+
+}
+
+h4 {
+    font:normal 12px/1.2em Verdana, Helvetica, sans-serif;
+    margin-left: 230px;
+    margin-right:210px;
+
+
+}
+
+h5 {
+    font:bold 14px/1.2em Verdana, Helvetica, sans-serif;
+    margin-left: 68%;
+    margin-right:5%;
+}
+
+h6 {
+    font:normal 12px/1.2em Arial, Helvetica, sans-serif;
+
+}
+
+.h7 {
+    font:normal 12px/1.2em Verdana, Helvetica, sans-serif;
+    margin-left: 350px;
+    margin-right:200px;
+
+
+}
+.h8 {
+    font:normal 12px/1.2em Arial, Helvetica, sans-serif;
+    margin-left: 120px;
+    margin-right:130px;
+}
+
+.val{
+    background-color:#f8bdb5;
+
+}
+
+.titulo {
+    font:bold 14px/1.2em Arial, Helvetica, sans-serif;
+    margin-left: 5px;
+    color:#327e04;
+}
+
+.tes {
+    width: 380px;
+    height:25px;
+
+    font: normal 12px/1.2em Verdana, Helvetica, sans-serif,bold;
+
+
+}
+
+.tes2 {
+    width:730px;
+   
+
+
+
+
+}
+
+.log {
+    width: 189px;
+    height:20px;
+    border-color:#327e04;
+    border-width: 1.5px;
+    font:bold;
+       
+
+}
+
+.com {
+    width: 190px;
+}
+
+.tab {
+    width: 190px;
+
+
+}
+
+.tab2 {
+    width: 10px;
+    text-align: center;
+
+
+}
+
+.tab3 {
+    width: 120px;
+
+}
+
+/****************corpo*/
+.body_resize {
+    margin:0 auto;
+    padding:150px;
+    width:990px;
+   
+
+
+}
+.body {
+    margin:0 auto;
+    padding:0;
+
+}
+
+
+.body h2 {
+    font:bold 18px Arial, Helvetica, sans-serif;
+    color:#323a3f;
+    padding:5px 5px;
+    margin:0px 0 10px 0;
+    text-align: center;
+
+
+}
+
+
+
+
+.center {
+    width:1000px;
+    height: 400px;
+    margin:10px;
+
+    /* background:url(../imagens/fundoLogin.gif) top center no-repeat;*/
+    background-position: center;
+
+}
+
+.principal {
+    width:970px;
+    height: 390px;
+
+
+}
+
+
+.Principallogo {
+    margin:0;   
+    padding:0;
+    width:900px;
+    
+
+
+
+}
+
+.body b {
+    font:normal 12px Arial, Helvetica, sans-serif;
+    margin-left: 480px;
+
+
+
+}
+/*****************************************************************************/
+
+
+
+/***********rodapé*     onde fica a letra*/
+.footer_resize {
+    margin:0;
+    /* padding:5px 5px;*/
+    background: url(../imagens/rodape3.png) top repeat-x;
+    color:#5f5f5f; /*** a letra do rodapé***/
+    /* font:bold 12px Verdana, Helvetica, sans-serif;*/
+    font:bold 90% "Trebuchet MS", Verdana, Helvetica, sans-serif,cursive;
+    /*padding:4px 0;*/
+    line-height:normal;
+
+    height:23%;
+    line-height:30px;
+
+
+}
+.cabeçalho { 
+    color:#5f5f5f; /*** a letra do rodapé***/ 
+    font:bold 90% "Trebuchet MS", Verdana, Helvetica, sans-serif,cursive;  
+
+    width: 100%;
+    float: left;
+     line-height:30px;
+ 
+}
+
+.cite {
+  color:#5f5f5f; /*** a letra do rodapé***/ 
+  font:bold 90% "Trebuchet MS", Verdana, Helvetica, sans-serif,cursive;
+    float: right;
+}
+
+
+.rede_social { 
+    color:#5f5f5f; /*** a letra do rodapé***/ 
+    font:bold 90% "Trebuchet MS", Verdana, Helvetica, sans-serif,cursive;   
+    width: 100%;
+    float: left;
+    
+
+
+
+}
+.cabeçalho_user {  /*  onde fica os contatos e imagens de correio  no index*/
+    color:black; /*** a letra do rodapé***/ 
+    font:bold 90% "Trebuchet MS", Verdana, Helvetica, sans-serif,cursive;   
+    font-size: 12px;
+    margin:6px;
+  line-height: 260px;
+ 
+
+}
+.cabeçalho_logo {  /*  onde fica os contatos e imagens de correio  no index*/
+    color:black; /*** a letra do rodapé***/ 
+    font:bold 90% "Trebuchet MS", Verdana, Helvetica, sans-serif,cursive;   
+    font-size: 12px;
+    margin:6px;
+  
+ 
+
+}
+.cabeçalho_brasil{  /*  onde fica os contatos e imagens de correio  no index*/
+    color:black; /*** a letra do rodapé***/ 
+    font:bold 90% "Trebuchet MS", Verdana, Helvetica, sans-serif,cursive;   
+    
+    
+  
+ 
+
+}
+/*** direitos reservados  fundo do rodapé**/
+.footer {
+    padding:0px;
+    margin:0 auto;
+
+}
+.footer .lf {
+    float:left;
+
+}
+
+
+.footer p {
+    margin:0;
+    padding:4px 0;
+    line-height:normal;
+    color:#5f5f5f;
+
+}
+.footer a {
+    color:#5f5f5f;
+    padding:inherit;
+    text-decoration:underline;
+
+}
+.footer a:hover {
+    text-decoration:none;
+
+}
+.footer .lf {
+    float:left;
+
+}
+.footer .rf {
+    float:right;
+
+}
+
+p.clr, .clr {
+    clear:both;
+    padding:0;
+    margin:0;
+
+
+}

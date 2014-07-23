@@ -1,0 +1,297 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <f:facet name="first">
+            <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+
+            <h:outputScript library="js" name="script.js"/>
+            <title>PrimeFaces</title>
+        </f:facet> 
+        <style>
+
+            .ui-widget, .ui-widget .ui-widget {
+                font-size: 90% !important;
+            }
+
+            .panelColumns td{
+                vertical-align: top;
+            }
+
+            /*Overwrite the wizard style*/
+            .wizard td{
+                font-size: 1.2em !important;
+            }
+
+            .wizard .ui-button, .ui-wizard-step-title{
+                font-size: 1.1em !important;
+            }
+
+        </style>
+    </h:head>
+    <h:body>
+
+        <h:form id="form"  >
+
+
+            <p:growl id="messages" showDetail="true" />  
+            <h5> 
+                <!--*********** BEGIN ADD Dialog Box ***********-->
+
+                <!--*********** Inicio  Adicionar Novo Produto usando  Dialog Box ***********-->
+                <p:dialog header="Adicionar Produto"  widgetVar="addFolderDialog1" modal="true" resizable="false" 
+                          showEffect="clip"  hideEffect="fold">  
+                    <p:ajax event="close" update="addFolderPanel1"   listener="#{itemdoNoAction.initDialog}"  />
+
+                    <p:outputPanel id="addFolderPanel1">  
+
+                        <!-- <h:messages id="msgNot" showDetail="true" />. -->
+                        <h:panelGrid columns="2" cellpadding="4" border="0"  style="text-align: left" >  
+
+
+                            <h:outputLabel value="Produto Final:" style="font-weight:bold"  />
+                            <p:selectBooleanCheckbox id="termo" value="#{itemdoNoAction.newProdutoFinal}"  />  
+
+
+                            <h:outputText value="Identificação:" style="font-weight:bold"  />
+                            <p:inputText id="txAddFolder" value="#{itemdoNoAction.newFolderName}"  size ="52"
+                                         onkeyup="this.value = this.value.toUpperCase();" title="Na Identificação não colocar espaços entre as palavras - Ex: PROCODIII" 
+                                         required="false" requiredMessage="Identificação é obrigatório." /> 
+
+                            <h:outputText value="Descrição:"  style="font-weight:bold"  />  
+                            <p:inputTextarea rows="6" cols="40" id="des"
+                                             value="#{itemdoNoAction.newDescricao}" 
+                                             required="false"
+                                             requiredMessage="A descrição precisa de preenchida."  />
+
+                            <h:outputLabel value="Responsável:" for="usuarioId" style="font-weight:bold"  />
+                            <p:selectOneMenu id="usuarioId" 
+                                             value="#{itemdoNoAction.newResponsavel}"
+                                             required="false" 
+                                             requiredMessage="Selecione um Responsável" >
+                                <f:selectItem itemLabel="Selecione" itemValue="" noSelectionOption="false"/> 
+                                <f:selectItems value="#{usuarioAction.lista}" var="usuarioDTO" itemLabel="#{usuarioDTO.nome}" itemValue="#{usuarioDTO.idUsuario}"  />
+                            </p:selectOneMenu>
+
+                            <h:outputLabel value="Domínio:" style="font-weight:bold"  />
+                            <p:selectOneRadio id="tipoDominio" 
+                                              value="#{itemdoNoAction.newDominio}"
+
+                                              required="false"
+                                              requiredMessage="Selecione um Tipo de Domínio">
+                                <f:selectItem itemLabel="Interno"
+                                              itemValue="Interno"/>
+                                <f:selectItem itemLabel="Externo"
+                                              itemValue="Externo"/>
+                                <f:selectItem itemLabel="Privado"
+                                              itemValue="Privado"/>
+                            </p:selectOneRadio>
+
+                            <h:outputLabel value="Tipo de Produto"  style="font-weight:bold"  />
+                            <p:selectOneMenu id="tipoProduto" disabled="false"
+                                             value="#{itemdoNoAction.newTipoProduto}"
+
+                                             requiredMessage="Selecione um Tipo de Produto." >
+                                <f:selectItem itemLabel="Selecione" itemValue="" noSelectionOption="false"/> 
+                                <f:selectItems value="#{tipoProdutoAction.lista}" var="tipoProdutoDTO"    
+                                               itemDescription="#{tipoProdutoDTO.identificacao}" 
+                                               itemLabelEscaped="#{tipoProdutoDTO.observacao}"  
+                                               itemLabel="#{tipoProdutoDTO.descricao}" 
+                                               itemValue="#{tipoProdutoDTO.idTipoProduto}"  />
+                            </p:selectOneMenu>
+
+                            <h:outputLabel value="Estado do Produto:" for="estadoNo"  style="font-weight:bold" />
+                            <p:selectOneMenu id="estadoNo" 
+                                             value="#{itemdoNoAction.newEstadoProduto}"
+                                             required="false" 
+                                             requiredMessage="Selecione um Estado Nó."  >
+                                <f:selectItem itemLabel="Selecione" itemValue="" noSelectionOption="false"/> 
+                                <f:selectItems value="#{estadoNoAction.lista}" var="estadoNoDTO" itemLabel="#{estadoNoDTO.identificacao}" itemDescription="#{estadoNoDTO.descricao}"  itemValue="#{estadoNoDTO.idEstadoNo}"  />
+                            </p:selectOneMenu>
+
+                        </h:panelGrid> 
+                        <br/>
+                        <h:panelGrid columns="3" width="490" cellpadding="4" border="0" >  
+
+                            <p:commandButton icon="ui-icon-check" value="Gravar" 
+                                             update=":form:folderTree, addFolderPanel1, messages"
+
+                                             oncomplete="handleLoginRequest(xhr, status, args)"  
+                                             actionListener="#{itemdoNoAction.gravarProduto}" />
+
+
+                            <p:commandButton id="btnL" value="Limpar" type="reset"/>
+                        </h:panelGrid>  
+                    </p:outputPanel>
+
+                </p:dialog> 
+                <!--*********** Inicio Context Menu ***********-->
+
+                <p:contextMenu style="width: 220px" for="folderTree">  
+
+                    <p:submenu  label="Árvore de Produto"  icon="ui-icon ui-icon-link" >
+                        <p:menuitem value="Novo" oncomplete="addFolderDialog1.show()" icon="ui-icon-plus"   />
+                        <p:menuitem value="Alterar"  action="#{itemdoNoAction.alterar}"  update="messages"  icon="ui-icon-pencil" ajax="false" />
+                        <p:menuitem value="Excluir"  update="messages"  oncomplete="confirmation.show()" icon="ui-icon-close"  >
+                            <f:setPropertyActionListener value="#{itemdoNoAction.itemdoNoDTO.idItemdoNo}" target="#{itemdoNoAction.delete}"/>
+                        </p:menuitem>
+                        <p:menuitem value="Exibir Produto"  action="#{itemdoNoAction.visualizarProduto}"  update="messages"  icon="ui-icon-search" ajax="false" />
+                        <p:menuitem value="Gera um Documento do Ramo Específico"  action="#{itemdoNoAction.geraDocumentoRamoEspecifico}"  update="docs"  icon="ui-icon-gear" ajax="false" />
+                        <p:menuitem value="Gera um Documento do Produto Selecionado "  action="#{itemdoNoAction.produtoPDF}"  update="messages"  icon="ui-icon-search" ajax="false" />
+                        <p:menuitem value="Gerar PDF  Árvore"  icon="ui-icon-document" update="docs"  action="#{noAction.geraRelatorioProduto}" ajax="false" />
+                    </p:submenu>
+
+                    <p:submenu  label="Árvore de Documentação"   icon="ui-icon ui-icon-note">
+                        <p:menuitem value="Novo  "  action="#{itemdoNoAction.inserirDocumento}" update="docs"   icon="ui-icon-plus" ajax="false" />
+                    </p:submenu>
+                </p:contextMenu> 
+
+
+                <p:contextMenu style="width: 220px" for="taDocuments">  
+                    <p:submenu  label="Árvore de Documentação"   icon="ui-icon ui-icon-note">
+                        <p:menuitem value="Novo  "  action="#{itemdoNoAction.inserirDocumento}" update="docs"   icon="ui-icon-plus" ajax="false" />
+                    </p:submenu>
+                </p:contextMenu> 
+
+                <h:panelGrid id="listaArvore" columns="2" cellpadding="10"   
+                             border="0" >
+
+                    <p:column>  
+                        <p:panel id="pnl" header="Árvore de Produto"  toggleSpeed="300" closeSpeed="300"  widgetVar="panel">  
+
+                            <!--*********** Inicio da Tree ***********-->
+                            <p:tree  style="border:none;" id="folderTree" 
+                                     value="#{itemdoNoAction.root}" 
+                                     var="folder"   
+                                     selectionMode="single" dynamic="false"
+                                     selection="#{itemdoNoAction.selectedNode}"> 
+
+                                <p:ajax event="select" update=":form:messages, :form:taDocuments" listener="#{itemdoNoAction.onNodeSelect}" />  
+
+                                <p:treeNode expandedIcon="ui-icon-folder-open"  
+                                            collapsedIcon="ui-icon-folder-collapsed">  
+                                    <h:outputText value="#{folder.titulo}" />  
+                                </p:treeNode>  
+                            </p:tree>
+                            <!--*********** Fim da Tree ***********-->
+
+                        </p:panel>
+                    </p:column>
+
+
+                    <p:column>
+                        <p:panel   header="Árvore de Documentação" toggleSpeed="300" closeSpeed="300"  widgetVar="panel">  
+                            <br/> 
+                               <p:fieldset legend="Selecione o Documento "> 
+                          <br/> 
+                            <!--*********** BEGIN Documents Table ***********-->
+ 
+                            <p:dataTable id="taDocuments"  value="#{itemdoNoAction.documents}"
+                                         var="document"  selection="#{itemdoNoAction.selectedDocument}"   
+                                         selectionMode="single" rowKey="#{document.idDocumentoVinculado}">
+                              
+                                <p:ajax event="rowSelect" update=":form:documentPanel2" oncomplete="documentDialog2.show()" />
+
+
+                                <p:column style="vertical-align: middle;width:400px;" headerText="Código">  
+                                    <h:outputText value="#{document.codigoDocumento}" />  
+                                </p:column>  
+
+                                <p:column style="vertical-align: middle;width:400px;" headerText="Título">  
+                                    <h:outputText value="#{document.titulo}" />  
+                                </p:column>  
+
+
+
+                            </p:dataTable>
+                            <br/>
+                            <!--*********** END Documents Table ***********-->
+                               </p:fieldset>
+                        </p:panel>
+                    </p:column>
+                </h:panelGrid>
+
+                <p:confirmDialog message="Deseja deletar o nó da Árvore de Produto? "  width="300"
+
+                                 header="Excluir Nó da Árvore de Produto "  severity="alert" widgetVar="confirmation">
+
+                    <p:commandButton value="sim" update="folderTree,messages" actionListener="#{itemdoNoAction.deleteNode}" style="border:0"   oncomplete="confirmation.hide()"/>
+                    <p:commandButton value="não" onclick="confirmation.hide()" type="button" />
+
+                </p:confirmDialog>
+                <!--*********** INICIO Visualizar Documento no Dialog Box ***********-->
+                <p:dialog  showEffect="fade" widgetVar="documentDialog2" modal="true" header="Árvore de Documentação Detalhada">  
+                    <p:outputPanel id="documentPanel2"   >  
+
+                        <p:dataTable id="qwert" value="#{itemdoNoAction.lista2}" 
+                                     var="item"
+                                     filterEvent="noAction.lista1" 
+                                    
+                                     >
+
+                            <p:column  headerText="Código Documento">        
+                                <h:outputText value="#{item.documentoVinculadofk.codigoDocumento}"/>
+                            </p:column>
+
+                            <p:column  headerText="Titulo">  
+                                <h:outputText value="#{item.documentoVinculadofk.titulo}"/>
+                            </p:column>
+
+                            <p:column style="vertical-align: middle;width:400px;"  headerText="Descrição"> 
+                                <h:outputText value="#{item.documentoVinculadofk.descricao}"/>
+                            </p:column>
+
+
+                            <p:column headerText="Data">  
+                                <h:outputText value="#{item.documentoVinculadofk.dataAlteracao}">
+                                    <f:convertDateTime pattern="dd.MM.yyyy"/>
+                                </h:outputText>
+                            </p:column> 
+
+                            <p:column style="text-align:center" >
+                                <f:facet name="header">
+                                    <h:outputText value=" Download"/>
+                                </f:facet>
+
+                                <h:commandButton image="/imagens/print.png" title="Download de Template">
+                                    <p:fileDownload value="#{itemdoNoAction.file}" />
+                                    <f:param name="idDocumentoVinculado" value="#{item.documentoVinculadofk.idDocumentoVinculado}"  />
+                                </h:commandButton>
+                            </p:column>
+
+                        </p:dataTable>
+
+                    </p:outputPanel>  
+
+                </p:dialog>
+                <!--*********** FIM Visualizar Documento no Dialog Box ***********-->
+
+
+
+
+
+
+
+
+            </h5>
+        </h:form>
+
+        <script type="text/javascript">  
+            function handleLoginRequest(xhr, status, args) {  
+                                 
+                addFolderDialog1.hide();
+                  
+          
+            } 
+             
+     
+        </script> 
+
+    </h:body>
+
+
+</html>

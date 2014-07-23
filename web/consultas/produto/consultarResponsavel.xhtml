@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/style.css"/>
+
+        <title>Consultar Produto por Responsável</title>
+    </h:head>
+    <h:body>
+        <f:view>         
+            <h:form >
+                <h4>   
+              
+                     <p:panel styleClass="tes2" >
+                    
+                        <h2>Consultar Produto por Responsável</h2>
+                        <br/> <br/><center>
+                            <h:panelGrid width="580" columns="3">
+                                <h:outputLabel value="Filtrar por Responsável:" for="fornecedor" />
+                                <h:selectOneMenu styleClass="tes" value="#{noAction.noDTO.responsavel.idUsuario}" >
+                                    <f:selectItem itemLabel="Mostrar todos" itemValue=""/>
+                                    <f:selectItems value="#{usuarioAction.lista}" var="usuario" itemLabel="#{usuario.nome}" itemValue="#{usuario.idUsuario}" />
+                                    <f:ajax event="valueChange"  execute="" render="listausuario" listener="#{noAction.listarUsuario}"  />
+                                </h:selectOneMenu>
+                            </h:panelGrid>
+                        </center>
+  <br/> <br/> <br/>
+
+                        <p:dataTable id="listausuario" value="#{noAction.listaNo}" var="item"
+                                     paginator="true" rows="5"
+                                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                     rowsPerPageTemplate="5,10,15">
+
+                            <p:column  headerText="IDENTIFICAÇÃO" style="width: 100px" >                                                 
+                                <h:outputText value="#{item.titulo}" />
+                            </p:column>
+                            <p:column  headerText="DESCRIÇÃO" style="width: 320px;text-align: left" >                                                 
+                                <h:outputText value="#{item.descricao}"/>
+                            </p:column>
+                            <p:column  headerText="DOMÍNIO" style="width: 100px" >                                                 
+                                <h:outputText value="#{item.tipoDominio}"/>
+                            </p:column>
+                            <p:column  headerText="RESPONSÁVEL" style="width: 100px" >                                                 
+                                <h:outputText value="#{item.responsavel.nome}"/>
+                            </p:column>
+                            
+                        </p:dataTable>
+
+                        <br/><br/><br/>
+                    
+   <h:panelGrid width="680" columns="2" style="alignment-adjust: center" border="0">
+                        <p:commandButton value="IMPRIMIR" type="button" icon="ui-icon-print" >  
+                            <p:printer target="listausuario" />  
+                        </p:commandButton> 
+   </h:panelGrid>
+                    </p:panel>
+
+                </h4>
+            </h:form>
+        </f:view>
+    </h:body>
+</html>
+
+

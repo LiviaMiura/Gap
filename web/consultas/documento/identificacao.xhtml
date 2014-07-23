@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/style.css"/>
+
+        <title>Consultar Documentos por Identificação da Árvore de Produto</title>
+    </h:head>
+    <h:body>
+        <f:view>         
+            <h:form >
+                <h4>   
+            
+                    <p:panel styleClass="tes2" id="xis">
+                        <br/>
+                        <h2>Consultar Documentos por Identificação</h2>
+                        <br/><br/> <center>
+                            <h:panelGrid width="580" columns="3" border="0">
+                                <h:outputLabel value="Identificação " for="documentoVinculadoDTO" style="font-weight:bold" />
+
+
+                                <h:selectOneMenu id="tipoDocumento" styleClass="tes"
+                                                 value="#{itemdoNoAction.itemdoNoDTO.noFk.idNo}"
+                                                 title="EstadoNo" required="true" 
+                                                 requiredMessage="Mostrar todos os Documentos por Identificação do Nó" >
+                                    <f:selectItem itemLabel="Selecione" itemValue="" noSelectionOption="true"/> 
+                                    <f:selectItems value="#{noAction.lista1}" var="noDTO" itemLabel="#{noDTO.titulo}" itemValue="#{noDTO.idNo}"  />
+                                </h:selectOneMenu>
+
+
+                                <p:commandButton value="Buscar" 
+                                                 update="tbl "
+                                                 actionListener="#{itemdoNoAction.buscarPoridentificacao}"
+                                                 ajax="false" />
+                            </h:panelGrid>
+                        </center><br/><br/><br/>
+
+                        <p:dataTable id="tbl1" var="item" value="#{itemdoNoAction.listaConsultas}" paginator="true" rows="10">  
+
+                          
+                            <p:column style="width: 100px ;text-align: left" >  
+                                <f:facet name="header" >  
+                                    <h:outputText value=" TÍTULO DO DOCUMENTO VINCULADO" />  
+                                </f:facet> 
+
+                                <h:outputText value="#{item.documentoVinculadofk.titulo}"/>
+                            </p:column>
+                        </p:dataTable>
+                        <br/> <br/>
+                        <center>
+                            <h:panelGrid width="690" columns="2" style="alignment-adjust: center;text-align: center" border="0">
+
+
+                                <p:commandLink action="#{itemdoNoAction.consultaDocumentoPDF}" ajax="false" >
+                                    <p:graphicImage style="border: 0"  value="/imagens/pdf1.png"/>
+                                </p:commandLink>
+                            </h:panelGrid>
+                        </center>
+
+
+                    </p:panel>
+
+                </h4>
+            </h:form>
+        </f:view>
+    </h:body>
+</html>
+
+

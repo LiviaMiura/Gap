@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/style.css"/>
+
+        <title>Download de Templates</title>
+    </h:head>
+    <h:body>
+        <f:view>
+
+            <h:form id="tabela"> 
+                <p:growl id="growl" showDetail="true" sticky="false" /> 
+                <h4>          
+
+                    <p:panel  style="text-align: center;font-size: 12px">  
+                        <f:facet name="header">
+                            <h:outputText value="Download Templates de Documentos"  style="font-size: 14px" />
+                        </f:facet>
+                        <br/><br/>
+                        <p:dataTable id="x" value="#{tipoDocumentoAction.lista}" var="item" rows="10" 
+                                     paginator="true" style="text-align: center"
+                                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                     rowsPerPageTemplate="5,10,15">
+
+                            <p:column    style="text-align:left" headerText="Identificação" >
+                                <h:outputText value="#{item.identificacao}" />                              
+                            </p:column>
+                            
+                            <p:column    style="text-align:left" headerText="Tipo de Documento" >
+                                <h:outputText value="#{item.tipoDocumento}" />                              
+                            </p:column>
+                            <p:column style="text-align:center" >
+                                <f:facet name="header">
+                                    <h:outputText value="Download"/>
+                                </f:facet>
+
+                                <h:commandButton image="/imagens/download.png" title="Download">
+                                    <p:fileDownload value="#{tipoDocumentoAction.file}" />
+                                    <f:param name="idTipoDocumento" value="#{item.idTipoDocumento}"  />
+                                </h:commandButton>
+                            </p:column>
+
+
+                        </p:dataTable>
+                        <br/>   <br/>
+
+
+                        
+
+                    </p:panel>
+                </h4>
+            </h:form>
+        </f:view>
+    </h:body>
+</html>

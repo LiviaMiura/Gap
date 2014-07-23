@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:head>
+        <title>Histórico Documento Vinculado</title>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/style.css"/>
+    </h:head>
+    <h:body>
+
+
+        <h:form>
+            <p:growl id="messages"/>
+            <h6>  
+
+
+                <p:dataTable id="hfr" value="#{historicoDocVinculadoAction.lista}" var="item"
+                             paginator="true" rows="10"
+                             paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="10,20">
+                    <f:facet name="header">
+                        <h2 style="font-size: 14px">HISTÓRICO DO DOCUMENTO DA ÁRVORE DE PRODUTO</h2>
+                    </f:facet>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="TÍTULO DO DOCUMENTO"/>
+                        </f:facet>
+                        <h:outputText value="#{item.documentoVinculadofk.titulo}"/>
+                    </p:column>
+
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="TIPO DE ALTERAÇÃO"/>
+                        </f:facet>
+                        <h:outputText value="#{item.tipoAlteracao}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="USUÁRIO"/>
+                        </f:facet>                      
+                        <h:outputText value="#{item.usuarioOperacao}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="DATA"/>
+                        </f:facet>
+                        <h:outputText value="#{item.dataOperacao}">
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss"  timeZone="America/Sao_Paulo" />
+
+                        </h:outputText>
+
+                    </p:column>
+
+
+
+                </p:dataTable>
+
+            </h6>
+        </h:form>
+    </h:body>
+</html>
+
+

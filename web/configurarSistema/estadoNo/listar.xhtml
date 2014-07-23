@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/style.css"/>
+        <title>Lista de Estado de Nó</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:growl id="messages"/>
+            <h4>  
+
+                <p:dataTable id="tpm" value="#{estadoNoAction.lista}" var="item"
+                             paginator="true" rows="6" style="text-align: left"
+                             paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="5,10,15">
+                    <f:facet name="header">
+                        <h2 style="font-size: 14px">Estado do Produto</h2>
+                    </f:facet>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Identificação"/>
+                        </f:facet>
+                        <h:outputText value="#{item.identificacao}"/>
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Descrição"/>
+                        </f:facet>
+                        <h:outputText value="#{item.descricao}"/>
+                    </p:column>
+
+                    <p:column  style="width: 7px;text-align: center" >
+                        <f:facet name="header">
+                            <h:outputText value="Editar"/>
+                        </f:facet>
+                        <p:commandButton action="#{estadoNoAction.alterar}" ajax="false" image="ui-icon ui-icon-pencil" title="Editar">
+                            <f:param name="idEstadoNo" value="#{item.idEstadoNo}"/>
+                        </p:commandButton>
+                    </p:column>
+
+                    <p:column style="text-align: center">
+                        <f:facet name="header">
+                            <h:outputText value="Excluir"/>
+                        </f:facet>
+                        <h:commandButton action="#{estadoNoAction.excluir}"  image="/imagens/excluir1.png" title="Excluir">
+                            <f:param name="idEstadoNo" value="#{item.idEstadoNo}"/>
+                        </h:commandButton>
+                    </p:column>
+                </p:dataTable>
+           
+
+
+            </h4>
+
+
+
+            <h4 align="center" >
+<br/>
+                <p:commandButton styleClass="h5" action="#{estadoNoAction.inserir}" value=" Cadastrar Novo Estado" ajax="false"/>
+
+
+            </h4>
+
+        </h:form>
+
+    </h:body>
+</html>
+

@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/style.css"/>
+
+        <title>Consultas</title>
+    </h:head>
+    <h:body>
+        <f:view>         
+            <h:form id="form">  
+
+                <p:growl id="msgs" showDetail="true" />  
+
+                <p:dataTable id="cars" var="car" value="#{itemdoNoAction.listaPorNo}" 
+                             selectionMode="multiple" rowKey="#{car.idItemdoNo}"
+                             selection="#{itemdoNoAction.selectedCar}">  
+
+                    <p:column headerText="Id itemdoNó" style="width:24%">  
+                        <h:outputText value="#{car.idItemdoNo}" />  
+                    </p:column>
+                    <p:column headerText="Identificação do Produto" style="width:24%">  
+                        <h:outputText value="#{item.noFk.titulo}" />  
+                    </p:column>  
+
+                    <p:column headerText="Documento" style="width:24%">  
+
+                        <h:outputText value="#{car.documentoVinculadofk.titulo}" />  
+                    </p:column>  
+
+                  <p:column style="width:4%">  
+                        <p:commandButton id="selectButton" update=":form:display"  oncomplete="carDialog.show()" icon="ui-icon-gear" title="View">  
+                            <f:setPropertyActionListener value="#{car}" target="#{itemdoNoAction.selectedCar}" />  
+                        </p:commandButton>  
+                    </p:column>  
+
+                </p:dataTable>  
+
+            
+                <p:dialog header="Detalhes do Árvore de Produto" showEffect="fade" widgetVar="carDialog" modal="true">  
+                    <p:outputPanel id="documentPanel">  
+                        <h:panelGrid id="display" columns="2" cellpadding="5" rendered="#{not empty itemdoNoAction.selectedCar}">    style="text-align: left" >    
+                            <h:outputLabel for="qw" value="Identificação:" />  
+                            <h:outputText id="qw" value="#{itemdoNoAction.selectedCar.idItemdoNo}" style="font-weight:bold" />                       
+                        </h:panelGrid>  
+                    </p:outputPanel>  
+                </p:dialog>
+
+
+            </h:form>  
+
+        </f:view>
+    </h:body>
+</html>

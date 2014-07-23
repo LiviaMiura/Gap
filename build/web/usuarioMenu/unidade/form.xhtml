@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+    Projeto : GAP
+    Nome Arquivo : form.xhtml (UNIDADE)
+    Autor : Marcos Castro
+    Descrição: Formulário para entrada de dados referentes a tabela Unidade: Nome da Unidade, localidade, o Usuario poderá criar uma nova Unidade utilizando 
+               o botão "Gravar" ,"Limpar" ou "Cancelar" operação.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/style.css"/>
+        <title>Cadastro da Unidade</title>
+    </h:head>
+    <h:body>
+        <h3>
+            <f:view encoding="ISO-8859-1"> 
+                <h:form>
+
+                      <p:growl id="growl"  sticky="false" /> 
+                    <p:panel header="Cadastro de Unidade" style="text-align: center;margin-bottom:60px;"> 
+                        <center>   
+                            <h:panelGrid columns="2" cellpadding="5" border="0"> 
+                                <br/>
+                                <br/>
+                                <!-- trocar para inputHidden - pois o mesmo não deve aparecer para o cliente -->
+                                <h:inputHidden id="idUnidade" value="#{unidadeAction.unidadeDTO.idUnidade}"  required="true" />
+                                <h:outputLabel value="Unidade:" for="nomeUnidade" />
+                                <p:inputText 
+                                    id="nomeUnidade" value="#{unidadeAction.unidadeDTO.nomeUnidade}"
+                                    onkeyup="this.value = this.value.toUpperCase();"
+
+                                    title="Digite o nome da Unidade"
+                                    required="true" 
+                                    requiredMessage="Unidade é obrigatório."
+                                    validatorMessage="Descrição: mínimo 3, máximo 3 caracteres."
+                                    >
+                                    <f:validateLength minimum="3" maximum="3"></f:validateLength>
+                                </p:inputText>  
+
+                                <h:outputLabel value="Localidade:" for="localidade" />
+                                <p:inputText 
+                                    id="localidade" value="#{unidadeAction.unidadeDTO.localidade}" 
+                                    title="Digite a Localidade" 
+                                    required="true" 
+                                    requiredMessage="Localidade é obrigatório."
+                                    validatorMessage="Descrição: mínimo 3, máximo 45 caracteres."
+                                    >
+                                    <f:validateLength minimum="3" maximum="45"></f:validateLength>
+                                </p:inputText>  
+
+                            </h:panelGrid>
+                            <br/>
+                            <br/>
+                            <!-- Inserir Botão - codigo utilizando os metodos que estão no arquivo UnidadeAction -->
+                            <h:panelGrid columns="3" style="text-align: center" width="515"  cellpadding="5" border="0">  
+                                <p:commandButton action="#{unidadeAction.gravar}" value="Gravar" ajax="false"/>
+                                <p:commandButton action="#{unidadeAction.listar}" value="Cancelar" ajax="false" immediate="true"/>
+                                <p:commandButton id="btnL" value="Limpar" type="reset"/>
+                            </h:panelGrid>
+
+                        </center><br/>
+                    </p:panel>
+                </h:form>
+            </f:view>
+        </h3>
+    </h:body>
+</html>

@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/style.css"/>
+
+        <title>Consultas</title>
+    </h:head>
+    <h:body>
+        <f:view>         
+            <h:form >
+                <h4>   
+              
+
+                    <p:panel styleClass="tes2" >
+                        <br/>
+                        <h2> Consultar por Tipo Domínio</h2>
+                        <br/> <br/><center>
+
+                        </center>
+                        <br/> <br/> 
+                        <p:dataTable id="x" value="#{noAction.lista1}" var="item" rows="5"
+                                     paginator="true" style="text-align: center"
+                                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                     rowsPerPageTemplate="5,10,15">
+                            <f:facet name="header" >
+                                Consultar por Tipo de Domínio
+                            </f:facet>
+
+
+                            <p:column style="text-align:center" headerText="Produto" >
+                                <h:outputText value="#{item.titulo}">
+                                </h:outputText></p:column>
+
+
+                            <p:column style="text-align:center" headerText="Descrição" >
+                                <h:outputText value="#{item.estadoNofk.descricao}"   >
+                                </h:outputText></p:column>
+
+                        
+                            
+                            <p:column  style="text-align:center" headerText="Usuário" >
+                                <h:outputText value="#{item.responsavel.nome}"   >
+                                </h:outputText></p:column>
+
+
+                            <p:column id="opcaoColumn" filterBy="#{item.tipoDominio}"   
+                                      headerText="Tipo Domínio"   
+                                      filterOptions="#{noAction.opcaoOperacao}"  
+                                      filterMatchMode="exact">  
+                                <h:outputText value="#{item.tipoDominio}" />  
+                            </p:column>
+
+
+
+
+                        </p:dataTable>
+
+                        <br/><br/>
+           <h:panelGrid width="680" columns="2" style="alignment-adjust: center" border="0">
+
+
+                        <p:commandButton value="Imprimir Lista" type="button" >  
+                            <p:printer target="x" />  
+                        </p:commandButton> 
+           </h:panelGrid>
+                    </p:panel>
+                </h4>
+            </h:form>
+        </f:view>
+    </h:body>
+</html>

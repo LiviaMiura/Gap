@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<queryString>
+		<![CDATA[SELECT
+     *,
+     tipoproduto.`identificacao` AS tipoproduto_identificacao,
+     no.`descricao` AS no_descricao,
+     estadono.`identificacao` AS estadono_identificacao,
+     usuario.`nome` AS usuario_nome,
+     no.`id_No` AS no_id_No,
+     no.`nivel` AS no_nivel,
+     no.`status` AS no_status
+FROM
+     `tipoproduto` tipoproduto INNER JOIN `no` no ON tipoproduto.`id_TipoProduto` = no.`tipoProduto_fk`
+     INNER JOIN `estadono` estadono ON no.`estadoNo_fk` = estadono.`id_estadoNo`
+     INNER JOIN `estadono` estadono_A ON no.`estadoNo_fk` = estadono_A.`id_estadoNo`
+     INNER JOIN `usuario` usuario ON no.`responsavel` = usuario.`id_Usuario`
+where
+no.`status` = 1
+ORDER BY
+     no_nivel ASC]]>
+	</queryString>
+	<field name="id_TipoProduto" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="identificacao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="descricao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="observacao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_No" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="titulo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="responsavel" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="produtoFinal" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipoProduto_fk" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no_fk" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nivel" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="diretorio" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="codigo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="identExterna" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="estadoNo_fk" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="data_criacao" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipoDominio" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="status" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_estadoNo" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_Usuario" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nome" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="email" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="predio" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ramal" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="login" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="senha" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="perfil" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="unidade_fk" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="statusImagem" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipoproduto_identificacao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no_descricao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="estadono_identificacao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="usuario_nome" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no_id_No" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no_nivel" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no_status" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="16" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="107" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="73" width="555" height="26" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center">
+					<font size="18" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Documento da Árvore de Produto DSS]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="0" width="552" height="50"/>
+				<imageExpression class="java.lang.String"><![CDATA["C:\\Users\\livia.miura\\Documents\\NetBeansProjects\\Gap\\web\\imagens\\2.png"]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="10" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="208" splitType="Stretch">
+			<textField>
+				<reportElement x="123" y="3" width="432" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{titulo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="22" y="3" width="100" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Identificação]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="22" width="100" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descrição]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="41" width="100" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Código]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="79" width="100" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo de Produto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="98" width="100" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estado do Produto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="136" width="101" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Responsável]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="60" width="100" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Identificação Externa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="117" width="100" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo de Domínio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="155" width="100" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Produto Final]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="174" width="101" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data]]></text>
+			</staticText>
+			<image>
+				<reportElement x="1" y="35" width="8" height="60"/>
+				<imageExpression class="java.lang.String"><![CDATA["C:\\Users\\livia.miura\\Pictures\\inpe\\Lazulempé12.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="1" y="1" width="8" height="60"/>
+				<imageExpression class="java.lang.String"><![CDATA["C:\\Users\\livia.miura\\Pictures\\inpe\\Lazulempé12.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="1" y="95" width="8" height="60"/>
+				<imageExpression class="java.lang.String"><![CDATA["C:\\Users\\livia.miura\\Pictures\\inpe\\Lazulempé12.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="1" y="133" width="8" height="60"/>
+				<imageExpression class="java.lang.String"><![CDATA["C:\\Users\\livia.miura\\Pictures\\inpe\\Lazulempé12.png"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="123" y="22" width="432" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{no_descricao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="123" y="41" width="432" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{codigo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="123" y="60" width="432" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{identExterna}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="123" y="79" width="432" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tipoproduto_identificacao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="122" y="98" width="433" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{estadono_identificacao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="123" y="117" width="432" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tipoDominio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="123" y="136" width="432" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{usuario_nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="122" y="173" width="432" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{data_criacao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="122" y="155" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{produtoFinal}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="6" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="28" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement x="514" y="12" width="38" height="15"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA["de  " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<image vAlign="Top">
+				<reportElement x="1" y="0" width="230" height="12"/>
+				<imageExpression class="java.lang.String"><![CDATA["C:\\Users\\livia.miura\\Pictures\\inpe\\Lazulemdeitado12.png"]]></imageExpression>
+			</image>
+			<image vAlign="Top">
+				<reportElement x="229" y="0" width="230" height="12"/>
+				<imageExpression class="java.lang.String"><![CDATA["C:\\Users\\livia.miura\\Pictures\\inpe\\Lazulemdeitado12.png"]]></imageExpression>
+			</image>
+			<image vAlign="Top">
+				<reportElement x="324" y="0" width="230" height="12"/>
+				<imageExpression class="java.lang.String"><![CDATA["C:\\Users\\livia.miura\\Pictures\\inpe\\Lazulemdeitado12.png"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="465" y="12" width="49" height="16"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA["Página:" + "  "+ $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="32" y="12" width="151" height="13"/>
+				<textElement/>
+				<textFieldExpression class="java.util.Date"><![CDATA[new Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="7" splitType="Stretch"/>
+	</summary>
+</jasperReport>

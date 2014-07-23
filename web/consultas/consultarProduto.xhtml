@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui" >
+
+    <h:head>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/style.css"/>
+        <title>Consultas</title>
+    </h:head>
+
+    <h:body>
+        <div class="main">
+            <div class="header">
+                <h:form>
+                    <p:growl id="messages" autoUpdate="true"/>
+                    <div class="Principallogo"> 
+
+  
+           
+                        <h:panelGrid id="consulta" columns="1"  cellpadding="12"   
+                                     border="0" >
+
+                            <p:commandButton id="dynaButton1" value=" Árvore Produto Final" type="button" icon="ui-icon-circle-arrow-e" style="text-align: left;width: 200px ;  " />  
+                            <p:tieredMenu overlay="true" trigger="dynaButton1" my="left top" at="left bottom" style="text-align: left;width: 190px" >  
+
+
+
+                                <p:menuitem> <h:commandLink action="#{menuAction.consultar7}" target="principal2" ><h:outputText value="Tipo de Produto" /></h:commandLink>  <p:spacer height="15" /></p:menuitem>
+                                <p:separator />  
+                                <p:menuitem><h:commandLink action="#{menuAction.consultar8}" target="principal2" ><h:outputText value="Estado do Produto" /></h:commandLink><p:spacer height="15" /></p:menuitem>
+                                <p:separator />  
+                                <p:menuitem><h:commandLink action="#{menuAction.consultar22}" target="principal2" ><h:outputText value="Responsável"   /></h:commandLink> <p:spacer height="15" /></p:menuitem>                      
+                                <p:separator />  
+
+                                <p:menuitem><h:commandLink action="#{menuAction.consultar23}" target="principal2" ><h:outputText value="Ramo Específico"   /></h:commandLink> <p:spacer height="15" /></p:menuitem>                      
+                                <p:separator />  
+
+
+                            </p:tieredMenu>
+
+                        </h:panelGrid>
+                              <br/> <br/> <br/>
+                        <h:panelGrid id="consulta1" columns="1"  cellpadding="12"   
+                                     border="0" >
+
+                            <p:commandButton id="dynaButton" value=" Árvore de Produto" type="button"  icon="ui-icon-circle-arrow-e"  style="text-align: left;width: 205px" />  
+                            <p:tieredMenu overlay="true" trigger="dynaButton" my="left top" at="left bottom" style="text-align: left;width: 195px" >  
+
+                                <p:menuitem> <h:commandLink action="#{menuAction.consultar2}" target="principal2" ><h:outputText value="Identificação" /></h:commandLink><p:spacer  height="15" />     <p:separator />   </p:menuitem>    
+
+                                <p:menuitem><h:commandLink action="#{menuAction.consultar24}" target="principal2" ><h:outputText value="Ramo Específico" /></h:commandLink><p:spacer height="15" /></p:menuitem>               
+                                <p:separator />  
+                                <p:menuitem><h:commandLink action="#{menuAction.consultar21}" target="principal2" ><h:outputText value="Produto e seus Documentos"   /></h:commandLink> </p:menuitem>
+                                <p:separator />  
+                                <p:menuitem><h:commandLink action="#{menuAction.consultar20}" target="principal2" ><h:outputText value="Tipo Domínio"   /></h:commandLink><p:spacer height="15" /> </p:menuitem>
+                                <p:separator />  
+                                <p:menuitem><h:commandLink action="#{menuAction.consultar5}" target="principal2" ><h:outputText value="Responsável"   /></h:commandLink> <p:spacer height="15" /></p:menuitem>
+                                <p:separator />  
+                                <p:menuitem><h:commandLink action="#{menuAction.consultar6}" target="principal2" ><h:outputText value="Estado do Produto" /></h:commandLink> <p:spacer height="15" /></p:menuitem>
+                                <p:separator />  
+                                <p:menuitem><h:commandLink action="#{menuAction.consultar10}" target="principal2" ><h:outputText value="Mudança Estado do Produto"  /></h:commandLink><p:spacer height="5" /> </p:menuitem>
+                                <p:separator />  
+                                <p:menuitem><h:commandLink action="#{menuAction.consultarPorData}" target="principal2" ><h:outputText value="Por data de criação" /></h:commandLink> <p:spacer height="15" /></p:menuitem>
+                                <p:separator />  
+                                <p:menuitem><h:commandLink action="#{menuAction.consultar9}" target="principal2" ><h:outputText value="Templates"  /></h:commandLink> <p:spacer height="15" /></p:menuitem>
+                                <p:separator />  
+                                <p:menuitem><h:commandLink action="#{menuAction.consultarTipo}" target="principal2" ><h:outputText value="Tipo de Documento" /></h:commandLink> <p:spacer height="15" /></p:menuitem>
+
+
+                                <p:separator />  
+
+
+
+                            </p:tieredMenu>  
+                        </h:panelGrid>
+    <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/>  
+                        <h:panelGrid id="consulta3" columns="1"  cellpadding="12"   
+                                     border="0" >
+
+
+                            <p:commandButton id="dynaButton2" value=" Documentos Árvore de Produto" type="button"  icon="ui-icon-circle-arrow-e"  style="text-align: left;width: 200px"  />  
+                            <p:tieredMenu overlay="true" trigger="dynaButton2" my="left top" at="left bottom" style="text-align: left;width: 190px" >  
+
+
+                                <p:menuitem> <h:commandLink   action="#{menuAction.consultar3}" target="principal2" value="Identificação "  ></h:commandLink><p:spacer  height="15" /></p:menuitem>    
+                                <p:separator /> 
+                                <p:menuitem><h:commandLink   action="#{menuAction.consultartipoDocumentoListar}" target="principal2" value="Tipo de Documento"  ></h:commandLink><p:spacer  height="15" /></p:menuitem>    
+                                <p:separator />  
+                                <p:menuitem><h:commandLink   action="#{menuAction.consultar4}" target="principal2" value="Estado do Produto"  ></h:commandLink> <p:spacer  height="15" /></p:menuitem>    
+                            </p:tieredMenu>
+
+                        </h:panelGrid>
+                    </div>   
+                </h:form>
+            </div>
+        </div>
+
+
+        <iframe name="principal2" id="principal2" width="100%" scrolling="auto" align="center"  frameborder="0" height="560" />
+
+
+
+
+
+    </h:body>
+</html>
+

@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/style.css"/>
+        <title>Cadastro de Tipo de Produto</title>
+    </h:head>
+    <h:body>
+        <h4>
+            <f:view encoding="ISO-8859-1"  > 
+            <h:form>
+       <p:growl id="messages"/>
+                <br/><br/><br/>     <br/><br/><br/>
+                <p:panel header="Cadastrar Tipo Produto" style="text-align: center;margin-bottom:60px;">   
+                    <center>
+                        <h:panelGrid columns="2" cellpadding="5" border="0">                            
+                            <h:inputHidden value="#{tipoProdutoAction.tipoProdutoDTO.idTipoProduto}"/><br/>
+
+                            <h:outputLabel value="Identificacao:" for="identificacao" />
+                            <p:inputText id="identificacao" size="3"  mask="a*"
+                                         value="#{tipoProdutoAction.tipoProdutoDTO.identificacao}"
+                                         onkeyup="this.value = this.value.toUpperCase();"
+                                         title="Identificação - Ex: EQ"
+                                         validatorMessage="Identicação deve conter apenas 2 letras."
+                                         required="true" requiredMessage="Identificação é obrigatório.">
+                               <f:validateLength minimum="2" maximum="2" ></f:validateLength>
+                            </p:inputText>
+
+                            <h:outputLabel value="Descrição:" for="descricao" />
+                            <p:inputTextarea autoResize="200%"  cols="40"
+                                             id="descricao" value="#{tipoProdutoAction.tipoProdutoDTO.descricao}"
+                                             title="Descrição - Ex: Equipamento de Hardware " 
+                                             required="true" requiredMessage="Campo Descrição é obrigatório."
+                                             validatorMessage="Descrição: mínimo 3, máximo 300 caracteres."
+                                             >
+                                <f:validateLength minimum="3" maximum="245"></f:validateLength>
+                            </p:inputTextarea>
+
+                            <h:outputLabel value="Observação:" for="observacao" />
+                            <p:inputText id="observacao" size="42"                        
+                                         value="#{tipoProdutoAction.tipoProdutoDTO.observacao}"
+                                         title="Observação - Ex: Equipamento de Hardware não importando se o mesmo internamente se é constituido de hardware ou software." />
+                            
+                  
+                 
+                        </h:panelGrid>
+                    </center><br/>
+                    <h:panelGrid columns="3"  width="515"  cellpadding="5" border="0">  
+                        <p:commandButton action="#{tipoProdutoAction.gravar}" value="Gravar" ajax="false"/>
+                        <p:commandButton action="#{tipoProdutoAction.listar}" value="Cancelar" ajax="false" immediate="true"/>
+                        <p:commandButton id="btnL" value="Limpar" type="reset"/>
+                    </h:panelGrid>
+                </p:panel>
+            </h:form>
+            </f:view>
+        </h4>
+    </h:body>
+</html>
+
+
+

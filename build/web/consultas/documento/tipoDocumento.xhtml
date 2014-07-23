@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/style.css"/>
+
+        <title>Consultar Documento por Tipo de Documentos</title>
+    </h:head>
+    <h:body>
+        <f:view>         
+            <h:form >
+                <h4>   
+                  
+
+                    <p:panel styleClass="tes2" id="xis" toggleSpeed="500" closeSpeed="500"  widgetVar="panel">  
+                      
+                        <h2>Consultar por Tipo de Documentos</h2>
+                        <br/> <br/><center>
+                            <h:panelGrid width="630" columns="3" border="0">
+                                <h:outputLabel value="Tipo Documento:" for="documentoVinculadoDTO" style="font-weight:bold" />
+
+                                <h:selectOneMenu id="tipoDocumento" styleClass="tes"
+                                                 value="#{itemdoNoAction.itemdoNoDTO.documentoVinculadofk.tipoDocumentofk.idTipoDocumento}"
+                                                 title="Tipo de Documento" required="true" 
+                                                 requiredMessage="Selecione um tipo de Documento" >
+                                    <f:selectItem itemLabel="Selecione" itemValue="" noSelectionOption="true"/> 
+                                    <f:selectItems value="#{tipoDocumentoAction.lista}" var="tipoDocumentoDTO" itemLabel="#{tipoDocumentoDTO.identificacao}" itemValue="#{tipoDocumentoDTO.idTipoDocumento}"  />
+                                </h:selectOneMenu>
+
+
+                                <p:commandButton value="Buscar" 
+                                                 update="x "
+                                                 actionListener="#{itemdoNoAction.buscarPorTipoDocumentoID}"
+                                                 ajax="false" />
+                            </h:panelGrid>
+                        </center>
+                        <br/> <br/> <br/>
+                        <p:dataTable id="x" value="#{itemdoNoAction.listaConsultas}" 
+                                     var="item" 
+                                     filterEvent="itemdoNoAction.lista"
+                                     paginator="true" rows="5"
+                                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                     rowsPerPageTemplate="5,10,15">
+
+
+                            <p:column  headerText="TITULO DOCUMENTO" style="width: 280px" >                                                 
+                                <h:outputText value="#{item.documentoVinculadofk.titulo}" />
+                            </p:column>
+
+
+                            <p:column style="width: 100px ;text-align: center" >  
+                                <f:facet name="header" >  
+                                    <h:outputText value="CODIGO DOC" />  
+                                </f:facet>
+                                <h:outputText value="#{item.documentoVinculadofk.codigoDocumento}"/>
+                            </p:column>
+
+                            <p:column style="width: 100px ;text-align: center" >  
+                                <f:facet name="header" >  
+                                    <h:outputText value="TIPO DOC" />  
+                                </f:facet>
+
+                                <h:outputText value="#{item.documentoVinculadofk.tipoDocumentofk.identificacao}"/>
+                            </p:column>
+
+                            <p:column style="width: 100px ;text-align: center" >  
+                                <f:facet name="header" >  
+                                    <h:outputText value="AUTORES" />  
+                                </f:facet>
+
+                                <h:outputText value="#{item.documentoVinculadofk.autores}"/>
+                            </p:column>
+
+
+
+
+
+                        </p:dataTable>
+                        <br/> <br/>
+                        <center>
+                            <h:panelGrid width="690" columns="2" style="alignment-adjust: center;text-align: center" border="0">
+                                <p:commandLink action="#{itemdoNoAction.consultaTipoDocumentoPDF}" ajax="false" >
+                                    <p:graphicImage style="border: 0"  value="/imagens/pdf1.png"/>
+                                </p:commandLink>
+                            </h:panelGrid>
+                        </center>
+
+                    </p:panel>
+                </h4>
+            </h:form>
+        </f:view>
+    </h:body>
+</html>
+
+

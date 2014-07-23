@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+ xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:head>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/style.css"/>
+        <title>Cadastro de Email</title>
+    </h:head>
+    <h:body>
+    
+        <h:form>
+            <h3>
+                <br/><br/><br/><br/>
+                <p:panel header="Configurar Email  - Administrador/Gerente">
+                  
+                    <h:inputHidden value="#{configurarEmailAction.configurarEmailDTO.id}"/><br/>
+                    <center>
+                    <h:panelGrid columns="3" cellspacing="6" border="0" >
+
+                        <h:outputLabel value="Servidor:" />
+                        <p:inputText size="20"
+                                     id="servidor"
+                                     value="#{configurarEmailAction.configurarEmailDTO.servidor}"
+                                     title="Nome Servidor"
+                                   
+                                     required="true"
+                                     requiredMessage="Servidor campo obrigatório!"
+                                     validatorMessage="Este campo deve conter IP da máquina do servidor !">
+                            <f:validateLength minimum="3" maximum="40"/>
+                        </p:inputText>
+                        <p:message for="servidor"/>
+
+
+                        <h:outputLabel value="Porta: " />
+                        <p:inputText size="20"
+                                     id="porta" disabled="true"
+                                     value="#{configurarEmailAction.configurarEmailDTO.porta}"
+                                     title="Porta SMTP"
+                                     required="true"
+                                    
+                                     requiredMessage="Porta campo obrigatório!"
+                                     validatorMessage="Este campo deve conter no mínimo 2 caracteres!">
+                            <f:validateLength minimum="2" maximum="10"/>
+                        </p:inputText>
+                        <p:message for="porta"/>
+
+
+
+                        <h:outputLabel value="Atenticacao:" />
+                        <h:selectBooleanCheckbox value="#{configurarEmailAction.configurarEmailDTO.autenticacao}"  disabled="true" title="Autenticação" >
+                        </h:selectBooleanCheckbox>
+                        <h:outputLabel value=" " />
+
+                        <h:outputLabel value="Usuario:" />
+                        <p:inputText size="20"
+                                     id="usuario"
+                                     value="#{configurarEmailAction.configurarEmailDTO.usuario}"
+                                     title="Usuário"
+                                            
+                                     required="true"
+                                     requiredMessage="E-mail campo obrigatório  !"
+                                     validatorMessage="Este campo deve conter no mín 3 e max 40 caracteres!">
+                            <f:validateLength minimum="3" maximum="40"/>
+                        </p:inputText>
+                        <p:message for="usuario"/>
+
+
+
+                        <h:outputLabel value="Senha:"/>
+                        <p:inputText size="20"
+                                     id="senha"
+                                     value="#{configurarEmailAction.configurarEmailDTO.senha}"
+                                     title="Senha"
+                                     required="true"
+                                            
+                                     requiredMessage="Senha campo obrigatório!"
+                                     validatorMessage="Este campo deve conter no mín 3 e max 15 caracteres!">
+                            <f:validateLength minimum="3" maximum="15"/>
+                        </p:inputText>
+                        <p:message for="senha"/>
+
+                        <h:inputHidden value="#{configurarEmailAction.configurarEmailDTO.porta}"/><br/>
+                        <h:inputHidden value="#{configurarEmailAction.configurarEmailDTO.autenticacao}"/><br/>
+                 
+                        
+                    </h:panelGrid>
+</center>
+                </p:panel>
+            </h3>
+            <h4 align="center">
+                <p:commandButton
+                    action="#{configurarEmailAction.gravar}"
+                    value="Gravar"
+                    ajax="false"/>
+
+                <p:commandButton action="#{configurarEmailAction.listar}"
+                                 value="Cancelar"
+                                 ajax="false"
+                                 immediate="true"/>
+            </h4>
+
+        </h:form>
+
+
+    </h:body>
+</html>
+
+
